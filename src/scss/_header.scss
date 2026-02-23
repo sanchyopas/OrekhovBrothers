@@ -1,3 +1,148 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   flex: 0 0 auto;
+  padding: 12px 32px;
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.7);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__logo {
+    justify-self: center;
+  }
+
+  &__action {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__phone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+    color: #282828;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    text-decoration: underline dotted;
+    text-underline-offset: 6px;
+
+    a:first-child {
+      font-size: 18px;
+    }
+
+  }
+
+}
+
+.nav {
+  justify-self: start;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__item {
+    position: relative;
+    padding-block: 7px;
+
+    @media (hover:hover) {
+      &:hover {
+        .nav__link {
+          color: #00573F;
+        }
+        .nav__arrow {
+          transform: rotate(180deg);
+        }
+
+        .submenu {
+          opacity: 1;
+          pointer-events: all;
+          transform: translateY(0);
+        }
+
+      }
+    }
+
+  }
+
+  &__item-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__link {
+    font-family: var(--font-family), sans-serif;
+    font-weight: 600;
+    line-height: 144%;
+    color: #136e40;
+
+    @media (hover: hover) {
+      &:hover {
+        color: #00573F;
+      }
+    }
+
+    &:active {
+      color: #00573F;
+    }
+
+  }
+
+  &__arrow {
+    width: 24px;
+    height: 24px;
+    transition: $animation-speed;
+  }
+
+}
+
+.submenu {
+  position: absolute;
+  border-radius: 4px;
+  padding: 8px 0;
+  min-width: 280px;
+  transform: translateY(20px);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.08);
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: $animation-speed;
+
+  &__item {
+    padding: 8px 16px;
+
+    @media (hover: hover) {
+      &:hover {
+        .submenu__link {
+          color: #136e40;
+        }
+      }
+    }
+
+  }
+
+  &__link {
+    line-height: 133%;
+    color: #282828;
+    transition: $animation_speed;
+  }
+
+
+
 }

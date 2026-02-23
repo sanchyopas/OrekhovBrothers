@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html>
-    @@include('html/head.html', {
-        "title":"Сборка GULP"
-    })
-    <body>
-        @@include('html/_header.html')
+<html lang="ru">
+@@include('html/head.html', {
+"title":"Братья Ореховы"
+})
+<body>
+@@include('html/_header.html')
 
-        <main>
-            @@include('html/_hello.html')
-        </main>
+<main>
+    <img src="@img/banner.jpg" alt="" width="100%"
+         height="100%">
+</main>
 
-        @@include('html/_footer.html')
+@@include('html/_footer.html')
 
-        <script src="js/app.min.js"></script>
-    </body>
+<script src="js/app.min.js"></script>
+</body>
 </html>
