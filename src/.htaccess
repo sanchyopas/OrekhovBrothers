@@ -1,0 +1,22 @@
+AddDefaultCharset UTF-8
+AddType application/manifest+json .webmanifest
+
+RewriteEngine On
+
+# �������� � HTTP �� HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# �������� � www �� ��� www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# Обработка /en/ как en.html
+RewriteCond %{REQUEST_URI} ^/(.*)/$ [NC]
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.*)/$ $1.html [L]
+
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "must-revalidate, max-age=0"
+    FileETag MTime Size
+</FilesMatch>
