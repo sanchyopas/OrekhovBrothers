@@ -28,6 +28,11 @@ ul,ol {
 
 }
 
+img,picture {
+  display: block;
+  max-width: 100%;
+}
+
 button {
   padding: 0;
   margin: 0;
@@ -43,6 +48,38 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
+
+  &__item {
+    width: 40px;
+    height: 40px;
+    transition: $animation_speed;
+
+    @media (max-width: 992px) {
+      width: 32px;
+      height: 32px;
+    }
+
+    @media(hover:hover) {
+      &:hover {
+        transform: scale(.98);
+      }
+    }
+    a {
+      transition: $animation_speed;
+
+      &:active {
+        opacity: .9;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill ;
+      }
+    }
+  }
+
+
 }
 
 .tooltip {

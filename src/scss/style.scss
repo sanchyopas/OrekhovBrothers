@@ -19,6 +19,7 @@
 
 html {
   height: 100%;
+  font-size: 62.5%;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
   min-width: 360px;
   overflow-x: hidden;
   font-family: $main_font;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 400;
 
   main {
