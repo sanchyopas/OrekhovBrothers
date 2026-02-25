@@ -24,3 +24,18 @@ copyPhoneLink.forEach(link => {
     }
   });
 });
+
+const headerBurgerBtn = document.querySelector('.header__burger');
+const navMobile = document.getElementById('mobile-menu');
+
+headerBurgerBtn?.addEventListener('click', (e) => {
+  const rect = e.currentTarget.getBoundingClientRect();
+  if(!navMobile.classList.contains('active')) {
+    navMobile.style.left = rect.left + 'px';
+    navMobile.style.top = rect.bottom + 'px';
+
+    navMobile.classList.add('active');
+  }else {
+    navMobile.classList.remove('active');
+  }
+});
