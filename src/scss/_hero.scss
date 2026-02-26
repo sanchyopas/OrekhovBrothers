@@ -1,0 +1,28 @@
+.hero {
+  margin-top: 94px;
+  padding: 66px 0;
+
+  &__content {
+    position: relative;
+    z-index: 1;
+
+    h1 {
+      max-width: 422px;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 117%;
+      color: #282828;
+      margin-bottom: .8rem;
+
+    }
+
+    p {
+      font-weight: 400;
+      line-height: 133%;
+      color: #282828;
+    }
+
+  }
+
+
+}
