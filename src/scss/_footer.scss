@@ -1,3 +1,38 @@
 .footer {
   flex: 0 0 auto;
+  padding-block: 16px;
+  background: #00573F;
+  color: #ffffff;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__right {
+  }
+
+  &__copyright {
+    span {
+      font-size: 14px;
+      line-height: 143%;
+    }
+  }
+
+  &__inn {
+  }
+
+  &__address {
+  }
+
+
 }

@@ -1,0 +1,44 @@
+.breadcrumbs {
+  padding-top: 16px;
+  display: inline-grid;
+
+  &__list {
+    display: none;
+
+    @media(min-width: 768px) {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+  &__item {
+    padding: 8px 0;
+
+    &:not(:last-child) {
+      &::after {
+        content: '/';
+        color: #136e40;
+      }
+    }
+
+  }
+
+  &__link {
+    color: #136e40;
+  }
+
+  &__current {
+    color: #686868;
+  }
+
+  &__back {
+    justify-self: start;
+    padding: 8px 0;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 144%;
+    color: #136e40;
+  }
+
+}

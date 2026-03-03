@@ -1,0 +1,50 @@
+.product-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.13);
+  background: #fff;
+  overflow: hidden;
+
+  &__image {
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
+  &__body {
+    padding: 16px;
+    display: grid;
+    gap: 16px;
+  }
+
+  &__body-inner {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__title {
+    font-size: 20px;
+  }
+
+  &__description {}
+
+  &__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  &__feature {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__feature-icon {}
+
+  &__feature-value {}
+
+}
