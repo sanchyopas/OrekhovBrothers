@@ -12,10 +12,13 @@
 @import '_footer';
 @import '_global';
 @import '_hero';
+@import '_form';
 @import '_cards';
 @import '_breadcrumbs';
 @import '_catalog';
 @import '_product-card';
+@import '_single';
+@import '_tabs';
 
 * {
   outline: none;
@@ -25,6 +28,7 @@
 html {
   height: 100%;
   font-size: 62.5%;
+  background: #fbfbfb;
 }
 
 body {

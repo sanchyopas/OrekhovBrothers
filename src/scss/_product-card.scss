@@ -29,14 +29,18 @@
   }
 
   &__description {}
+}
 
-  &__features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  &--pb {
+    padding-bottom: 16px;
   }
 
-  &__feature {
+  &__item {
     display: grid;
     grid-template-columns: 24px 1fr;
     align-items: center;
@@ -46,5 +50,4 @@
   &__feature-icon {}
 
   &__feature-value {}
-
 }

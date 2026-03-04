@@ -26,7 +26,8 @@
     "mozjpeg": "^8.0.0",
     "normalize.css": "^8.0.1",
     "sass-migrator": "^2.3.1",
-    "sharp": "^0.34.4"
+    "sharp": "^0.34.4",
+    "swiper": "^12.1.2"
   },
   "devDependencies": {
     "browser-sync": "^2.27.10",

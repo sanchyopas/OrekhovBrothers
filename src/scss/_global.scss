@@ -1,11 +1,27 @@
-
 @media (min-width: 1400px) {
   .container {
-    max-width: 1231px;
+    max-width: 1280px;
   }
 }
 
-h1,h2,h3,h4,h5,h6 {
+@media (min-width: 992px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 578px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+.container {
+  padding: 0 24px;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
@@ -45,6 +61,7 @@ button {
   background: none;
   width: auto;
   height: auto;
+  font-size: inherit;
   cursor: pointer;
 }
 
@@ -118,4 +135,28 @@ button {
   font-size: 48px;
   line-height: 117%;
   color: #282828;
+
+  @media (max-width: 992px) {
+    font-size: 32px;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 4px;
+
+  &--primary {
+    background: #136e40;
+    color: #ffffff;
+  }
+
+  &--outline {
+    border-color: #ccc;
+  }
+
 }

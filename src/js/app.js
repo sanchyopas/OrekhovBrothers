@@ -1,4 +1,5 @@
 import * as functions from './modules/baseFunctions.js';
+import './modules/tabs.js'
 
 functions.isWebp();
 
