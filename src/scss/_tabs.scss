@@ -1,5 +1,30 @@
 .tabs {
 
+  &--outline {
+    .tabs__list {
+      border: none;
+      border-bottom: 1px solid #ccc;
+      border-radius: 0;
+    }
+
+    .tabs__tab {
+      flex: 0;
+      background: #fff;
+
+      &[aria-selected="false"] {
+        background: #fff;
+        color: #686868;
+      }
+
+      &[aria-selected="true"] {
+        color: #282828;
+        background: #fff;
+        border-bottom: 2px solid #136e40;
+      }
+
+    }
+  }
+
   &__list {
     display: flex;
     align-items: center;
@@ -15,7 +40,7 @@
     text-align: center;
     color: #282828;
 
-    @media(hover:hover) {
+    @media(hover: hover) {
       &:hover {
         background: #f5f5f5;
       }
@@ -54,5 +79,33 @@
     flex-wrap: wrap;
     gap: 8px;
   }
+
+}
+
+.options {
+  padding: 16px 0;
+  border-bottom: 1px solid #e0e0e0;
+
+
+  &__inner {
+    max-height: 114px;
+    overflow: hidden;
+  }
+
+  &__group {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    padding: 0;
+    font-weight: 600;
+    line-height: 144%;
+    color: #282828;
+  }
+
+
 
 }

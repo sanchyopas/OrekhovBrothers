@@ -146,9 +146,10 @@ button {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px;
+  padding: 12px 0;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 4px;
+  font-weight: 600;
 
   &--primary {
     background: #136e40;
@@ -157,6 +158,10 @@ button {
 
   &--outline {
     border-color: #ccc;
+  }
+
+  &--text {
+    color: #136e40;
   }
 
 }

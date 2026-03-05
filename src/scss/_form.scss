@@ -1,44 +1,6 @@
 .form {
 
   &__radio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: 6px 12px 6px 8px;
-    line-height: 133%;
-    cursor: pointer;
-
-    & input[type="radio"] {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-
-      &:has(input[type="radio"]:checked) {
-        border-color: #4CAF50;
-        background-color: rgba(76, 175, 80, 0.1);
-      }
-
-      &:checked + .custom-radio::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 10px;
-        height: 10px;
-        background-color: #136e40;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      &:checked + .custom-radio {
-        border-color: #136e40;
-      }
-
-    }
 
     .custom-radio {
       display: block;
@@ -52,6 +14,90 @@
 
   }
 
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  input[type="radio"]:checked ~ .form__radio-inner {
+    border-color: #686868;
+  }
+
+  input[type="radio"]:checked ~ .form__radio-inner .custom-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #136e40;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  input[type="radio"]:checked ~ .form__radio-inner .custom-radio {
+    border-color: #136e40;
+  }
+
+  &__radio-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 6px 12px 6px 8px;
+    line-height: 133%;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 6px 0;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .checkbox-custom {
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      width: 18px;
+      height: 18px;
+    }
+
+    input[type="checkbox"]:checked ~ .form__checkbox-inner .checkbox-custom {
+      border-color: #136E40;
+      background: #136E40;
+    }
+
+    input[type="checkbox"]:checked ~ .form__checkbox-price {
+      color: #136E40;
+    }
+
+  }
+
+  &__checkbox-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .form__checkbox-price {
+    font-weight: 600;
+    line-height: 144%;
+    color: #a8a8a8;
+  }
 
 
 }

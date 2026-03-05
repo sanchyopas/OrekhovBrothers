@@ -1,5 +1,6 @@
 import * as functions from './modules/baseFunctions.js';
 import './modules/tabs.js'
+import './modules/sliders.js'
 
 functions.isWebp();
 

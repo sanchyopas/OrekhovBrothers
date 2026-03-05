@@ -1,5 +1,6 @@
 .single {
   padding-top: 94px;
+  padding-bottom: 24px;
 
   &__row {
     display: grid;
@@ -11,7 +12,7 @@
   }
 
   &__images {
-
+    min-width: 0;
   }
 
   &__parameters {}
@@ -46,6 +47,34 @@
   &__buttons {
     display: grid;
     gap: 8px;
+  }
+
+  &__slider {}
+
+  &__slider-thumb {
+    margin-top: 16px;
+
+    .swiper-slide {
+      border-radius: 4px;
+      padding: 2px;
+      border: 1px solid #ccc;
+      width: 80px !important;
+      height: 80px !important;
+
+      img, picture {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .swiper-slide-thumb-active {
+      border: 2px solid #136e40;
+    }
+
+  }
+
+  &__info {
+    margin-top: 16px;
   }
 
 }

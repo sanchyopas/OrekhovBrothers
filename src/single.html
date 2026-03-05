@@ -32,11 +32,94 @@
 
       <div class="single__row">
         <div class="single__images">
-          <div class="single__slider swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">1</div>
-              <div class="swiper-slide">2</div>
-              <div class="swiper-slide">3</div>
+          <div>
+            <div class="single__slider swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="@img/single-image.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <div class="swiper-slide">
+                    <img src="@img/banner.jpg" alt="">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="swiper-slide">
+                    <img src="@img/single-image.jpg" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="single__slider-thumb swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="@img/single-image.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="@img/banner.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="@img/single-image.jpg" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="single__info">
+            <div class="tabs tabs--outline" data-tabs>
+              <div class="tabs__list" role="tablist">
+                <button
+                    type="button"
+                    class="tabs__tab"
+                    role="tab"
+                    id="tab-3"
+                    aria-selected="true"
+                    aria-controls="panel-3"
+                    tabindex="0"
+                >
+                  Домокомплект
+                </button>
+
+                <button
+                    type="button"
+                    class="tabs__tab"
+                    role="tab"
+                    id="tab-4"
+                    aria-selected="false"
+                    aria-controls="panel-4"
+                    tabindex="-1"
+                >
+                  Стенокомплект
+                </button>
+              </div>
+
+              <div
+                  class="tabs__panel"
+                  role="tabpanel"
+                  id="panel-3"
+                  aria-labelledby="tab-3"
+              >
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequuntur corporis cum dicta
+                  distinctio est ex facilis, fugit in iste laboriosam magnam minus neque nihil odit omnis perferendis
+                  quisquam sed.
+                </p>
+              </div>
+
+              <div
+                  class="tabs__panel"
+                  role="tabpanel"
+                  id="panel-4"
+                  aria-labelledby="tab-4"
+                  hidden
+              >
+                <p><strong>Комплектация домокомплекта:</strong></p>
+                <ol>
+                  <li>Стены</li>
+                  <li>Пол</li>
+                  <li>Крыша</li>
+                </ol>
+              </div>
+
             </div>
           </div>
         </div>
@@ -94,7 +177,6 @@
                   Стенокомплект
                 </button>
               </div>
-
               <div
                   class="tabs__panel"
                   role="tabpanel"
@@ -108,15 +190,19 @@
 
                       <div class="calc__inner">
                         <label class="form__radio">
-                          <input type="radio" name="material" value="pine" checked>
-                          <span class="custom-radio"></span>
-                          <span>Сосна</span>
+                          <input type="radio" name="material" value="pine">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>Сосна</span>
+                          </div>
                         </label>
 
                         <label class="form__radio">
                           <input type="radio" name="material" value="cedar">
-                          <span class="custom-radio"></span>
-                          <span>Кедр</span>
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>Кедр</span>
+                          </div>
                         </label>
                       </div>
                     </fieldset>
@@ -126,31 +212,38 @@
 
                       <div class="calc__inner">
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×100" checked>
-                          <span class="custom-radio"></span>
-                          <span>100×100</span>
+                          <input type="radio" name="cut" value="100×100">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×100</span>
+                          </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×150" checked>
-                          <span class="custom-radio"></span>
-                          <span>100×150</span>
+                          <input type="radio" name="cut" value="100×150">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×150</span>
+                          </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×200" checked>
-                          <span class="custom-radio"></span>
-                          <span>100×200</span>
+                          <input type="radio" name="cut" value="100×200">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×200</span>
+                          </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×250" checked>
-                          <span class="custom-radio"></span>
-                          <span>100×250</span>
+                          <input type="radio" name="cut" value="100×250">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×250</span>
+                          </div>
                         </label>
                       </div>
                     </fieldset>
                   </div>
                 </div>
               </div>
-
               <div
                   class="tabs__panel"
                   role="tabpanel"
@@ -165,36 +258,54 @@
 
                       <div class="calc__inner">
                         <label class="form__radio">
-                          <input type="radio" name="material" value="pine" checked>
-                          <span class="custom-radio"></span>
-                          <span>Сосна</span>
+                          <input type="radio" name="material" value="pine">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>Сосна</span>
+                          </div>
                         </label>
 
                         <label class="form__radio">
                           <input type="radio" name="material" value="cedar">
-                          <span class="custom-radio"></span>
-                          <span>Кедр</span>
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>Кедр</span>
+                          </div>
                         </label>
                       </div>
                     </fieldset>
+
                     <fieldset class="calc__group">
                       <legend class="calc__title">Сечение бруса</legend>
 
                       <div class="calc__inner">
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×150" checked>
-                          <span class="custom-radio"></span>
-                          <span>100×150</span>
+                          <input type="radio" name="cut" value="100×100">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×100</span>
+                          </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×200" checked>
-                          <span class="custom-radio"></span>
-                          <span>100×200</span>
+                          <input type="radio" name="cut" value="100×150">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×150</span>
+                          </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×250" checked>
-                          <span class="custom-radio"></span>
-                          <span>100×250</span>
+                          <input type="radio" name="cut" value="100×200">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×200</span>
+                          </div>
+                        </label>
+                        <label class="form__radio">
+                          <input type="radio" name="cut" value="100×250">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×250</span>
+                          </div>
                         </label>
                       </div>
                     </fieldset>
@@ -202,6 +313,63 @@
                 </div>
               </div>
             </div>
+
+            <div class="options">
+              <fieldset class="options__group">
+                <legend class="options__title">Дополнительные опции</legend>
+
+                <div class="options__inner">
+                  <label class="form__checkbox">
+                    <input type="checkbox" value="Сборка и монтаж домокомплекта +5 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom"></div>
+                      <span class="form__checkbox-text">Сборка и монтаж домокомплекта</span>
+                    </div>
+                    <span class="form__checkbox-price">+5 000 ₽</span>
+                  </label>
+                  <label class="form__checkbox">
+                    <input type="checkbox" value="Доставка от +5 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom"></div>
+                      <span class="form__checkbox-text">Доставка</span>
+                    </div>
+                    <span class="form__checkbox-price">от +5 000 ₽</span>
+                  </label>
+                  <label class="form__checkbox">
+                    <input type="checkbox" value="Ступени деревянные +14 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom"></div>
+                      <span class="form__checkbox-text">Ступени деревянные</span>
+                    </div>
+                    <span class="form__checkbox-price">+14 000 ₽</span>
+                  </label>
+                  <label class="form__checkbox">
+                    <input type="checkbox" value="Ступени деревянные +14 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom"></div>
+                      <span class="form__checkbox-text">Ступени деревянные</span>
+                    </div>
+                    <span class="form__checkbox-price">+14 000 ₽</span>
+                  </label>
+                  <label class="form__checkbox">
+                    <input type="checkbox" value="Ступени деревянные +14 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom"></div>
+                      <span class="form__checkbox-text">Ступени деревянные</span>
+                    </div>
+                    <span class="form__checkbox-price">+14 000 ₽</span>
+                  </label>
+                </div>
+
+              </fieldset>
+              <button type="button" class="btn btn--text">Показать все</button>
+            </div>
+
             <div class="single__result">
               <p>Расчетная стоимость</p>
               <p class="single__price" id="single-price">11 925 000 ₽</p>
