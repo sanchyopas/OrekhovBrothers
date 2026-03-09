@@ -58,9 +58,12 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
     padding: 6px 0;
     cursor: pointer;
+
+    @media (min-width: 578px) {
+      gap: 20px;
+    }
 
     input[type="checkbox"] {
       position: absolute;
@@ -97,6 +100,11 @@
     font-weight: 600;
     line-height: 144%;
     color: #a8a8a8;
+
+    @media(max-width: 768px) {
+      padding-left: 26px;
+    }
+
   }
 
 

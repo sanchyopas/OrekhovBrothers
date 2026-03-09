@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/head.html', {
+"title":"Братья Ореховы"
+})
+
+
+@@include('html/_header.html')
+
+<main>
+  <div class="contact">
+    <div class="container">
+      <div class="contact__inner">
+        <nav class="breadcrumbs">
+          <ol class="breadcrumbs__list">
+            <li class="breadcrumbs__item">
+              <a href="/" class="breadcrumbs__link">Главная страница</a>
+            </li>
+
+            <li class="breadcrumbs__item">
+              <span class="breadcrumbs__current">Контакты</span>
+            </li>
+          </ol>
+
+          <a href="javascript:history.back()" class="breadcrumbs__back">
+            Вернуться
+          </a>
+        </nav>
+
+        <div class="contact__row row">
+          <div class="contact__map">
+            <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A5b6f81bf92ea873e5066d3c5ff6473f6deb43a539d38e4895884eed7e751e1d4&amp;source=constructor"
+                width="100%" height="447" frameborder="0"></iframe>
+          </div>
+          <div class="contact__info">
+            <h1 class="contact__title title--md">Контакты</h1>
+            <div class="contact__list">
+              <div class="contact__list-inner">
+                <div class="contact__list-icon">
+                  <svg class="svg-icon">
+                    <use xlink:href="@img/sprite.svg#phone"></use>
+                  </svg>
+                </div>
+                <div class="contact__list-info">
+                  <p>Контактные теллефоны</p>
+                  <ul>
+                    <li><a href="tel:">+7 (3822) 503-509</a></li>
+                    <li><a href="tel:">+7 (3822) 50-66-58</a></li>
+                    <li><a href="tel:">+7 (913) 820 66 58</a></li>
+                    <li><a href="tel:">+7 (913) 820 66 58</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="contact__list">
+              <div class="contact__list-inner">
+                <div class="contact__list-icon">
+                  <svg class="svg-icon">
+                    <use xlink:href="@img/sprite.svg#mail"></use>
+                  </svg>
+                </div>
+                <div class="contact__list-info">
+                  <p>Почта</p>
+                  <ul>
+                    <li><a href="mailto:">tlp70@bk.ru</a></li>
+                    <li><a href="mailto:">dom-tlp70@bk.ru</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="contact__list">
+              <div class="contact__list-inner">
+                <div class="contact__list-icon">
+                  <svg class="svg-icon">
+                    <use xlink:href="@img/sprite.svg#location-pin"></use>
+                  </svg>
+                </div>
+                <div class="contact__list-info">
+                  <p>Адрес</p>
+                  <ul>
+                    <li>Томский район, п. Зональный <br> ул. Светлая, д. 2/3</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+@@include('html/_footer.html')
+
+<script src="js/app.min.js"></script>
+</body>
+</html>

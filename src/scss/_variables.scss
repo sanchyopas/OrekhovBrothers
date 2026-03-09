@@ -1,8 +1,13 @@
 // пример переменных
-$main_font: HelveticaRegular;
 
 $animation_speed: 0.25s;
 
 :root {
-  --font-family: 'Inter', sans-serif;
+  --font-family: "Inter", sans-serif;
+  --second-family: "Arimo", sans-serif;
+  --third-family: "Ubuntu", sans-serif;
+  --font3: "Noto Sans", sans-serif;
+  --font4: "EB Garamond", sans-serif;
+  --font5: "Open Sans", sans-serif;
+  --font6: "PT Serif", sans-serif;
 }

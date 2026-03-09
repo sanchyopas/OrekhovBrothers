@@ -7,8 +7,8 @@
             <div class="nav__item-inner">
               <a href="#" class="nav__link">Каталог</a>
               <button type="button" class="nav__arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 10H17L12 15L7 10Z" fill="#136E40"/>
+                <svg class="svg-icon">
+                  <use xlink:href="@img/sprite.svg#arrow-down"></use>
                 </svg>
               </button>
             </div>
@@ -36,35 +36,34 @@
       <div class="header__group">
         <button type="button" class="header__burger">
           <svg class="svg-icon">
-            <use xlink:href="#menu"></use>
+            <use xlink:href="@img/sprite.svg#menu"></use>
           </svg>
+
         </button>
         <a href="/" class="header__logo logo">
-          <svg class="svg-icon">
-            <use xlink:href="#logo"></use>
-          </svg>
+          <img src="@img/icon/logo.svg" alt="">
         </a>
       </div>
       <div class="header__controls">
         <ul class="social">
-          <li class="social__item"><a href="">
-            <svg class="svg-icon">
-              <use xlink:href="#2gis"></use>
-            </svg>
-          </a></li>
-          <li class="social__item"><a href="">
-            <svg class="svg-icon">
-              <use xlink:href="#vk"></use>
-            </svg>
-          </a></li>
-          <li class="social__item"><a href="">
-            <svg class="svg-icon">
-              <use xlink:href="#max"></use>
-            </svg>
-          </a></li>
+          <li class="social__item">
+            <a href="" target="_blank">
+              <img src="@img/icon/i-gis.png" alt="">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="" target="_blank">
+              <img src="@img/icon/i-vk.png" alt="">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="" target="_blank">
+              <img src="@img/icon/i-max.png" alt="">
+            </a>
+          </li>
         </ul>
         <a href="tel:+83822503509" type="button" class="header__mobile-phone">
-          <img src="@img/svgicon/phone.svg" alt="">
+          <img src="@img/sprite.svg#phone" alt="">
         </a>
         <div class="header__phone">
           <a href="tel:+83822503509" class="header__phone-link js-copy-phone" data-phone="+8 (3822) 503 509">

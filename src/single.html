@@ -30,9 +30,9 @@
         </a>
       </nav>
 
-      <div class="single__row">
+      <div class="single__row row">
         <div class="single__images">
-          <div>
+          <div class="single__images-inner">
             <div class="single__slider swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -76,7 +76,7 @@
                     aria-controls="panel-3"
                     tabindex="0"
                 >
-                  Домокомплект
+                  Описание
                 </button>
 
                 <button
@@ -88,7 +88,7 @@
                     aria-controls="panel-4"
                     tabindex="-1"
                 >
-                  Стенокомплект
+                  Комплектация
                 </button>
               </div>
 
@@ -99,9 +99,12 @@
                   aria-labelledby="tab-3"
               >
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequuntur corporis cum dicta
-                  distinctio est ex facilis, fugit in iste laboriosam magnam minus neque nihil odit omnis perferendis
-                  quisquam sed.
+                  Lorem ipsum dolor sit amet consectetur. Blandit urna massa ut feugiat feugiat eget tellus nunc ac. Id
+                  nulla vel ultrices semper sit morbi ipsum neque. At eu egestas leo hendrerit nulla. At blandit morbi
+                  tincidunt ac id aliquam. Pharetra elit iaculis lectus ornare mauris dignissim rhoncus diam. Convallis
+                  eget sapien ornare tortor egestas sagittis quis. Sit diam felis sit quam sed sit. In congue convallis
+                  elementum pellentesque vitae nunc in morbi. Aliquet non consequat donec integer risus erat. Lacinia
+                  eget aliquet vivamus sed vitae.
                 </p>
               </div>
 
@@ -190,7 +193,7 @@
 
                       <div class="calc__inner">
                         <label class="form__radio">
-                          <input type="radio" name="material" value="pine">
+                          <input type="radio" name="material" data-price="1000000" value="pine">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>Сосна</span>
@@ -198,7 +201,7 @@
                         </label>
 
                         <label class="form__radio">
-                          <input type="radio" name="material" value="cedar">
+                          <input type="radio" name="material" data-price="3000000" value="cedar">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>Кедр</span>
@@ -212,28 +215,28 @@
 
                       <div class="calc__inner">
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×100">
+                          <input type="radio" name="cut" data-price="10000" value="100×100">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>100×100</span>
                           </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×150">
+                          <input type="radio" name="cut" data-price="2000" value="100×150">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>100×150</span>
                           </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×200">
+                          <input type="radio" name="cut" data-price="30000" value="100×200">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>100×200</span>
                           </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×250">
+                          <input type="radio" name="cut" data-price="2500000" value="100×250">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>100×250</span>
@@ -258,18 +261,10 @@
 
                       <div class="calc__inner">
                         <label class="form__radio">
-                          <input type="radio" name="material" value="pine">
+                          <input type="radio" name="material" data-price="300000" value="pine">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>Сосна</span>
-                          </div>
-                        </label>
-
-                        <label class="form__radio">
-                          <input type="radio" name="material" value="cedar">
-                          <div class="form__radio-inner">
-                            <span class="custom-radio"></span>
-                            <span>Кедр</span>
                           </div>
                         </label>
                       </div>
@@ -280,31 +275,17 @@
 
                       <div class="calc__inner">
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×100">
+                          <input type="radio" name="cut" data-price="150" value="100×100">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>100×100</span>
                           </div>
                         </label>
                         <label class="form__radio">
-                          <input type="radio" name="cut" value="100×150">
+                          <input type="radio" name="cut" value="100×150" data-price="1200000">
                           <div class="form__radio-inner">
                             <span class="custom-radio"></span>
                             <span>100×150</span>
-                          </div>
-                        </label>
-                        <label class="form__radio">
-                          <input type="radio" name="cut" value="100×200">
-                          <div class="form__radio-inner">
-                            <span class="custom-radio"></span>
-                            <span>100×200</span>
-                          </div>
-                        </label>
-                        <label class="form__radio">
-                          <input type="radio" name="cut" value="100×250">
-                          <div class="form__radio-inner">
-                            <span class="custom-radio"></span>
-                            <span>100×250</span>
                           </div>
                         </label>
                       </div>
@@ -320,7 +301,7 @@
 
                 <div class="options__inner">
                   <label class="form__checkbox">
-                    <input type="checkbox" value="Сборка и монтаж домокомплекта +5 000 ₽">
+                    <input type="checkbox" data-price="2000" value="Сборка и монтаж домокомплекта +5 000 ₽">
 
                     <div class="form__checkbox-inner">
                       <div class="checkbox-custom"></div>
@@ -329,7 +310,7 @@
                     <span class="form__checkbox-price">+5 000 ₽</span>
                   </label>
                   <label class="form__checkbox">
-                    <input type="checkbox" value="Доставка от +5 000 ₽">
+                    <input type="checkbox" data-price="5000" value="Доставка от +5 000 ₽">
 
                     <div class="form__checkbox-inner">
                       <div class="checkbox-custom"></div>
@@ -338,7 +319,7 @@
                     <span class="form__checkbox-price">от +5 000 ₽</span>
                   </label>
                   <label class="form__checkbox">
-                    <input type="checkbox" value="Ступени деревянные +14 000 ₽">
+                    <input type="checkbox" data-price="700" value="Ступени деревянные +14 000 ₽">
 
                     <div class="form__checkbox-inner">
                       <div class="checkbox-custom"></div>
@@ -347,7 +328,7 @@
                     <span class="form__checkbox-price">+14 000 ₽</span>
                   </label>
                   <label class="form__checkbox">
-                    <input type="checkbox" value="Ступени деревянные +14 000 ₽">
+                    <input type="checkbox" data-price="770" value="Ступени деревянные +14 000 ₽">
 
                     <div class="form__checkbox-inner">
                       <div class="checkbox-custom"></div>
@@ -356,7 +337,7 @@
                     <span class="form__checkbox-price">+14 000 ₽</span>
                   </label>
                   <label class="form__checkbox">
-                    <input type="checkbox" value="Ступени деревянные +14 000 ₽">
+                    <input type="checkbox" data-price="100" value="Ступени деревянные +14 000 ₽">
 
                     <div class="form__checkbox-inner">
                       <div class="checkbox-custom"></div>
@@ -367,7 +348,7 @@
                 </div>
 
               </fieldset>
-              <button type="button" class="btn btn--text">Показать все</button>
+              <button type="button" class="btn btn--text" id="show-more-options">Показать все</button>
             </div>
 
             <div class="single__result">
@@ -376,7 +357,7 @@
             </div>
             <div class="single__buttons">
               <button class="btn btn--primary">Позвонить</button>
-              <a href="" class="btn btn--outline" target="_blank">Позвонить</a>
+              <a href="" class="btn btn--outline" target="_blank">Связаться в MAX</a>
             </div>
           </form>
 

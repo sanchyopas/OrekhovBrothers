@@ -1,0 +1,78 @@
+.contact {
+  padding-top: 9.4rem;
+
+  &__inner {
+    padding: 0 2.4rem;
+  }
+
+  &__row {
+
+  }
+
+  &__map {
+    @media(max-width: 980px) {
+      order: 1;
+    }
+  }
+
+  &__info {}
+
+  &__title {
+    margin-bottom: 1.6rem;
+  }
+
+  &__list {
+
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+
+  }
+
+  &__list-inner {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: .8rem;
+  }
+
+  &__list-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    .svg-icon{
+      color: #686868;
+    }
+
+  }
+
+  &__list-info {
+
+    p {
+      color: #686868;
+      line-height: 133%;
+      margin-bottom: .4rem;
+    }
+
+    ul {
+      display: grid;
+      gap: 4px;
+
+      li {
+
+        a {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 150%;
+          text-decoration: underline dotted;
+          text-underline-offset: 6px;
+          color: #282828;
+        }
+      }
+
+    }
+
+  }
+
+
+
+}

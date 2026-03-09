@@ -1,11 +1,12 @@
 import * as functions from './modules/baseFunctions.js';
 import './modules/tabs.js'
 import './modules/sliders.js'
+import './modules/calculator.js'
 
 functions.isWebp();
 
 
-const copyPhoneLink = document.querySelectorAll('.phone-copy');
+const copyPhoneLink = document.querySelectorAll('.js-copy-phone');
 
 copyPhoneLink.forEach(link => {
   const tooltip = link.querySelector('.tooltip');
@@ -41,3 +42,25 @@ headerBurgerBtn?.addEventListener('click', (e) => {
     navMobile.classList.remove('active');
   }
 });
+
+
+const btn = document.getElementById('show-more-options')
+const options = document.querySelector('.options__inner')
+
+btn?.addEventListener('click', () => {
+  console.log(options.scrollHeight)
+
+  if (options.classList.contains('active')) {
+
+    options.style.maxHeight = '114px'
+    options.classList.remove('active')
+
+  } else {
+
+    options.style.maxHeight = options.scrollHeight + 'px'
+    options.classList.add('active')
+
+  }
+
+})
+
