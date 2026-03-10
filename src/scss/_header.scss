@@ -3,18 +3,18 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 17px 0;
-  backdrop-filter: blur(6px);
+  padding: 1.7rem 0;
+  backdrop-filter: blur(.6rem);
   background: rgba(255, 255, 255, 0.7);
   z-index: 100;
 
   @media screen and (min-width: 992px) {
-    padding: 12px 32px;
+    padding: 1.2rem 3.2rem;
   }
 
   &__burger {
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
 
     @media (min-width: 992px) {
       display: none;
@@ -24,7 +24,7 @@
   &__group {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 2rem;
 
     @media (min-width: 992px) {
       display: contents;
@@ -35,23 +35,23 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 20px;
+    gap: 2rem;
 
     @media (min-width: 992px) {
       grid-template-columns: 1fr auto 1fr;
-      gap: 32px;
+      gap: 3.2rem;
     }
   }
 
   &__logo {
     display: block;
     justify-self: center;
-    width: 107px;
-    height: 70px;
+    width: 10.7rem;
+    height: 7rem;
 
     @media (max-width: 992px) {
-      width: 92px;
-      height: 60px;
+      width: 9.2rem;
+      height: 6rem;
     }
 
   }
@@ -60,10 +60,10 @@
     justify-self: end;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 2.4rem;
 
     @media (max-width: 992px) {
-      gap: 8px;
+      gap: .8rem;
     }
   }
 
@@ -71,14 +71,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: .4rem;
     text-align: left;
     color: #282828;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 150%;
     text-decoration: underline dotted;
-    text-underline-offset: 6px;
+    text-underline-offset: .6rem;
 
     @media (max-width: 992px) {
       display: none;
@@ -88,7 +88,7 @@
       transition: $animation_speed;
 
       &:first-child {
-        font-size: 18px;
+        font-size: 1.8rem;
       }
 
       @media (hover: hover) {
@@ -107,11 +107,13 @@
   }
 
   &__mobile-phone {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px;
-    width: 40px;
-    height: 40px;
+    border: .1rem solid #ccc;
+    border-radius: .4rem;
+    padding: .8rem;
+    width: 4rem;
+    height: 4rem;
+    color: #282828;
+
 
     @media(min-width: 992px) {
       display: none;
@@ -130,12 +132,12 @@
   &__list {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 1.6rem;
   }
 
   &__item {
     position: relative;
-    padding-block: 7px;
+    padding-block: .7rem;
 
     @media (hover: hover) {
       &:hover {
@@ -150,6 +152,7 @@
         .submenu {
           opacity: 1;
           pointer-events: all;
+          visibility: visible;
           transform: translateY(0);
         }
 
@@ -168,27 +171,30 @@
     font-family: var(--font-family), sans-serif;
     font-weight: 600;
     line-height: 144%;
-    color: #136e40;
 
-    @media (hover: hover) {
+    &:focus-visible {
+      box-shadow: 0 0 0 .2rem #000;
+    }
+
+    /*@media (hover: hover) {
       &:hover {
         color: #00573F;
       }
-    }
+    }*/
 
     &:active {
       color: #00573F;
     }
 
     @media screen and (max-width: 1200px) {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
 
   }
 
   &__arrow {
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
     color: #00573F;
     transition: $animation-speed;
 
@@ -198,18 +204,19 @@
 
 .submenu {
   position: absolute;
-  border-radius: 4px;
-  padding: 8px 0;
-  min-width: 280px;
-  transform: translateY(20px);
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.08);
+  border-radius: .4rem;
+  padding: .8rem 0;
+  min-width: 28rem;
+  transform: translateY(2rem);
+  box-shadow: 0 .2rem .6rem 0 rgba(0, 0, 0, 0.16), 0 0 .2rem 0 rgba(0, 0, 0, 0.08);
   background: #fff;
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
   transition: $animation-speed;
 
   &__item {
-    padding: 8px 16px;
+    padding: .8rem 1.6rem;
 
     @media (hover: hover) {
       &:hover {
@@ -229,15 +236,16 @@
 
 
 }
+
 .mobile-menu {
   position: fixed;
-  border-radius: 4px;
-  padding: 8px 0;
-  width: 280px;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.08);
+  border-radius: .4rem;
+  padding: .8rem 0;
+  width: 28rem;
+  box-shadow: 0 .2rem .6rem 0 rgba(0, 0, 0, 0.16), 0 0 .2rem 0 rgba(0, 0, 0, 0.08);
   background: #fff;
   z-index: 100;
-  transform: translateY(20px);
+  transform: translateY(2rem);
   opacity: 0;
   pointer-events: none;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -249,7 +257,8 @@
   }
 
   li {
-    padding: 8px 16px;
+    padding: .8rem 1.6rem;
+
     a {
       line-height: 133%;
       @media (hover: hover) {
@@ -261,9 +270,10 @@
   }
 
   &__catalog {
-    border-bottom: 1px solid rgba(#E0E0E0, 1);
+    border-bottom: .1rem solid rgba(#E0E0E0, 1);
   }
 
-  &__inner {}
+  &__inner {
+  }
 
 }

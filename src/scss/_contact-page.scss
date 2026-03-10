@@ -2,11 +2,10 @@
   padding-top: 9.4rem;
 
   &__inner {
-    padding: 0 2.4rem;
   }
 
   &__row {
-
+    padding: 2.4rem 0;
   }
 
   &__map {
@@ -55,16 +54,16 @@
 
     ul {
       display: grid;
-      gap: 4px;
+      gap: .4rem;
 
       li {
 
         a {
           font-weight: 600;
-          font-size: 16px;
+          font-size: 1.6rem;
           line-height: 150%;
           text-decoration: underline dotted;
-          text-underline-offset: 6px;
+          text-underline-offset: .6rem;
           color: #282828;
         }
       }

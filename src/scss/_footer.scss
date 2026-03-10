@@ -1,6 +1,6 @@
 .footer {
   flex: 0 0 auto;
-  padding-block: 16px;
+  padding-block: 1.6rem;
   background: #00573F;
   color: #ffffff;
 
@@ -9,23 +9,29 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: .8rem;
   }
 
   &__left {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: .8rem;
+
+    @media (min-width: 768px) {
+      align-items: center;
+      flex-wrap: nowrap;
+    }
   }
 
   &__right {
   }
 
   &__copyright {
-    span {
-      font-size: 14px;
-      line-height: 143%;
-    }
+  }
+
+  &__law {
+    font-size: 1.4rem;
+    line-height: 143%;
   }
 
   &__inn {

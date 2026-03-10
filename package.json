@@ -20,6 +20,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "@fancyapps/ui": "^6.1.13",
     "bootstrap": "^5.2.3",
     "connect-modrewrite": "^0.10.2",
     "gulp-cli": "^2.3.0",

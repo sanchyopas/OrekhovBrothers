@@ -1,6 +1,6 @@
 .single {
-  padding-top: 94px;
-  padding-bottom: 24px;
+  padding-top: 9.4rem;
+  padding-bottom: 2.4rem;
 
   &__row {
 
@@ -24,14 +24,14 @@
   &__parameters {}
 
   &__title {
-    padding: 0 0 16px;
+    padding: 0 0 1.6rem;
     font-weight: 700;
     font-size: 2.8rem;
     line-height: 125%;
     color: #282828;
 
     @media (min-width: 578px) {
-      font-size: 32px;
+      font-size: 3.2rem;
     }
   }
 
@@ -39,9 +39,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 2rem;
     flex-wrap: wrap;
-    padding: 16px 0;
+    padding: 1.6rem 0;
 
     p {
       font-weight: 600;
@@ -51,12 +51,12 @@
 
   &__price {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 
   &__buttons {
     display: grid;
-    gap: 8px;
+    gap: .8rem;
   }
 
   &__slider {
@@ -64,7 +64,7 @@
     .swiper-slide {
 
       @media (min-width: 980px) {
-        height: 447px !important;
+        height: 44.7rem !important;
       }
 
       img,picture {
@@ -77,15 +77,15 @@
   }
 
   &__slider-thumb {
-    margin-top: 16px;
+    margin-top: 1.6rem;
     cursor: pointer;
 
     .swiper-slide {
-      border-radius: 4px;
-      padding: 2px;
-      border: 1px solid #ccc;
-      width: 80px !important;
-      height: 80px !important;
+      border-radius: .4rem;
+      padding: .2rem;
+      border: .1rem solid #ccc;
+      width: 8rem !important;
+      height: 8rem !important;
 
       img, picture {
         width: 100%;
@@ -94,13 +94,13 @@
     }
 
     .swiper-slide-thumb-active {
-      border: 2px solid #136e40;
+      border: .2rem solid #136e40;
     }
 
   }
 
   &__info {
-    margin-top: 16px;
+    margin-top: 1.6rem;
 
     @media (max-width: 980px) {
       order: 2;

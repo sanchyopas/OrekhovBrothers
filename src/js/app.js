@@ -5,17 +5,22 @@ import './modules/calculator.js'
 
 functions.isWebp();
 
-
 const copyPhoneLink = document.querySelectorAll('.js-copy-phone');
 
 copyPhoneLink.forEach(link => {
   const tooltip = link.querySelector('.tooltip');
+
   link.addEventListener('click', async (e) => {
     e.preventDefault();
     const phone = link.dataset.phone;
+
     try {
       await navigator.clipboard.writeText(phone);
 
+      // Закрываем все активные тултипы
+      document.querySelectorAll('.tooltip.active').forEach(t => t.classList.remove('active'));
+
+      // Показываем текущий тултип
       tooltip.classList.add('active');
 
       setTimeout(() => {

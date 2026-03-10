@@ -4,9 +4,9 @@
 
     .custom-radio {
       display: block;
-      width: 18px;
-      height: 18px;
-      border: 2px solid #cccccc;
+      width: 1.8rem;
+      height: 1.8rem;
+      border: .2rem solid #cccccc;
       border-radius: 50%;
       position: relative;
       transition: all 0.2s;
@@ -30,8 +30,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 10px;
-    height: 10px;
+    width: 1rem;
+    height: 1rem;
     background-color: #136e40;
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -45,10 +45,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: 6px 12px 6px 8px;
+    gap: .8rem;
+    border: .1rem solid #e0e0e0;
+    border-radius: .4rem;
+    padding: .6rem 1.2rem .6rem .8rem;
     line-height: 133%;
     cursor: pointer;
   }
@@ -58,11 +58,11 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 6px 0;
+    padding: .6rem 0;
     cursor: pointer;
 
     @media (min-width: 578px) {
-      gap: 20px;
+      gap: 2rem;
     }
 
     input[type="checkbox"] {
@@ -73,10 +73,10 @@
     }
 
     .checkbox-custom {
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      width: 18px;
-      height: 18px;
+      border: .2rem solid #ccc;
+      border-radius: .4rem;
+      width: 1.8rem;
+      height: 1.8rem;
     }
 
     input[type="checkbox"]:checked ~ .form__checkbox-inner .checkbox-custom {
@@ -93,7 +93,7 @@
   &__checkbox-inner {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: .8rem;
   }
 
   .form__checkbox-price {
@@ -102,7 +102,7 @@
     color: #a8a8a8;
 
     @media(max-width: 768px) {
-      padding-left: 26px;
+      padding-left: 2.6rem;
     }
 
   }
