@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/head.html', {
+"title":"Братья Ореховы"
+})
+
+
+@@include('html/_header.html')
+
+<main>
+  <div class="about">
+    <div class="container--small">
+      <nav class="breadcrumbs">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item">
+            <a href="/" class="breadcrumbs__link">Главная страница</a>
+          </li>
+
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__current">Контакты</span>
+          </li>
+        </ol>
+
+        <a href="javascript:history.back()" class="breadcrumbs__back">
+          Вернуться
+        </a>
+      </nav>
+      <div class="about__inner">
+        <h1 class="about__title title">О нас</h1>
+        <div class="about__content">
+          <img src="@img/image2.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+@@include('html/_footer.html')
+
+<script src="js/app.min.js"></script>
+</body>
+</html>

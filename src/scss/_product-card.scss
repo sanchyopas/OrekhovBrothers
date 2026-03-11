@@ -6,7 +6,7 @@
 
   &__image {
 
-    img {
+    img,picture {
       width: 100%;
       height: 100%;
     }
@@ -49,5 +49,7 @@
 
   &__feature-icon {}
 
-  &__feature-value {}
+  &__feature-value {
+    font-size: 16px;
+  }
 }

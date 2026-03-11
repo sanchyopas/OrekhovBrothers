@@ -1,22 +1,21 @@
 .single {
   padding-top: 94px;
-  padding-bottom: 24px;
 
   &__row {
-
+    padding: 24px 0;
   }
 
   &__images {
     display: contents;
 
-    @media (min-width: 980px) {
+    @media (min-width: $laptop) {
       display: block;
       min-width: 0;
     }
   }
 
   &__images-inner {
-    @media (max-width: 980px) {
+    @media (max-width: $laptop) {
       min-width: 0;
     }
   }
@@ -30,7 +29,7 @@
     line-height: 125%;
     color: #282828;
 
-    @media (min-width: 578px) {
+    @media (min-width: $mobile) {
       font-size: 32px;
     }
   }
@@ -63,7 +62,7 @@
 
     .swiper-slide {
 
-      @media (min-width: 980px) {
+      @media (min-width: $laptop) {
         height: 447px !important;
       }
 
@@ -102,7 +101,7 @@
   &__info {
     margin-top: 16px;
 
-    @media (max-width: 980px) {
+    @media (max-width: $laptop) {
       order: 2;
     }
   }

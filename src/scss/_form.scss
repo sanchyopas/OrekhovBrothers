@@ -61,7 +61,7 @@
     padding: 6px 0;
     cursor: pointer;
 
-    @media (min-width: 578px) {
+    @media (min-width: $mobile) {
       gap: 20px;
     }
 
@@ -73,15 +73,28 @@
     }
 
     .checkbox-custom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 2px solid #ccc;
       border-radius: 4px;
       width: 18px;
       height: 18px;
+
+      img,picture {
+        display: none;
+        width: 10px;
+        height: 8px;
+      }
     }
 
     input[type="checkbox"]:checked ~ .form__checkbox-inner .checkbox-custom {
       border-color: #136e40;
       background: #136e40;
+
+      img {
+        display: block;
+      }
     }
 
     input[type="checkbox"]:checked ~ .form__checkbox-price {
@@ -101,7 +114,7 @@
     line-height: 144%;
     color: #a8a8a8;
 
-    @media(max-width: 768px) {
+    @media(max-width: $tablet) {
       padding-left: 26px;
     }
 

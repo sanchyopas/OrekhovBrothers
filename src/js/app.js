@@ -5,28 +5,13 @@ import './modules/calculator.js'
 
 functions.isWebp();
 
-const copyPhoneLink = document.querySelectorAll('.js-copy-phone');
-
-copyPhoneLink.forEach(link => {
-  const tooltip = link.querySelector('.tooltip');
-
+document.querySelectorAll('.js-copy-phone')?.forEach(link => {
   link.addEventListener('click', async (e) => {
     e.preventDefault();
     const phone = link.dataset.phone;
 
     try {
       await navigator.clipboard.writeText(phone);
-
-      // Закрываем все активные тултипы
-      document.querySelectorAll('.tooltip.active').forEach(t => t.classList.remove('active'));
-
-      // Показываем текущий тултип
-      tooltip.classList.add('active');
-
-      setTimeout(() => {
-        tooltip.classList.remove('active');
-      }, 2000);
-
     } catch {
       console.log('Не удалось скопировать');
     }
@@ -53,18 +38,17 @@ const btn = document.getElementById('show-more-options')
 const options = document.querySelector('.options__inner')
 
 btn?.addEventListener('click', () => {
-  console.log(options.scrollHeight)
 
   if (options.classList.contains('active')) {
-
     options.style.maxHeight = '114px'
     options.classList.remove('active')
+    btn.innerText = 'Показать все'
 
   } else {
-
     options.style.maxHeight = options.scrollHeight + 'px'
     options.classList.add('active')
 
+    btn.innerText = 'Свернуть'
   }
 
 })

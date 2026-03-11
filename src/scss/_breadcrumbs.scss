@@ -5,7 +5,7 @@
   &__list {
     display: none;
 
-    @media(min-width: 768px) {
+    @media(min-width: $tablet) {
       display: flex;
       align-items: center;
       gap: 4px;
@@ -13,6 +13,10 @@
   }
 
   &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     padding: 8px 0;
 
     &:not(:last-child) {

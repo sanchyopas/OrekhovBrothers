@@ -2,15 +2,15 @@
   padding-top: 94px;
 
   &__inner {
-    padding: 0 24px;
+
   }
 
   &__row {
-
+    padding: 24px 0;
   }
 
   &__map {
-    @media(max-width: 980px) {
+    @media(max-width: $laptop) {
       order: 1;
     }
   }

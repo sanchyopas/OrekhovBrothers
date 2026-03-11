@@ -1,11 +1,16 @@
 .hero {
-  min-height: 844px;
+  min-height: 100vh;
   display: grid;
   padding-top: 94px;
   position: relative;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+
+  @media (max-width: $laptop) {
+    min-height: auto;
+    padding-bottom: 40px;
+  }
 
   &::before,
   &::after {
@@ -22,9 +27,15 @@
   }
 
   &::after {
-    max-width: 844px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
-    transform: rotate(90deg);
+    display: none;
+
+    @media (min-width: $laptop) {
+      max-width: 844px;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 100%);
+      transform: rotate(90deg);
+      transform-origin: left top;
+      display: block;
+    }
   }
 
   &__content {
