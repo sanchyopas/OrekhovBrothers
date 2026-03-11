@@ -1,12 +1,11 @@
 .hero {
-  min-height: 84.4rem;
+  min-height: 844px;
   display: grid;
-  padding-top: 9.4rem;
+  padding-top: 94px;
   position: relative;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow-x: hidden;
 
   &::before,
   &::after {
@@ -23,14 +22,14 @@
   }
 
   &::after {
-    max-width: 84.4rem;
+    max-width: 844px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
     transform: rotate(90deg);
   }
 
   &__content {
     position: relative;
-    padding: 6.6rem 0;
+    padding: 66px 0;
     z-index: 1;
 
 
@@ -43,9 +42,8 @@
   }
 
   &__title {
-    max-width: 42.2rem;
-    margin-bottom: .8rem;
+    max-width: 422px;
+    margin-bottom: 8px;
   }
-
 
 }

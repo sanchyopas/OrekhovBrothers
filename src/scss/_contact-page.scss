@@ -1,11 +1,12 @@
 .contact {
-  padding-top: 9.4rem;
+  padding-top: 94px;
 
   &__inner {
+    padding: 0 24px;
   }
 
   &__row {
-    padding: 2.4rem 0;
+
   }
 
   &__map {
@@ -17,26 +18,26 @@
   &__info {}
 
   &__title {
-    margin-bottom: 1.6rem;
+    margin-bottom: 16px;
   }
 
   &__list {
 
     &:not(:last-child) {
-      margin-bottom: 1.6rem;
+      margin-bottom: 16px;
     }
 
   }
 
   &__list-inner {
     display: grid;
-    grid-template-columns: 2.4rem 1fr;
-    gap: .8rem;
+    grid-template-columns: 24px 1fr;
+    gap: 8px;
   }
 
   &__list-icon {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 24px;
+    height: 24px;
 
     .svg-icon{
       color: #686868;
@@ -49,21 +50,21 @@
     p {
       color: #686868;
       line-height: 133%;
-      margin-bottom: .4rem;
+      margin-bottom: 4px;
     }
 
     ul {
       display: grid;
-      gap: .4rem;
+      gap: 4px;
 
       li {
 
         a {
           font-weight: 600;
-          font-size: 1.6rem;
+          font-size: 16px;
           line-height: 150%;
           text-decoration: underline dotted;
-          text-underline-offset: .6rem;
+          text-underline-offset: 6px;
           color: #282828;
         }
       }

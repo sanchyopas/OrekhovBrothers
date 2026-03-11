@@ -1,7 +1,7 @@
 .footer {
   flex: 0 0 auto;
-  padding-block: 1.6rem;
-  background: #00573F;
+  padding-block: 16px;
+  background: #00573f;
   color: #ffffff;
 
   &__inner {
@@ -9,29 +9,23 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: .8rem;
+    gap: 8px;
   }
 
   &__left {
     display: flex;
-    flex-wrap: wrap;
-    gap: .8rem;
-
-    @media (min-width: 768px) {
-      align-items: center;
-      flex-wrap: nowrap;
-    }
+    align-items: center;
+    gap: 8px;
   }
 
   &__right {
   }
 
   &__copyright {
-  }
-
-  &__law {
-    font-size: 1.4rem;
-    line-height: 143%;
+    span {
+      font-size: 14px;
+      line-height: 143%;
+    }
   }
 
   &__inn {

@@ -19,7 +19,7 @@
       &[aria-selected="true"] {
         color: #282828;
         background: #fff;
-        border-bottom: .2rem solid #136e40;
+        border-bottom: 2px solid #136e40;
       }
 
     }
@@ -28,13 +28,13 @@
     .tabs__panel {
       ul {
         list-style: disc;
-        padding-left: 2rem;
+        padding-left: 20px;
         margin: 1em 0;
       }
 
       ol {
         list-style: decimal;
-        padding-left: 2rem;
+        padding-left: 20px;
         margin: 1em 0;
       }
 
@@ -48,14 +48,14 @@
   &__list {
     display: flex;
     align-items: center;
-    border: .1rem solid #ccc;
-    border-radius: .4rem;
-    margin: 0 0 1.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 0 16px;
   }
 
   &__tab {
     flex: 1;
-    padding: 1.1rem;
+    padding: 11px;
     font-weight: 600;
     text-align: center;
     color: #282828;
@@ -77,11 +77,11 @@
 .calc {
 
   &__row {
-    border-bottom: .1rem solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
   }
 
   &__group {
-    padding: 0 0 1.6rem;
+    padding: 0 0 16px;
     margin: 0;
     border: none;
   }
@@ -90,25 +90,25 @@
     font-weight: 600;
     line-height: 144%;
     color: #282828;
-    margin-bottom: .8rem;
+    margin-bottom: 8px;
   }
 
   &__inner {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: .8rem;
+    gap: 8px;
   }
 
 }
 
 .options {
-  padding: 1.6rem 0;
-  border-bottom: .1rem solid #e0e0e0;
+  padding: 16px 0;
+  border-bottom: 1px solid #e0e0e0;
 
 
   &__inner {
-    max-height: 11.4rem;
+    max-height: 114px;
     overflow: hidden;
     transition: $animation_speed;
 
@@ -124,11 +124,13 @@
   }
 
   &__title {
-    margin-bottom: .8rem;
+    margin-bottom: 8px;
     padding: 0;
     font-weight: 600;
     line-height: 144%;
     color: #282828;
   }
+
+
 
 }

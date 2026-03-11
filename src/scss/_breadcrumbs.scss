@@ -1,5 +1,5 @@
 .breadcrumbs {
-  padding-top: 1.6rem;
+  padding-top: 16px;
   display: inline-grid;
 
   &__list {
@@ -8,15 +8,12 @@
     @media(min-width: 768px) {
       display: flex;
       align-items: center;
-      gap: .4rem;
+      gap: 4px;
     }
   }
 
   &__item {
-    display: flex;
-    align-items: center;
-    gap: .6rem;
-    padding: .8rem 0;
+    padding: 8px 0;
 
     &:not(:last-child) {
       &::after {
@@ -37,9 +34,9 @@
 
   &__back {
     justify-self: start;
-    padding: .8rem 0;
+    padding: 8px 0;
     font-weight: 600;
-    font-size: 1.8rem;
+    font-size: 18px;
     line-height: 144%;
     color: #136e40;
   }
