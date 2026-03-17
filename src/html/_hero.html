@@ -1,9 +1,14 @@
-<div class="hero" style="background-image: url('@img/banner.jpg')">
+<div class="hero">
+  <div class="hero__bg">
+    <img src="@img/banner.jpg" alt="Фоновая картинка">
+  </div>
   <div class="container">
-    <div class="hero__content">
-      <h1 class="hero__title title">Ваш дом мечты начинается здесь</h1>
-      <p>Создаём деревянные домокомплекты, в которых хочется жить</p>
+    <div class="hero__inner">
+      <div class="hero__content">
+        <h1 class="hero__title title">Ваш дом мечты начинается здесь</h1>
+        <p class="hero__subtitle">Создаём деревянные домокомплекты, в которых хочется жить</p>
+      </div>
+      @@include('./_cards.html')
     </div>
-    @@include('./_cards.html')
   </div>
 </div>

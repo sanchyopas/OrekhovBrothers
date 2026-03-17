@@ -1,6 +1,5 @@
 .cards {
   position: relative;
-  padding: 48px 0;
   z-index: 1;
 
   &__grid {
@@ -12,7 +11,6 @@
       grid-template-columns: repeat(auto-fill, minmax(389px, 1fr));
     }
   }
-
 }
 
 .card {
@@ -21,10 +19,18 @@
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .08);
   background: #fff;
   overflow: hidden;
+  transition: background $animation_speed ease;
+
+  @media (hover: hover) {
+    &:hover {
+      background: #eaeaea;
+    }
+  }
 
   @media (min-width: $laptop) {
     grid-template-columns: 176px 1fr;
   }
+
 
   &__image {
     height: 234px;
@@ -36,6 +42,7 @@
     img,picture {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -47,8 +54,9 @@
 
   &__title {
     font-weight: 600;
-    line-height: 144%;
+    line-height: 26px;
     color: #282828;
+    text-wrap: balance;
   }
 
 }
