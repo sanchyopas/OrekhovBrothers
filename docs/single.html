@@ -10,7 +10,7 @@
   <meta name="description" content="">
 
   <!-- Critical styles -->
-  <link rel="stylesheet" href="css/style.min.css?_v=20260317214552" />
+  <link rel="stylesheet" href="css/style.min.css?_v=20260331172509" />
 
   <!-- Custom fonts -->
 
@@ -31,34 +31,13 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any">
 
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="/site.webmanifest">
-
   <!-- Advanced technical settings -->
   <meta name="format-detection" content="telephone=no"/>
   <meta name="format-detection" content="address=no"/>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Братья Ореховы">
-  <meta property="og:description" content="">
-  <meta property="og:url" content="https://aoatr.com/">
-  <meta property="og:site_name" content="Братья Ореховы">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="/img/hero-bg.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Братья Ореховы">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="/img/hero-bg.webp">
-
-  <!-- External scripts and verification codes -->
   <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css?_v=20260317214552"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css?_v=20260331172509"
   />
 
 </head>
@@ -554,7 +533,52 @@
     </div>
   </div>
 </div>
+<div class="popup">
+  <button type="button" class="popup__close">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.75 0.75L0.75 12.75M0.75 0.75L12.75 12.75" stroke="#686868" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
 
-<script src="js/app.min.js?_v=20260317214552"></script>
+  <div class="popup__content">
+    <div class="single__images-inner">
+      <div class="single__slider swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="single__slider-thumb swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+          </div>
+          <div class="swiper-slide">
+            <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+          </div>
+          <div class="swiper-slide">
+            <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="swiper-button-next ">next</button>
+  <button type="button" class="swiper-button-prev">prev</button>
+</div>
+
+<script src="js/app.min.js?_v=20260331172509"></script>
 </body>
 </html>
