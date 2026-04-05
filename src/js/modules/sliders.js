@@ -1,34 +1,38 @@
 import Swiper from 'swiper/bundle';
 import {Navigation, Pagination, Scrollbar, Thumbs} from "swiper/modules";
 
-const singleSliderThumb = new Swiper('.single__slider-thumb', {
-  direction: 'horizontal',
-  loop: true,
-  autoHeight: false,
-  spaceBetween: 8,
-  slidesPerView: 3,
+const original = document.querySelector('.gallery');
+const popupContainer = document.querySelector('.popup .gallery');
 
-});
+const clone = original.cloneNode(true);
+popupContainer.replaceWith(clone);
 
-const singleSlider = new Swiper('.single__slider', {
-  modules: [Scrollbar, Pagination, Thumbs],
-  direction: 'horizontal',
-  loop: true,
-  autoHeight: false,
-  spaceBetween: 20,
+// потом инициализация
+initGallery(clone);
 
-  navigation: {
-    nextEl: '.project__slider-next',
-    prevEl: '.project__slider-prev',
-  },
+function initGallery(gallery) {
+  const thumbEl = gallery.querySelector('.gallery__slider-thumb');
+  const mainEl = gallery.querySelector('.gallery__slider');
+  const nextBtn = document.querySelector('.popup-slider-next-btn');
+  const prevBtn = document.querySelector('.popup-slider-prev-btn');
 
-  scrollbar: {
-    el: '.swiper-scrollbar',
-    draggable: true,
-  },
+  const thumbsSwiper = new Swiper(thumbEl, {
+    slidesPerView: 3,
+    spaceBetween: 8,
+    watchSlidesProgress: true,
+  });
 
-  thumbs: {
-    swiper: singleSliderThumb,
-  },
+  new Swiper(mainEl, {
+    modules: [Navigation, Scrollbar, Thumbs],
+    spaceBetween: 20,
 
-});
+    navigation: {
+      nextEl: nextBtn,
+      prevEl: prevBtn,
+    },
+
+    thumbs: {
+      swiper: thumbsSwiper,
+    },
+  });
+}

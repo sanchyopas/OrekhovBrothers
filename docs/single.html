@@ -10,7 +10,7 @@
   <meta name="description" content="">
 
   <!-- Critical styles -->
-  <link rel="stylesheet" href="css/style.min.css?_v=20260331172509" />
+  <link rel="stylesheet" href="css/style.min.css?_v=20260405123721" />
 
   <!-- Custom fonts -->
 
@@ -37,7 +37,7 @@
 
   <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css?_v=20260331172509"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css?_v=20260405123721"
   />
 
 </head>
@@ -171,25 +171,21 @@
 
       <div class="single__row row">
         <div class="single__images">
-          <div class="single__images-inner">
-            <div class="single__slider swiper">
+          <div class="gallery" id="gallery">
+            <div class="gallery__slider swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
                 </div>
                 <div class="swiper-slide">
-                  <div class="swiper-slide">
-                    <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
-                  </div>
+                  <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
                 </div>
                 <div class="swiper-slide">
-                  <div class="swiper-slide">
-                    <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
-                  </div>
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
                 </div>
               </div>
             </div>
-            <div class="single__slider-thumb swiper">
+            <div class="gallery__slider-thumb swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
@@ -537,30 +533,14 @@
   <button type="button" class="popup__close">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12.75 0.75L0.75 12.75M0.75 0.75L12.75 12.75" stroke="#686868" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round" />
+            stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 
-  <div class="popup__content">
-    <div class="single__images-inner">
-      <div class="single__slider swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
-          </div>
-          <div class="swiper-slide">
-            <div class="swiper-slide">
-              <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="swiper-slide">
-              <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="single__slider-thumb swiper">
+  <div class="popup__content" id="gallery-popup">
+
+    <!--<div class="gallery gallery&#45;&#45;popup">
+      <div class="gallery__slider swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
@@ -573,12 +553,25 @@
           </div>
         </div>
       </div>
-    </div>
+      <div class="gallery__slider-thumb swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+          </div>
+          <div class="swiper-slide">
+            <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+          </div>
+          <div class="swiper-slide">
+            <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+          </div>
+        </div>
+      </div>
+    </div>-->
   </div>
-  <button type="button" class="swiper-button-next ">next</button>
-  <button type="button" class="swiper-button-prev">prev</button>
+  <button type="button" class="swiper-button-next popup-slider-next-btn"></button>
+  <button type="button" class="swiper-button-prev popup-slider-prev-btn"></button>
 </div>
 
-<script src="js/app.min.js?_v=20260331172509"></script>
+<script src="js/app.min.js?_v=20260405123721"></script>
 </body>
 </html>
