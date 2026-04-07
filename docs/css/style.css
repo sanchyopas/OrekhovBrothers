@@ -388,9 +388,10 @@ button {
   transition: opacity 0.2s;
 }
 
-.js-copy-phone:focus + .tooltip {
+.js-copy-phone:focus .tooltip {
   opacity: 1;
-  pointer-events: all;
+  pointer-events: auto;
+  z-index: 10;
 }
 
 .tooltip p {
@@ -1134,6 +1135,10 @@ button {
 }
 
 .contact__list-info ul li a {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;

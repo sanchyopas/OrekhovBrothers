@@ -120,9 +120,10 @@ button {
   transition: opacity 0.2s;
 }
 
-.js-copy-phone:focus + .tooltip {
+.js-copy-phone:focus .tooltip {
   opacity: 1;
-  pointer-events: all;
+  pointer-events: auto;
+  z-index: 10;
 }
 
 .tooltip p {

@@ -8,14 +8,40 @@ functions.isWebp();
 
 document.querySelectorAll('.js-copy-phone')?.forEach(link => {
   link.addEventListener('click', async (e) => {
-    e.preventDefault();
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const phone = link.dataset.phone;
 
-    try {
-      await navigator.clipboard.writeText(phone);
-    } catch {
-      console.log('Не удалось скопировать');
+    if(!isMobile) {
+      e.preventDefault();
+
+      try {
+        await navigator.clipboard.writeText(phone);
+      } catch {
+        console.log('Не удалось скопировать');
+      }
+
     }
+
   });
 });
+
+const btn = document.getElementById('show-more-options')
+const options = document.querySelector('.options__inner')
+
+btn?.addEventListener('click', () => {
+  console.log(options.scrollHeight)
+
+  if (options.classList.contains('active')) {
+
+    options.style.maxHeight = '114px'
+    options.classList.remove('active')
+
+  } else {
+
+    options.style.maxHeight = options.scrollHeight + 'px'
+    options.classList.add('active')
+
+  }
+
+})
 
