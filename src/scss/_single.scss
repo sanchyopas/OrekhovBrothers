@@ -94,6 +94,10 @@
         object-fit: cover;
       }
 
+      &[data-lightbox] {
+        cursor: pointer;
+      }
+
     }
 
   }
