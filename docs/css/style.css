@@ -802,6 +802,18 @@ button {
 
 .catalog__top {
   padding: 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 16px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .catalog__grid {
@@ -1306,6 +1318,83 @@ button {
   margin-left: -5px;
 }
 
+.dropdown {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+}
+
+.dropdown__button {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  background: #FFFFFF;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.dropdown__button p {
+  text-wrap: nowrap;
+  width: 380px;
+  overflow: hidden;
+}
+
+.dropdown__button:focus,
+.dropdown__button--active {
+  outline: 2px solid #282828;
+}
+
+.dropdown__list {
+  margin-top: 2px;
+  display: none;
+  width: 100%;
+  max-height: 352px;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.08);
+          box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.08);
+  background: #fff;
+  border-radius: 4px;
+  padding: 8px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.dropdown__list--visible {
+  display: block;
+}
+
+.dropdown__list-item {
+  margin: 0 2px;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdown__list-item:focus {
+  outline: 2px solid #282828;
+}
+
+.dropdown__input-hidden {
+  display: none;
+}
+
 * {
   outline: none;
   -webkit-box-sizing: border-box;
@@ -1594,6 +1683,14 @@ body main {
   }
 
   .tabs__tab:hover {
+    background: #f5f5f5;
+  }
+
+  .dropdown__button:hover {
+    border: 1px solid #a8a8a8;
+  }
+
+  .dropdown__list-item:hover {
     background: #f5f5f5;
   }
 }

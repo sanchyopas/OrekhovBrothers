@@ -1,0 +1,85 @@
+.dropdown {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+
+  &__button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    background: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    cursor: pointer;
+
+    p {
+      text-wrap: nowrap;
+      width: 380px;
+      overflow: hidden;
+    }
+
+    &:focus, &--active {
+      outline: 2px solid #282828;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        border: 1px solid #a8a8a8;
+      }
+    }
+
+  }
+
+  &__icon {
+  }
+
+  &__list {
+    margin-top: 2px;
+    display: none;
+    width: 100%;
+    max-height: 352px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.08);
+    background: #fff;
+    border-radius: 4px;
+    padding: 8px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+
+    &--visible {
+      display: block;
+    }
+  }
+
+  &__list-item {
+    margin: 0 2px;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:focus {
+      outline: 2px solid #282828;
+    }
+
+    @media(hover: hover) {
+      &:hover {
+        background: #f5f5f5;
+      }
+    }
+  }
+
+  &__input-hidden {
+    display: none;
+  }
+
+}

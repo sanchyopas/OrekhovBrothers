@@ -27,9 +27,9 @@
 
     &:focus + .mobile-menu,
     .mobile-menu:focus-within {
-        opacity: 1;
-        pointer-events: all;
-        transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
     }
   }
 
@@ -256,6 +256,7 @@
 
   li {
     padding: 8px 16px;
+
     a {
       line-height: 133%;
       @media (hover: hover) {
@@ -270,6 +271,7 @@
     border-bottom: 1px solid #e0e0e0;
   }
 
-  &__inner {}
+  &__inner {
+  }
 
 }
