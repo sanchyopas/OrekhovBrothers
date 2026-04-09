@@ -23,10 +23,21 @@
       text-wrap: nowrap;
       width: 380px;
       overflow: hidden;
+      z-index: 0;
     }
 
     &:focus, &--active {
       outline: 2px solid #282828;
+    }
+
+    &:target {
+
+    }
+
+    &--active {
+      .dropdown__icon {
+        transform: rotate(180deg);
+      }
     }
 
     @media (hover: hover) {
@@ -37,7 +48,12 @@
 
   }
 
+  &__button-text {
+    pointer-events: none;
+  }
+
   &__icon {
+    transition: $animation_speed;
   }
 
   &__list {
@@ -59,9 +75,27 @@
     &--visible {
       display: block;
     }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-button {
+      height: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background: #e0e0e0;
+    }
+
   }
 
   &__list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     margin: 0 2px;
     padding: 8px 14px;
     border-radius: 4px;
@@ -69,6 +103,10 @@
 
     &:focus {
       outline: 2px solid #282828;
+    }
+
+    span {
+      color: #686868;
     }
 
     @media(hover: hover) {

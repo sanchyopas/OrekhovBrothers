@@ -32,3 +32,19 @@ const singleSlider = new Swiper('.gallery__slider', {
   },
 
 });
+
+
+const heriSlider = new Swiper('.hero__slider', {
+  modules: [Pagination],
+  direction: 'horizontal',
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 20,
+  grabCursor: true,
+
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+
+});
