@@ -120,10 +120,19 @@ button {
   transition: opacity 0.2s;
 }
 
-.js-copy-phone:focus .tooltip {
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 10;
+@media (hover: hover) {
+  .js-copy-clipboard:focus .tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .js-copy-clipboard:focus .tooltip {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 }
 
 .tooltip p {

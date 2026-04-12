@@ -67,11 +67,19 @@
     transition: .5s;
   }
 
-  .gallery__slider {
-    max-width: 768px;
+  .gallery__slider, .gallery__slider-thumb {
+    max-width: 328px;
 
     @media (min-width: 1200px) {
       max-width: 1129px;
+    }
+
+    @media (min-width: $tablet) {
+      max-width: 768px;
+    }
+
+    @media (min-width: $mobile) {
+      max-width: 450px;
     }
   }
 

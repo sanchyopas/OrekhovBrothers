@@ -10,11 +10,14 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   &__left {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
   }
 
@@ -22,10 +25,7 @@
   }
 
   &__copyright {
-    span {
-      font-size: 14px;
-      line-height: 143%;
-    }
+
   }
 
   &__inn {

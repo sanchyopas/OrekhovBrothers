@@ -105,6 +105,20 @@
   &__slider-thumb {
     margin-top: 16px;
     cursor: pointer;
+    position: relative;
+
+    &::before {
+      @media(max-width: $tablet) {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 24px;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(251, 251, 251, 0) 0%, #fbfbfb 100%);
+        z-index: 99;
+      }
+    }
 
     .swiper-slide {
       border-radius: 4px;

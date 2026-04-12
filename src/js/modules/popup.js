@@ -1,4 +1,6 @@
-const lightBoxSlider = document.querySelectorAll('[data-lightbox]');
+import {initSliders} from "./sliders.js";
+
+const lightBoxSlider = document.querySelectorAll('.single__images [data-lightbox]');
 const popup = document.querySelector('.popup');
 const popupCloseBtn = document.querySelector('.popup__close');
 
@@ -19,6 +21,10 @@ function renderGalleryInPopup(nodeElement) {
   container.appendChild(clone);
 
   popupOpen()
+
+  requestAnimationFrame(() => {
+    initSliders(document.getElementById('gallery-popup'));
+  });
 
 }
 

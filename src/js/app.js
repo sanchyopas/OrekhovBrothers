@@ -7,10 +7,10 @@ import './modules/select.js';
 
 functions.isWebp();
 
-document.querySelectorAll('.js-copy-phone')?.forEach(link => {
+document.querySelectorAll('.js-copy-clipboard')?.forEach(link => {
   link.addEventListener('click', async (e) => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const phone = link.dataset.phone;
+    const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const phone = link.dataset.copy;
 
     if (!isMobile) {
       e.preventDefault();
@@ -20,9 +20,7 @@ document.querySelectorAll('.js-copy-phone')?.forEach(link => {
       } catch {
         console.log('Не удалось скопировать');
       }
-
     }
-
   });
 });
 
