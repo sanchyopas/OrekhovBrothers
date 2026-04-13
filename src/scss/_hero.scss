@@ -123,12 +123,15 @@
 
 .text-columns {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   padding: 12px;
   margin-top: 24px;
   background: rgba(204, 204, 204, 0.6);
   border-radius: 8px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   .text-column {
     font-size: 14px;

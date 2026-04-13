@@ -40,39 +40,6 @@ export function initSliders(root = document) {
 
 initSliders()
 
-/*const singleSliderThumb = new Swiper('.gallery__slider-thumb', {
-  direction: 'horizontal',
-  loop: false,
-  autoHeight: false,
-  spaceBetween: 8,
-  slidesPerView: 3,
-
-});
-
-const singleSlider = new Swiper('.gallery__slider', {
-  modules: [Scrollbar, Pagination, Thumbs],
-  direction: 'horizontal',
-  loop: false,
-  autoHeight: false,
-  spaceBetween: 20,
-
-  navigation: {
-    nextEl: '.project__slider-next',
-    prevEl: '.project__slider-prev',
-  },
-
-  scrollbar: {
-    el: '.swiper-scrollbar',
-    draggable: true,
-  },
-
-  thumbs: {
-    swiper: singleSliderThumb,
-  },
-
-});*/
-
-
 const heroSlider = new Swiper('.hero__slider', {
   modules: [Pagination],
   direction: 'horizontal',
