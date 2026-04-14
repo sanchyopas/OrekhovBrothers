@@ -3,7 +3,7 @@ const fs = require("fs-extra");
 const path = require("path");
 
 const sourceSvg = "src/favicon.svg"; // Исходный SVG
-const outputPath = "dist"; // Корневая папка для фавиконок
+const outputPath = "docs"; // Корневая папка для фавиконок
 
 // Размеры фавиконок
 const sizes = [16, 32, 48, 72, 96, 144, 192, 512];
