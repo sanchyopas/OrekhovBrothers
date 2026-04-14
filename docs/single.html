@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head lang="@@lang">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+
+  <title>Братья Ореховы</title>
+
+  <meta name="description" content="">
+  <link rel="stylesheet" href="./css/style.min.css?_v=20260415004752" />
+
+  <!-- Advanced technical settings -->
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="format-detection" content="address=no"/>
+
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css?_v=20260415004752"
+  />
+
+</head>
+
+
+
+<div class="header">
+  <div class="container">
+    <div class="header__inner">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <div class="nav__item-inner">
+              <a href="/catalog.html" class="nav__link btn--text">Каталог</a>
+              <button type="button" class="nav__arrow">
+                <img src="img/icon/arrow-down-green.svg" alt="">
+              </button>
+            </div>
+            <ul class="submenu">
+              <li class="submenu__item">
+                <a href="/single.html" class="submenu__link">
+                  Дома и бани из массива профилированного бруса
+                </a>
+              </li>
+              <li class="submenu__item">
+                <a href="/single.html" class="submenu__link">
+                  Дома и бани из мини бруса
+                </a>
+              </li>
+              <li class="submenu__item">
+                <a href="/single.html" class="submenu__link">Спецкомплекты</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav__item"><a href="/reviews.html" class="nav__link btn--text">Отзывы</a></li>
+          <li class="nav__item"><a href="/about.html" class="nav__link btn--text">О компании</a></li>
+          <li class="nav__item"><a href="/contact.html" class="nav__link btn--text">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__group">
+        <div class="header__burger">
+          <button type="button" class="header__burger-btn" onclick="this.focus()">
+            <img src="img/icon/menu.svg" alt="">
+          </button>
+          <nav class="mobile-menu" id="mobile-menu">
+            <ul class="mobile-menu__catalog">
+              <li><a href="/single.html">Дома и бани из массива профилированного бруса</a></li>
+              <li><a href="/single.html">Дома и бани из мини бруса</a></li>
+              <li><a href="/single.html">Спецкомплекты</a></li>
+              <li><a href="/single.html">Раздел каталога 4</a></li>
+              <li><a href="/single.html">Раздел каталога 5</a></li>
+              <li><a href="/single.html">Раздел каталога 6</a></li>
+            </ul>
+            <ul class="mobile-menu__main">
+              <li><a href="/reviews.html">Отзывы</a></li>
+              <li><a href="/about.html">О компании</a></li>
+              <li><a href="/contact.html">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
+        <a href="/" class="header__logo logo">
+          <img src="img/icon/logo-1.svg" alt="">
+        </a>
+      </div>
+
+      <div class="header__controls">
+        <ul class="social">
+          <li class="social__item">
+            <a href="" target="_blank">
+              <picture><source srcset="img/icon/i-gis.webp" type="image/webp"><img src="img/icon/i-gis.png" alt=""></picture>
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="" target="_blank">
+              <picture><source srcset="img/icon/i-vk.webp" type="image/webp"><img src="img/icon/i-vk.png" alt=""></picture>
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="" target="_blank">
+              <picture><source srcset="img/icon/i-max.webp" type="image/webp"><img src="img/icon/i-max.png" alt=""></picture>
+            </a>
+          </li>
+        </ul>
+        <a href="tel:+83822503509" type="button" class="header__mobile-phone">
+          <img src="img/icon/phone.svg" alt="">
+        </a>
+        <div class="header__phone">
+          <a href="tel:+83822503509" class="header__phone-link js-copy-clipboard" data-copy="+8 (3822) 503 509">
+            +8 (3822) 503 509
+            <div class="tooltip">
+              <p>Телефон скопирован</p>
+            </div>
+          </a>
+          <a href="tel:+79138206658" class="header__phone-link js-copy-clipboard" data-copy="+7 (913) 820 66 58">
+            +7 (913) 820 66 58
+            <div class="tooltip ">
+              <p>Телефон скопирован</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<main>
+  <div class="single">
+    <div class="container">
+      <nav class="breadcrumbs">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item">
+            <a href="/" class="breadcrumbs__link">Главная страница</a>
+          </li>
+
+          <li class="breadcrumbs__item">
+            <a href="/" class="breadcrumbs__link">Домокомплекты</a>
+          </li>
+
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__current">Дом 6×6 2 этажа</span>
+          </li>
+        </ol>
+
+        <a href="javascript:history.back()" class="breadcrumbs__back">
+          Вернуться
+        </a>
+      </nav>
+
+      <div class="single__row row">
+        <div class="single__images">
+          <div class="gallery">
+            <div class="gallery__slider swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide" data-lightbox>
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+              </div>
+            </div>
+            <div class="gallery__slider-thumb swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide">
+                  <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide">
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide">
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide">
+                  <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide">
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide">
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide">
+                  <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+                </div>
+                <div class="swiper-slide">
+                  <picture><source srcset="img/single-image.webp" type="image/webp"><img src="img/single-image.jpg" alt=""></picture>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="single__info">
+            <div class="tabs tabs--outline" data-tabs>
+              <div class="tabs__list" role="tablist">
+                <button
+                    type="button"
+                    class="tabs__tab"
+                    role="tab"
+                    id="tab-3"
+                    aria-selected="true"
+                    aria-controls="panel-3"
+                    tabindex="0"
+                >
+                  Описание
+                </button>
+
+                <button
+                    type="button"
+                    class="tabs__tab"
+                    role="tab"
+                    id="tab-4"
+                    aria-selected="false"
+                    aria-controls="panel-4"
+                    tabindex="-1"
+                >
+                  Комплектация
+                </button>
+              </div>
+
+              <div
+                  class="tabs__panel"
+                  role="tabpanel"
+                  id="panel-3"
+                  aria-labelledby="tab-3"
+              >
+                <p>
+                  Lorem ipsum dolor sit amet consectetur. Blandit urna massa ut feugiat feugiat eget tellus nunc ac. Id
+                  nulla vel ultrices semper sit morbi ipsum neque. At eu egestas leo hendrerit nulla. At blandit morbi
+                  tincidunt ac id aliquam. Pharetra elit iaculis lectus ornare mauris dignissim rhoncus diam. Convallis
+                  eget sapien ornare tortor egestas sagittis quis. Sit diam felis sit quam sed sit. In congue convallis
+                  elementum pellentesque vitae nunc in morbi. Aliquet non consequat donec integer risus erat. Lacinia
+                  eget aliquet vivamus sed vitae.
+                </p>
+              </div>
+
+              <div
+                  class="tabs__panel"
+                  role="tabpanel"
+                  id="panel-4"
+                  aria-labelledby="tab-4"
+                  hidden
+              >
+                <p><strong>Комплектация домокомплекта:</strong></p>
+                <ol>
+                  <li>Стены</li>
+                  <li>Пол</li>
+                  <li>Крыша</li>
+                </ol>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="single__parameters">
+          <h1 class="single__title">Дом 6×6 2 этажа</h1>
+          <div class="features features--pb">
+            <div class="features__item">
+              <div class="features__feature-icon">
+                <img src="img/icon/area.svg" alt="">
+              </div>
+              <p class="features__feature-value">72 м²</p>
+            </div>
+            <div class="features__item">
+              <div class="features__feature-icon">
+                <img src="img/icon/perimetr.svg" alt="">
+              </div>
+              <p class="features__feature-value">100×200 мм</p>
+            </div>
+            <div class="features__item">
+              <div class="features__feature-icon">
+                <img src="img/icon/stairs.svg" alt="">
+              </div>
+              <p class="features__feature-value">1 этаж</p>
+            </div>
+            <div class="features__item">
+              <div class="features__feature-icon"></div>
+              <p class="features__feature-value">Терраса: нет</p>
+            </div>
+          </div>
+
+          <form action="" class="form">
+            <div class="tabs" data-tabs>
+              <div class="tabs__list" role="tablist">
+                <button
+                    type="button"
+                    class="tabs__tab"
+                    role="tab"
+                    id="tab-1"
+                    aria-selected="true"
+                    aria-controls="panel-1"
+                    tabindex="0"
+                >
+                  Домокомплект
+                </button>
+
+                <button
+                    type="button"
+                    class="tabs__tab"
+                    role="tab"
+                    id="tab-2"
+                    aria-selected="false"
+                    aria-controls="panel-2"
+                    tabindex="-1"
+                >
+                  Стенокомплект
+                </button>
+              </div>
+              <div
+                  class="tabs__panel"
+                  role="tabpanel"
+                  id="panel-1"
+                  aria-labelledby="tab-1"
+              >
+                <div class="calc">
+                  <div class="calc__row">
+                    <fieldset class="calc__group">
+                      <legend class="calc__title">Порода дерева</legend>
+
+                      <div class="calc__inner">
+                        <label class="form__radio">
+                          <input type="radio" name="material" data-price="1000000" value="pine">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>Сосна</span>
+                          </div>
+                        </label>
+
+                        <label class="form__radio">
+                          <input type="radio" name="material" data-price="3000000" value="cedar">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>Кедр</span>
+                          </div>
+                        </label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="calc__group">
+                      <legend class="calc__title">Сечение бруса</legend>
+
+                      <div class="calc__inner">
+                        <label class="form__radio">
+                          <input type="radio" name="cut" data-price="10000" value="100×100">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×100</span>
+                          </div>
+                        </label>
+                        <label class="form__radio">
+                          <input type="radio" name="cut" data-price="2000" value="100×150">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×150</span>
+                          </div>
+                        </label>
+                        <label class="form__radio">
+                          <input type="radio" name="cut" data-price="30000" value="100×200">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×200</span>
+                          </div>
+                        </label>
+                        <label class="form__radio">
+                          <input type="radio" name="cut" data-price="2500000" value="100×250">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×250</span>
+                          </div>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div
+                  class="tabs__panel"
+                  role="tabpanel"
+                  id="panel-2"
+                  aria-labelledby="tab-2"
+                  hidden
+              >
+                <div class="calc">
+                  <div class="calc__row">
+                    <fieldset class="calc__group">
+                      <legend class="calc__title">Материал бруса</legend>
+
+                      <div class="calc__inner">
+                        <label class="form__radio">
+                          <input type="radio" name="material" data-price="300000" value="pine">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>Сосна</span>
+                          </div>
+                        </label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="calc__group">
+                      <legend class="calc__title">Сечение бруса</legend>
+
+                      <div class="calc__inner">
+                        <label class="form__radio">
+                          <input type="radio" name="cut" data-price="150" value="100×100">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×100</span>
+                          </div>
+                        </label>
+                        <label class="form__radio">
+                          <input type="radio" name="cut" value="100×150" data-price="1200000">
+                          <div class="form__radio-inner">
+                            <span class="custom-radio"></span>
+                            <span>100×150</span>
+                          </div>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="options">
+              <fieldset class="options__group">
+                <legend class="options__title">Дополнительные опции</legend>
+
+                <div class="options__inner">
+                  <label class="form__checkbox">
+                    <input type="checkbox" data-price="2000" value="Сборка и монтаж домокомплекта +5 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom">
+                        <img src="img/icon/checked.svg" alt="">
+                      </div>
+                      <span class="form__checkbox-text">Сборка и монтаж домокомплекта</span>
+                    </div>
+                    <span class="form__checkbox-price">+5 000 ₽</span>
+                  </label>
+                  <label class="form__checkbox">
+                    <input type="checkbox" data-price="5000" value="Доставка от +5 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom">
+                        <img src="img/icon/checked.svg" alt="">
+                      </div>
+                      <span class="form__checkbox-text">Доставка</span>
+                    </div>
+                    <span class="form__checkbox-price">от +5 000 ₽</span>
+                  </label>
+                  <label class="form__checkbox">
+                    <input type="checkbox" data-price="700" value="Ступени деревянные +14 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom">
+                        <img src="img/icon/checked.svg" alt="">
+                      </div>
+                      <span class="form__checkbox-text">Ступени деревянные</span>
+                    </div>
+                    <span class="form__checkbox-price">+14 000 ₽</span>
+                  </label>
+                  <label class="form__checkbox">
+                    <input type="checkbox" data-price="770" value="Ступени деревянные +14 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom">
+                        <img src="img/icon/checked.svg" alt="">
+                      </div>
+                      <span class="form__checkbox-text">Ступени деревянные</span>
+                    </div>
+                    <span class="form__checkbox-price">+14 000 ₽</span>
+                  </label>
+                  <label class="form__checkbox">
+                    <input type="checkbox" data-price="100" value="Ступени деревянные +14 000 ₽">
+
+                    <div class="form__checkbox-inner">
+                      <div class="checkbox-custom">
+                        <img src="img/icon/checked.svg" alt="">
+                      </div>
+                      <span class="form__checkbox-text">Ступени деревянные</span>
+                    </div>
+                    <span class="form__checkbox-price">+14 000 ₽</span>
+                  </label>
+                </div>
+
+              </fieldset>
+              <button type="button" class="btn btn--text" id="show-more-options">Показать все</button>
+            </div>
+
+            <div class="single__result">
+              <p>Расчетная стоимость</p>
+              <p class="single__price" id="single-price">11 925 000 ₽</p>
+            </div>
+            <div class="single__buttons">
+              <button class="btn btn--primary">Позвонить</button>
+              <a href="" class="btn btn--outline" target="_blank">Связаться в MAX</a>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__left">
+        <p class="footer__copyright">
+          ООО "ТомЛесПром" © 2008-2026 Все права защищены
+        </p>
+        <p class="footer__law">ИНН 7017158380</p>
+        <p class="footer__inn">2006 — <span id="current-year">2026</span></p>
+      </div>
+      <div class="footer__right">
+        <p class="footer__address">
+          Томская область, Томский район, пос. Зональная станция, ул. Светлая, д. 2/3
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="popup">
+  <button type="button" class="popup__close">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.75 0.75L0.75 12.75M0.75 0.75L12.75 12.75" stroke="#686868" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="popup__content" id="gallery-popup">
+
+  </div>
+  <button type="button" class="swiper-button-next popup-slider-next-btn"></button>
+  <button type="button" class="swiper-button-prev popup-slider-prev-btn"></button>
+</div>
+
+<script src="js/app.min.js?_v=20260415004752"></script>
+</body>
+</html>

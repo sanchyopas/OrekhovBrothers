@@ -29,33 +29,8 @@
       <div class="catalog__top">
         <h1 class="catalog__title title">Домокомплекты</h1>
 
-        <div class="dropdown">
-          <div class="dropdown__button" role="button" tabindex="0" aria-expanded="false">
-            <p class="dropdown__button-text">Дома и бани из массива профилированного бруса</p>
-            <span class="dropdown__icon">
-              <img src="@img/icon/shevron-down.svg" alt="">
-            </span>
-          </div>
-          <ul class="dropdown__list">
-            <li class="dropdown__list-item" data-value="Дома и бани из массива профилированного бруса" tabindex="0">
-              <p>Дома и бани из массива профилированного бруса</p>
-              <span>Additional text</span>
-            </li>
-            <li class="dropdown__list-item" data-value="Дома и бани из массива" tabindex="0">
-              <p>Дома и бани из массива</p>
-              <span>Additional text</span>
-            </li>
-            <li class="dropdown__list-item" data-value="Дома и бани" tabindex="0">
-              <p>Дома и бани</p>
-              <span>Additional text</span>
-            </li>
-            <li class="dropdown__list-item" data-value="Бани из массива профилированного бруса" tabindex="0">
-              <p>Бани из массива профилированного бруса</p>
-              <span>Additional text</span>
-            </li>
-          </ul>
-          <input type="text" name="select-category" value="" class="dropdown__input-hidden">
-        </div>
+        @@include('html/_select.html')
+        @@include('html/_select.html')
 
       </div>
 

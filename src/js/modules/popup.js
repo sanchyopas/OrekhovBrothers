@@ -42,5 +42,5 @@ document.addEventListener('keydown', (e) => {
 
 popupCloseBtn?.addEventListener('click', closePopup);
 function closePopup() {
-  popup.classList.remove('is-open');
+  popup?.classList.remove('is-open');
 }
