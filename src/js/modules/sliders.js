@@ -40,7 +40,10 @@ export function initSliders(root = document) {
 
 initSliders()
 
-const heroSlider = new Swiper('.hero__slider', {
+const heroSliderEl = document?.querySelector('.hero__slider');
+const delay = heroSliderEl?.dataset.delay || 1000;
+
+const heroSlider = new Swiper(heroSliderEl, {
   modules: [Pagination],
   direction: 'horizontal',
   loop: true,
@@ -48,9 +51,26 @@ const heroSlider = new Swiper('.hero__slider', {
   spaceBetween: 20,
   grabCursor: true,
 
+  autoplay: {
+    delay: Number(delay),
+    disableOnInteraction: false,
+  },
+
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
+  },
+
+  on: {
+    init(swiper) {
+      const el = swiper.el;
+
+      const onEnter = () => swiper.autoplay.stop();
+      const onLeave = () => swiper.autoplay.start();
+
+      el.addEventListener('mouseenter', onEnter);
+      el.addEventListener('mouseleave', onLeave);
+    },
   },
 
 });

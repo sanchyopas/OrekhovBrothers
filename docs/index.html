@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head lang="@@lang">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+
+  <title>Братья Ореховы</title>
+
+  <meta name="description" content="">
+  <link rel="stylesheet" href="./css/style.min.css?_v=20260415230613" />
+
+  <!-- Advanced technical settings -->
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="format-detection" content="address=no"/>
+
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css?_v=20260415230613"
+  />
+
+</head>
+
+<body>
+
+<div class="header">
+  <div class="container">
+    <div class="header__inner">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <div class="nav__item-inner">
+              <a href="/catalog.html" class="nav__link btn--text">Каталог</a>
+              <button type="button" class="nav__arrow">
+                <img src="img/icon/arrow-down-green.svg" alt="">
+              </button>
+            </div>
+            <ul class="submenu">
+              <li class="submenu__item">
+                <a href="/catalog.html" class="submenu__link">
+                  Дома и бани из массива профилированного бруса
+                </a>
+              </li>
+              <li class="submenu__item">
+                <a href="/catalog.html" class="submenu__link">
+                  Дома и бани из мини бруса
+                </a>
+              </li>
+              <li class="submenu__item">
+                <a href="/catalog.html" class="submenu__link">Спецкомплекты</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav__item"><a href="/reviews.html" class="nav__link btn--text">Отзывы</a></li>
+          <li class="nav__item"><a href="/about.html" class="nav__link btn--text">О компании</a></li>
+          <li class="nav__item"><a href="/contact.html" class="nav__link btn--text">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__group">
+        <div class="header__burger">
+          <button type="button" class="header__burger-btn" onclick="this.focus()">
+            <img src="img/icon/menu.svg" alt="">
+          </button>
+          <nav class="mobile-menu" id="mobile-menu">
+            <ul class="mobile-menu__catalog">
+              <li><a href="/catalog.html">Дома и бани из массива профилированного бруса</a></li>
+              <li><a href="/catalog.html">Дома и бани из мини бруса</a></li>
+              <li><a href="/catalog.html">Спецкомплекты</a></li>
+              <li><a href="/catalog.html">Раздел каталога 4</a></li>
+              <li><a href="/catalog.html">Раздел каталога 5</a></li>
+              <li><a href="/catalog.html">Раздел каталога 6</a></li>
+            </ul>
+            <ul class="mobile-menu__main">
+              <li><a href="/reviews.html">Отзывы</a></li>
+              <li><a href="/about.html">О компании</a></li>
+              <li><a href="/contact.html">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
+        <a href="/" class="header__logo logo">
+          <img src="img/icon/logo-1.svg" alt="">
+        </a>
+      </div>
+
+      <div class="header__controls">
+        <ul class="social">
+          <li class="social__item">
+            <a href="" target="_blank">
+              <picture><source srcset="img/icon/i-gis.webp" type="image/webp"><img src="img/icon/i-gis.png" alt=""></picture>
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="" target="_blank">
+              <picture><source srcset="img/icon/i-vk.webp" type="image/webp"><img src="img/icon/i-vk.png" alt=""></picture>
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="" target="_blank">
+              <picture><source srcset="img/icon/i-max.webp" type="image/webp"><img src="img/icon/i-max.png" alt=""></picture>
+            </a>
+          </li>
+        </ul>
+        <a href="tel:+83822503509" type="button" class="header__mobile-phone">
+          <img src="img/icon/phone.svg" alt="">
+        </a>
+        <div class="header__phone">
+          <a href="tel:+83822503509" class="header__phone-link js-copy-clipboard" data-copy="+8 (3822) 503 509">
+            +8 (3822) 503 509
+            <div class="tooltip">
+              <p>Телефон скопирован</p>
+            </div>
+          </a>
+          <a href="tel:+79138206658" class="header__phone-link js-copy-clipboard" data-copy="+7 (913) 820 66 58">
+            +7 (913) 820 66 58
+            <div class="tooltip ">
+              <p>Телефон скопирован</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<main>
+  <div class="hero">
+  <div class="hero__bg">
+    <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt="Фоновая картинка"></picture>
+  </div>
+  <div class="container">
+    <div class="hero__inner">
+      <div class="swiper hero__slider" data-delay="5000">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><picture><source srcset="img/banner-image.webp" type="image/webp"><img src="img/banner-image.jpg" alt=""></picture></div>
+          <div class="swiper-slide"><picture><source srcset="img/banner-image.webp" type="image/webp"><img src="img/banner-image.jpg" alt=""></picture></div>
+          <div class="swiper-slide"><picture><source srcset="img/banner-image.webp" type="image/webp"><img src="img/banner-image.jpg" alt=""></picture></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__title title">Ваш дом мечты начинается здесь</h1>
+        <p class="hero__subtitle">Создаём деревянные домокомплекты, в которых хочется жить</p>
+      </div>
+    </div>
+    <div class="cards">
+  <div class="cards__grid">
+    <a href="/catalog.html" class="card">
+      <div class="card__image">
+        <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+      </div>
+      <div class="card__content">
+        <p class="card__title">Дома и бани из массива профилированного бруса</p>
+      </div>
+    </a>
+    <a href="/catalog.html" class="card">
+      <div class="card__image">
+        <picture><source srcset="img/Image.webp" type="image/webp"><img src="img/Image.jpg" alt=""></picture>
+      </div>
+      <div class="card__content">
+        <p class="card__title">Дома и бани из мини бруса</p>
+      </div>
+    </a>
+    <a href="/catalog.html" class="card">
+      <div class="card__image">
+        <picture><source srcset="img/Image.webp" type="image/webp"><img src="img/Image.jpg" alt=""></picture>
+      </div>
+      <div class="card__content">
+        <p class="card__title">Спецкомплекты</p>
+      </div>
+    </a>
+    <a href="/catalog.html" class="card">
+      <div class="card__image">
+        <picture><source srcset="img/banner.webp" type="image/webp"><img src="img/banner.jpg" alt=""></picture>
+      </div>
+      <div class="card__content">
+        <p class="card__title">Дома и бани из массива профилированного бруса</p>
+      </div>
+    </a>
+    <a href="/catalog.html" class="card">
+      <div class="card__image">
+        <picture><source srcset="img/Image.webp" type="image/webp"><img src="img/Image.jpg" alt=""></picture>
+      </div>
+      <div class="card__content">
+        <p class="card__title">Дома и бани из мини бруса</p>
+      </div>
+    </a>
+    <a href="/catalog.html" class="card">
+      <div class="card__image">
+        <picture><source srcset="img/Image.webp" type="image/webp"><img src="img/Image.jpg" alt=""></picture>
+      </div>
+      <div class="card__content">
+        <p class="card__title">Спецкомплекты</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+    <div class="text-columns">
+      <div class="text-column">
+        <p>
+          Сайт TLP70.ru носит исключительно информационный характер и ни при каких условиях не является публичной
+          офертой. Для получения подробной информации, в том числе технического характера, пожалуйста, обращайтесь в
+          офисы продаж.
+        </p>
+      </div>
+      <div class="text-column">
+        <p>
+          Внешний вид строений может отличаться от визуализации, представленной на сайте. Завод-изготовитель вправе
+          вносить в конструкцию усовершенствования, не влияющие на эксплуатационные качества строений.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<div class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__left">
+        <p class="footer__copyright">
+          ООО "ТомЛесПром" © 2008-2026 Все права защищены
+        </p>
+        <p class="footer__law">ИНН 7017158380</p>
+        <p class="footer__inn">2006 — <span id="current-year">2026</span></p>
+      </div>
+      <div class="footer__right">
+        <p class="footer__address">
+          Томская область, Томский район, пос. Зональная станция, ул. Светлая, д. 2/3
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.min.js?_v=20260415230613"></script>
+</body>
+</html>
