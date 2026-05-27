@@ -1,0 +1,61 @@
+{% load static %}
+
+<div class="sidebar">
+  <div class="sidebar__top top-sidebar">
+    <a href="/admin" class="top-sidebar__logo">
+      <img src="{% static 'admin/img/admin-logo.svg' %}" alt="svg logo" title="svg logo"/>
+      Панель управления
+    </a>
+  </div>
+  <div class="sidebar__menu menu-sidebar">
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Основные страницы</p>
+      <a href="{% url 'admin' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-signal"></i>
+        <span>Статистика</span>
+      </a>
+      <a class="menu-sidebar__link-general">
+        <i class="fas fa-users-cog"></i>
+        <span>Пользователи</span>
+      </a>
+    </div>
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Каталог</p>
+      <a href="{% url 'admin_shop' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-gear"></i>
+        <span>Настройки</span>
+      </a>
+      <a href="{% url 'admin_category' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>Категории</span>
+      </a>
+      <a href="{% url 'admin_product' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-shop"></i>
+        <span>Объекты</span>
+      </a>
+    </div>
+
+
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Страницы с настройками</p>
+      <a href="{% url 'admin_settings' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-cogs"></i>
+        <span>Общие настройки</span>
+      </a>
+      <a href="{% url 'robots' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-assistive-listening-systems"></i>
+        <span>Системные настройки</span>
+      </a>
+    </div>
+
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Шаблоны страниц</p>
+      <a href="{% url 'admin_home_page' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-home"></i>
+        <span>Главная</span>
+      </a>
+
+    </div>
+
+  </div>
+</div>

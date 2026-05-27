@@ -1,0 +1,13 @@
+Django==4.2
+asgiref
+sqlparse
+tzdata
+
+Pillow
+whitenoise
+
+django-ckeditor
+django-ckeditor-5
+django-js-asset
+
+sorl-thumbnail

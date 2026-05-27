@@ -1,0 +1,139 @@
+.hero {
+  min-height: 100vh;
+  display: grid;
+  padding: $headerHeight 0 48px;
+  position: relative;
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+
+    img,picture {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @media (max-width: $laptop) {
+        object-position: center left;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &::before {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    }
+
+    &::after {
+      display: none;
+
+      @media (min-width: $laptop) {
+        display: block;
+        background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+      }
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    height: 174px;
+    min-width: 0;
+    margin-top: 18px;
+    padding-bottom: 24px !important;
+
+    .swiper-slide {
+      width: 100% !important;
+      border-radius: 16px;
+      overflow: hidden;
+
+      img,picture {
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+    }
+
+    .swiper-pagination {
+      bottom: 0 !important;
+      height: 24px;
+    }
+
+    .swiper-pagination-bullet {
+      opacity: 1;
+      background: #7c7c7c;
+    }
+
+
+    .swiper-pagination-bullet-active {
+      background: #136E40;
+    }
+
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 81px 0;
+    z-index: 1;
+
+    @media (max-width: $tablet) {
+      padding: 48px 0;
+    }
+
+    p {
+      font-weight: 400;
+      line-height: 24px;
+      color: #282828;
+    }
+
+  }
+
+  &__title {
+    max-width: 422px;
+    margin-bottom: 8px;
+    text-wrap: balance;
+  }
+
+}
+
+.text-columns {
+  position: relative;
+  display: grid;
+  gap: 32px;
+  padding: 12px;
+  margin-top: 24px;
+  background: rgba(204, 204, 204, 0.6);
+  border-radius: 8px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .text-column {
+    font-size: 14px;
+    color: rgba(75, 75, 75, 1);
+    line-height: 20px;
+  }
+
+}

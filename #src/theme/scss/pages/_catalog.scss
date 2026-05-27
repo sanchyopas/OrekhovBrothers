@@ -1,0 +1,30 @@
+.catalog {
+  padding-top: 92px;
+  display: flex;
+  flex-direction: column;
+
+
+  &__inner {
+  }
+
+  &__top {
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    @media (min-width: $laptop) {
+      padding: 16px 0 24px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 0 0 24px;
+  }
+
+}

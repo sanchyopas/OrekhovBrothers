@@ -1,0 +1,19 @@
+{% load static %}
+<div class="dropdown">
+  <div class="dropdown__button" role="button" tabindex="0" aria-expanded="false">
+    <p class="dropdown__button-text">Дома и бани из массива профилированного бруса</p>
+    <span class="dropdown__icon">
+              <img src="{% static 'theme/img/icons/shevron-down.svg' %}" alt="">
+            </span>
+  </div>
+  <ul class="dropdown__list">
+    {% for cat in categories %}
+    <li class="dropdown__list-item" data-value="{{ cat.name }}" tabindex="0">
+      <p>
+        <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+      </p>
+    </li>
+    {% endfor %}
+  </ul>
+  <input type="text" name="select-category" value="" class="dropdown__input-hidden">
+</div>

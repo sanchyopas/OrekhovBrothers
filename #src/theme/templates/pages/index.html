@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if settings.meta_title %}{{ settings.meta_title }}{% else %}Главная страница{% endif %}
+{% endblock %}
+{% block description %}{{ settings.meta_description }}{% endblock %}
+{% block keywords %}{{ settings.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+  <div class="hero__bg">
+    <img src="{% static 'theme/img/banner.jpg' %}" alt="Фоновая картинка">
+  </div>
+  <div class="container">
+    <div class="hero__inner">
+      <div class="swiper hero__slider" data-delay="5000">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="@img/banner-image.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="@img/banner-image.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="@img/banner-image.jpg" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="hero__content">
+        {% if settings.meta_h1 %}
+        <h1 class="hero__title title">{{ settings.meta_h1 }}</h1>
+        {% endif %}
+
+        {% if settings.subtitle %}
+        <p class="hero__subtitle">{{ settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    {% include "../includes/_cards.html" with categories=categories %}
+
+    <div class="text-columns">
+      <div class="text-column">
+        <p>
+          Сайт TLP70.ru носит исключительно информационный характер и ни при каких условиях не является публичной
+          офертой. Для получения подробной информации, в том числе технического характера, пожалуйста, обращайтесь в
+          офисы продаж.
+        </p>
+      </div>
+      <div class="text-column">
+        <p>
+          Внешний вид строений может отличаться от визуализации, представленной на сайте. Завод-изготовитель вправе
+          вносить в конструкцию усовершенствования, не влияющие на эксплуатационные качества строений.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

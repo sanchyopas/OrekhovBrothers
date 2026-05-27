@@ -1,0 +1,136 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color: #fff, $alpha: 0.7);
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: $animation-speed;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    .popup__content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 992px) {
+      top: 52px;
+      right: 52px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      bottom: -12px;
+      right: -12px;
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1129px;
+    padding: 0 16px;
+    width: 100%;
+    height: auto;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: .5s;
+  }
+
+  .gallery__slider, .gallery__slider-thumb {
+    max-width: 328px;
+
+    @media (min-width: 1200px) {
+      max-width: 1129px;
+    }
+
+    @media (min-width: $tablet) {
+      max-width: 768px;
+    }
+
+    @media (min-width: $mobile) {
+      max-width: 450px;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 45%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+
+    svg {
+      display: block;
+      width: 9px;
+      height: 18px;
+      color: #ffffff;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -54px;
+      left: -54px;
+      bottom: -54px;
+      right: -54px;
+
+      @media (max-width: 992px) {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+  .swiper-button-next {
+    right: 0;
+    margin-right: -5px;
+
+    @media (min-width: 1200px) {
+      right: 54px;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 0;
+    margin-left: -5px;
+
+    @media (min-width: 1200px) {
+      left: 54px;
+    }
+  }
+
+}

@@ -1,0 +1,79 @@
+.contact {
+  padding-top: 94px;
+
+  &__inner {
+  }
+
+  &__row {
+    padding: 24px 0;
+  }
+
+  &__map {
+    @media(max-width: $laptop) {
+      order: 1;
+    }
+  }
+
+  &__info {
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__list {
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+  }
+
+  &__list-inner {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 8px;
+  }
+
+  &__list-icon {
+    width: 24px;
+    height: 24px;
+
+    .svg-icon {
+      color: #686868;
+    }
+
+  }
+
+  &__list-info {
+
+    p {
+      color: #686868;
+      line-height: 133%;
+      margin-bottom: 4px;
+    }
+
+    ul {
+      display: grid;
+      gap: 4px;
+
+      li {
+
+        a {
+          position: relative;
+          display: inline-flex;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 150%;
+          text-decoration: underline dotted;
+          text-underline-offset: 6px;
+          color: #282828;
+        }
+      }
+
+    }
+
+  }
+
+
+}

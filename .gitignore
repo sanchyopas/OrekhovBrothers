@@ -1,0 +1,46 @@
+# Django / Python
+media/
+db.sqlite3
+**/__pycache__/
+*.pyc
+**/migrations/
+**/local_settings.py
+**/secret_key.py
+**/staticfiles.json
+**/whitenoise.py
+**/set_whitenoise.py
+static_setup.py
+venv/
+.cache/
+
+# IDE и редакторы
+.idea/
+.vscode/
+
+# Системные файлы
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# NodeJS / Фронтенд
+node_modules/
+dist/
+**/core/
+package-lock.json
+.yarn/cache
+.yarn/install-state.gz
+
+# Конфиденциальные данные и логи
+.env
+.ssh/
+.bash_history
+debug.log
+
+# Разное
+_config.yml
+**/ckeditor/
+**/folder.py

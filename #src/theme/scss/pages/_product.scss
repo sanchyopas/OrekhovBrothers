@@ -1,0 +1,143 @@
+.single {
+  padding-top: 94px;
+
+  &__row {
+    padding: 24px 0;
+  }
+
+  &__images {
+    display: contents;
+
+    @media (min-width: $laptop) {
+      display: block;
+      min-width: 0;
+    }
+  }
+
+
+  &__parameters {
+  }
+
+  &__title {
+    padding: 0 0 16px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 125%;
+    color: #282828;
+
+    @media (min-width: $mobile) {
+      font-size: 32px;
+    }
+  }
+
+  &__result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+
+    p {
+      font-weight: 600;
+    }
+
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  &__buttons {
+    display: grid;
+    gap: 8px;
+  }
+
+
+  &__info {
+    margin-top: 16px;
+
+    @media (max-width: $laptop) {
+      order: 2;
+    }
+  }
+
+}
+
+.gallery {
+
+  @media (max-width: $laptop) {
+    min-width: 0;
+  }
+
+  &--popup {
+    .gallery__slider .swiper-slide {
+      @media (min-width: $laptop) {
+        height: calc(100vh - 240px) !important;
+        min-height: 447px;
+      }
+    }
+  }
+
+  &__slider {
+
+    .swiper-slide {
+
+      @media (min-width: $laptop) {
+        height: 447px !important;
+      }
+
+      img, picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &[data-lightbox] {
+        cursor: pointer;
+      }
+
+    }
+
+  }
+
+  &__slider-thumb {
+    margin-top: 16px;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+      @media(max-width: $tablet) {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 24px;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(251, 251, 251, 0) 0%, #fbfbfb 100%);
+        z-index: 99;
+      }
+    }
+
+    .swiper-slide {
+      border-radius: 4px;
+      padding: 2px;
+      border: 1px solid #ccc;
+      width: 80px !important;
+      height: 80px !important;
+
+      img, picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .swiper-slide-thumb-active {
+      border: 2px solid #136e40;
+    }
+
+  }
+
+}

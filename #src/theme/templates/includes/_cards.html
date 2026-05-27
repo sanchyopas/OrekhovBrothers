@@ -1,0 +1,28 @@
+{% load static %}
+{% load thumbnail %}
+
+{% if categories %}
+  <div class="cards">
+    <div class="cards__grid">
+      {% for category in categories %}
+      <a href="{{ category.get_absolute_url }}" class="card">
+        {% if category.image %}
+          <div class="card__image">
+            {% thumbnail category.image "176x176" format="WEBP" crop="center" as im %}
+              <img src="{{ im.url }}"
+                   width="{{ im.width }}"
+                   height="{{ im.height }}"
+                   alt="{{ category.name }}"
+                   title="{{ category.name }}"
+              >
+            {% endthumbnail %}
+          </div>
+        {% endif %}
+        <div class="card__content">
+          <p class="card__title">{{ category.name }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
