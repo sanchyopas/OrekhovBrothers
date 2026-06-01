@@ -100,6 +100,63 @@ class Product(models.Model):
     category = self.category.first()
     return reverse("product", kwargs={"parent": category.slug, "slug": self.slug})
 
+class ConfigTab(models.Model):
+  category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="tabs")
+  title = models.CharField(max_length=255)
+  sort = models.PositiveIntegerField(default=0)
+
+  class Meta:
+    ordering = ["sort"]
+
+  def __str__(self):
+    return self. name
+
+class FieldType(models.TextChoices):
+  RADIO = "radio", "Radio"
+  CHECKBOX = "checkbox", "Checkbox"
+  SELECT = "select", "Select"
+  NUMBER = "number", "Number"
+  TEXT = "text", "Text"
+
+class ConfigField(models.Model):
+  tab = models.ForeignKey(ConfigTab, on_delete=models.CASCADE, related_name="fields")
+  title = models.CharField(max_length=255)
+  field_type = models.CharField(max_length=20, choices=FieldType.choices)
+  required = models.BooleanField(default=False)
+  sort = models.PositiveIntegerField(default=0)
+  default_value = models.CharField(max_length=255, blank=True, default="")
+
+  class Meta:
+    ordering = ["sort"]
+
+  def __str__(self):
+    return self.title
+
+class ConfigFieldOption(models.Model):
+  field = models.ForeignKey(ConfigField, on_delete=models.CASCADE, related_name="options")
+  title = models.CharField(max_length=255)
+  price = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+  is_default = models.BooleanField(default=False)
+  sort = models.PositiveIntegerField(default=0)
+
+  class Meta:
+      ordering = ["sort"]
+
+  def __str__(self):
+    return self.title
+
+class ProductField(models.Model):
+  """
+    Настройки поля для конкретного товара.
+    Позволяет выключить поле у конкретного дома.
+  """
+
+  product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="field_settings")
+  field = models.ForeignKey(ConfigField, on_delete=models.CASCADE)
+  enabled = models.BooleanField(default=True)
+
+  class Meta:
+    unique_together = ("product", "field")
 
 class ProductImage(models.Model):
   parent = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images", verbose_name="Привязка к продукту")

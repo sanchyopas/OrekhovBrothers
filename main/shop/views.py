@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 import re
 
 # Импорт моделей из файла models текущего каталога
@@ -53,3 +54,17 @@ def product(request, parent, slug):
 
   return render(request, "pages/catalog/product.html", context)
 
+def create_tab(request):
+  title = request.POST.get('title')
+  category_id = request.POST.get('category_id')
+  print(category_id)
+#   tab = ConfigTab.objects.create(
+#     category_id=category_id,
+#     title=title
+#   )
+
+  return JsonResponse({
+    'status': True,
+    'id': 1,
+    'title': 'tab.title',
+  })

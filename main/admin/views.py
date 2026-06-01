@@ -95,7 +95,27 @@ def category_add(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_edit(request, pk):
-  return generic_edit(  request,  pk, Category,  CategoryForm, "", "Редактирование категории", template_name=None)
+  """Универсальное редактирование"""
+
+
+  item = get_object_or_404(Category, id=pk)
+
+  if request.method == "POST":
+    form = CategoryForm(request.POST, request.FILES, instance=item)
+    if form.is_valid():
+      form.save()
+      messages.success(request, "Успешно сохранено !")
+      return redirect(request.META.get('HTTP_REFERER'))
+    else:
+      return render(request, "category/template-edit.html", {"form": form, "item": item})
+
+  form = CategoryForm(instance=item)
+  context = {
+      "form": form,
+      "item": item,
+      "title": "Редактирование категории",
+  }
+  return render(request, "category/template-edit.html", context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_delete(request, pk):
