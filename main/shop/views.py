@@ -56,15 +56,43 @@ def product(request, parent, slug):
 
 def create_tab(request):
   title = request.POST.get('title')
-  category_id = request.POST.get('category_id')
-  print(category_id)
+  category_id = request.POST.get('category')
+
 #   tab = ConfigTab.objects.create(
 #     category_id=category_id,
-#     title=title
+#     title=title,
 #   )
 
   return JsonResponse({
     'status': True,
     'id': 1,
     'title': 'tab.title',
+  })
+
+def create_field(request):
+  title = request.POST.get('name')
+  type = request.POST.get('type')
+  tab_id = request.POST.get('tab_id')
+
+
+  field = ConfigField.objects.create(
+    tab_id=tab_id,
+    title=title,
+    field_type=type
+  )
+
+  return JsonResponse({
+    'status': True,
+    'id': field.id,
+    "title": field.title,
+    "type": field.field_type,
+  })
+
+def create_options(request):
+
+  return JsonResponse({
+    'status': True,
+    'id': 22,
+    "title": "Сосна",
+    "price": 20000,
   })

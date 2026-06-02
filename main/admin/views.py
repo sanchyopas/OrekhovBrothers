@@ -97,8 +97,8 @@ def category_add(request):
 def category_edit(request, pk):
   """Универсальное редактирование"""
 
-
   item = get_object_or_404(Category, id=pk)
+  tabs = ConfigTab.objects.all()
 
   if request.method == "POST":
     form = CategoryForm(request.POST, request.FILES, instance=item)
@@ -111,6 +111,7 @@ def category_edit(request, pk):
 
   form = CategoryForm(instance=item)
   context = {
+      "tabs": tabs,
       "form": form,
       "item": item,
       "title": "Редактирование категории",
