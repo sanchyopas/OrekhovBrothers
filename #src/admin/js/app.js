@@ -5,6 +5,7 @@ import ("./modules/mask.js");
 import ("./modules/uploadImage.js");
 import ("./modules/slugify.js");
 import ("./modules/configurator/creteTab.js");
+import ("./modules/_popup.js");
 
 /**
  * Переключение вкладок на страницах продуктов, категорий

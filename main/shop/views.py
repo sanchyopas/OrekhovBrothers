@@ -75,17 +75,17 @@ def create_field(request):
   tab_id = request.POST.get('tab_id')
 
 
-  field = ConfigField.objects.create(
-    tab_id=tab_id,
-    title=title,
-    field_type=type
-  )
+#   field = ConfigField.objects.create(
+#     tab_id=tab_id,
+#     title=title,
+#     field_type=type
+#   )
 
   return JsonResponse({
     'status': True,
-    'id': field.id,
-    "title": field.title,
-    "type": field.field_type,
+    'id':1,
+    "title": 'field.title',
+    "type": 'field.field_type',
   })
 
 def create_options(request):

@@ -7,7 +7,7 @@ export const tabSkelet = (dataJson) => {
         <button
           type="button"
           class="add-field-btn add-tab__button"
-          data-tab-id="${dataJson.id}"
+          data-id="${dataJson.id}"
         >
           Добавить поле
         </button>

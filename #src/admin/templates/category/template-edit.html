@@ -133,31 +133,31 @@
           <button type="button" class="tab-add form__btn" id="add-tab">Добавить конфигурацию</button>
           <div class="tabs-container" id="tabs-container">
             {% if tabs %}
-              {% for tab in tabs %}
-                <div class="config-tab" data-tab-id="{{ tab.id }}">
-                  <div class="config-tab__header">
-                    <h3>{{ tab.title }}</h3>
+            {% for tab in tabs %}
+            <div class="config-tab" data-tab-id="{{ tab.id }}">
+              <div class="config-tab__header">
+                <h3>{{ tab.title }}</h3>
 
-                    <button type="button" class="add-field-btn add-tab__button" data-tab-id="{{ tab.id }}">
-                      Добавить поле
-                    </button>
-                  </div>
+                <button type="button" class="add-field-btn add-tab__button" data-tab-id="{{ tab.id }}">
+                  Добавить поле
+                </button>
+              </div>
 
-                  <div class="fields-container">
-                    {% for field in tab.fields.all %}
-                      <div class="config-field" data-field-id="{{ field.id }}">
+              <div class="fields-container">
+                {% for field in tab.fields.all %}
+                <div class="config-field" data-field-id="{{ field.id }}">
 
-                        <div>{{ field.title }}</div>
+                  <div>{{ field.title }}</div>
 
-                        <button type="button" class="add-option-btn" data-field-id="{{ field.id }}">
-                          Добавить вариант
-                        </button>
-                        <div class="options-container"></div>
-                      </div>
-                    {% endfor %}
-                  </div>
+                  <button type="button" class="add-option-btn" data-field-id="{{ field.id }}">
+                    Добавить вариант
+                  </button>
+                  <div class="options-container"></div>
                 </div>
-              {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
             {% endif %}
           </div>
         </div>
@@ -166,46 +166,54 @@
   </div>
 </div>
 
-<div class="add-config">
-  <form id="create-tab-form">
+<div class="popup-config add-config" data-popup="add-config">
+  <form id="create-tab-form" class="popup-config__form">
     {% csrf_token %}
-    <label>
-      <input type="text" name="title" placeholder="Название таба" class="add_tab__input form__input" required>
-    </label>
-    <label>
+    <div class="popup-config__row">
+      <input type="text" name="title" placeholder="Название таба" class="popup-config__input form__input" required>
       <input type="hidden" class="form__hidden" name="category" value="{{ item.pk }}">
-    </label>
-    <button type="submit" class="add-tab__button" id="create-tab">Создать</button>
+      <button type="submit" class="popup-config__save" id="create-tab">
+        <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+      </button>
+    </div>
+    <p class="popup-config__hint">Нажмите сохранить чтобы продолжить создание</p>
   </form>
 </div>
 
-<div class="add-field">
-  <form id="create-field-form">
+<div class="popup-config add-field" data-popup="add-field">
+  <form id="create-field-form" class="popup-config__form">
     {% csrf_token %}
-    <label>
-      <input type="text" name="name" placeholder="Название поля" class="add_tab__input form__input">
-    </label>
-    <label>
-      <span>Тип:</span>
-      <select name="type" id="type-field">
-        <option value="radio">Radio Btn</option>
-        <option value="checkbox">Checkbox Btn</option>
-      </select>
-    </label>
-    <button type="submit" class="add-tab__button" id="create-field">Создать</button>
+    <div class="popup-config__row">
+      <label>
+        <input type="text" name="name" placeholder="Название поля" class="popup-config__input">
+      </label>
+      <button type="submit" class="popup-config__save" id="create-field">
+        <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+      </button>
+      <label>
+        <span>Тип:</span><br>
+        <select name="type" class="popup-config__select" id="type-field">
+          <option value="radio">Radio</option>
+          <option value="checkbox">Checkbox</option>
+        </select>
+      </label>
+
+    </div>
   </form>
 </div>
 
-<div class="add-option">
-  <form id="create-option-form">
+<div class="popup-config add-option" data-popup="add-option">
+  <form id="create-option-form" class="popup-config__form">
     {% csrf_token %}
     <label>
-      <input type="text" name="title" placeholder="Название варианта" >
+      <input type="text" name="title" placeholder="Название варианта" class="popup-config__input">
     </label>
     <label>
-      <input type="number" name="price" placeholder="Цена">
+      <input type="number" name="price" placeholder="Цена" class="popup-config__input">
     </label>
-    <button type="submit" class="add-tab__button" id="create-option">Создать</button>
+    <button type="submit" class="popup-config__save" id="create-option">
+      <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+    </button>
   </form>
 </div>
 
