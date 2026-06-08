@@ -249,6 +249,16 @@ ol {
     font-size: 14px;
   }
 
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid red;
+
+  }
+
 }
 
 

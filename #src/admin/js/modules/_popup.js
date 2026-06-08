@@ -1,10 +1,22 @@
-(() => {
-  const popups = document.querySelectorAll('[data-popup]');
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-popup]');
 
-  popups?.forEach(popup => {
-    popup.addEventListener('click', (e) => {
-      popup.style.display = 'block';
-    })
-  })
+  if (!btn) return;
 
-})()
+  const popupID = btn.dataset.popup;
+  const popup = document.getElementById(popupID);
+
+  if (popupID && popup) {
+    popup.style.display = 'block';
+  }
+})
+
+export const closePopup = (popupId) => {
+  const popup = document.getElementById(popupId);
+  if (popup) {
+    popup.style.display = 'none';
+  }
+}
+
+
+

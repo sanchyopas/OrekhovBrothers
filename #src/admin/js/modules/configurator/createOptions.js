@@ -1,39 +1,44 @@
 import {fieldOptions} from "./_htmlSkelet.js";
 import {submitConfigData} from "./index.js";
+import {closePopup} from "../_popup.js";
+
+let currentID = null;
+let currentPopup = null;
 
 const createOptionsForm = document.getElementById("create-option-form")
-const openOptionsModel = (fieldId) => {
-  createOptionsForm?.addEventListener("submit", async (e) => {
-    e.preventDefault();
 
-    const form = e.target;
-    const formData = new FormData(form);
-    formData.append('id', fieldId);
+createOptionsForm?.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const data = await submitConfigData('/category/options/create/', formData);
+  const form = e.target;
+  const formData = new FormData(form);
+  formData.append('id', currentID);
 
-    if (data && data.status) {
-      addOptionModal.style.display = 'none';
-      const field = document.querySelector(`[data-field-id="${fieldId}"]`);
+  const data = await submitConfigData('/category/options/create/', formData);
 
-      const optionsContainer = field.querySelector('.options-container');
+  if (data && data.status) {
+    closePopup(currentPopup);
+    const field = document.querySelector(`[data-field-id="${currentID}"]`);
 
-      optionsContainer.insertAdjacentHTML('beforeend', fieldOptions(data));
+    const optionsContainer = field.querySelector('.options-container');
 
-      form.reset();
-    }
-  })
-}
+    optionsContainer.insertAdjacentHTML('beforeend', fieldOptions(data));
+
+    form.reset();
+  }
+});
 
 document.addEventListener('click', (e) => {
-  if (!e.target.classList.contains('add-option-btn')) {
-    return;
+  if (e.target.classList.contains('add-option-btn')) {
+    currentID = e.target.dataset.id;
+    currentPopup = e.target.dataset.popup;
+
+    const popup = document.getElementById(currentPopup);
+
+    if (currentID && popup) {
+      popup.style.display = 'block';
+    }
   }
 
-  const fieldId = e.target.dataset.fieldId;
-
-  if (fieldId) {
-    openOptionsModel(fieldId);
-  }
 
 })

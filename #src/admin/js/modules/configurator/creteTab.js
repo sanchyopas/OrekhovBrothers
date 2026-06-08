@@ -1,5 +1,5 @@
-import {tabSkelet} from "./_htmlSkelet.js";
 import {submitConfigData} from "./index.js";
+import {tabSkeleton} from "./_htmlSkelet.js";
 
 const createTabForm = document.getElementById("create-tab-form");
 
@@ -14,7 +14,7 @@ createTabForm?.addEventListener("submit", async (e) => {
   if (data && data.status) {
     document.querySelector('.add-config').style.display = 'none';
     const tabsContainer = document.querySelector('.tabs-container');
-    tabsContainer.insertAdjacentHTML('beforeend', tabSkelet(data));
+    tabsContainer.insertAdjacentHTML('beforeend', tabSkeleton(data));
     form.reset();
   }
 });

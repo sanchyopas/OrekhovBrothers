@@ -1,4 +1,4 @@
-export const tabSkelet = (dataJson) => {
+export const tabSkeleton = (dataJson) => {
   return `
     <div class="config-tab" data-tab-id="${dataJson.id}">
       <div class="config-tab__header">
@@ -8,6 +8,7 @@ export const tabSkelet = (dataJson) => {
           type="button"
           class="add-field-btn add-tab__button"
           data-id="${dataJson.id}"
+          data-popup="add-field"
         >
           Добавить поле
         </button>
@@ -17,7 +18,7 @@ export const tabSkelet = (dataJson) => {
     </div>`
 };
 
-export const fieldSkelet = (dataJson) => {
+export const fieldSkeleton = (dataJson) => {
   return `
     <div
       class="config-field"
@@ -28,7 +29,8 @@ export const fieldSkelet = (dataJson) => {
 
       <button
         class="add-option-btn"
-        data-field-id="${dataJson.id}"
+        data-id="${dataJson.id}"
+        data-popup="add-option"
       >
         Добавить вариант
       </button>

@@ -24,6 +24,7 @@ class BaseSettings(SingletonModel):
 class HomeTemplate(SingletonModel):
   meta_h1 = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок первого уровня")
   subtitle = models.TextField(blank=True, null=True, verbose_name="Подзаголовок")
+  image = models.FileField(upload_to="home-page/", blank=True, null=True, verbose_name="Подложка")
   meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.CharField(max_length=350, null=True, blank=True, verbose_name="Meta keywords")

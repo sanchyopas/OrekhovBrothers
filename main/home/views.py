@@ -13,7 +13,7 @@ def index(request):
   except:
     settings = HomeTemplate.load()
 
-  categories = Category.objects.all()
+  categories = Category.objects.filter(status='published')
 
   context = {
     "settings": settings,

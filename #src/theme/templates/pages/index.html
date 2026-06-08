@@ -10,9 +10,18 @@
 {% block content %}
 
 <div class="hero">
+  {% if settings.image %}
   <div class="hero__bg">
-    <img src="{% static 'theme/img/banner.jpg' %}" alt="Фоновая картинка">
+    {% thumbnail settings.image "1920x1080" format="WEBP" crop="center" as im %}
+    <img src="{{ im.url }}"
+         width="{{ im.width }}"
+         height="{{ im.height }}"
+         alt="{{ category.name }}"
+         title="{{ category.name }}"
+    >
+    {% endthumbnail %}
   </div>
+  {% endif %}
   <div class="container">
     <div class="hero__inner">
       <div class="swiper hero__slider" data-delay="5000">

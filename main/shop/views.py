@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.core.paginator import Paginator
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 import re
+import json
 
 # Импорт моделей из файла models текущего каталога
 from .models import *
@@ -54,45 +57,156 @@ def product(request, parent, slug):
 
   return render(request, "pages/catalog/product.html", context)
 
+
+@require_http_methods(["POST"])
 def create_tab(request):
-  title = request.POST.get('title')
-  category_id = request.POST.get('category')
+    """Создание новой вкладки"""
+    try:
+        title = request.POST.get('title', '').strip()
+        category_id = request.POST.get('category')
 
-#   tab = ConfigTab.objects.create(
-#     category_id=category_id,
-#     title=title,
-#   )
+        # Валидация
+        if not title:
+            return JsonResponse({
+                'status': False,
+                'error': 'Название вкладки обязательно'
+            }, status=400)
 
-  return JsonResponse({
-    'status': True,
-    'id': 1,
-    'title': 'tab.title',
-  })
+        if len(title) < 2:
+            return JsonResponse({
+                'status': False,
+                'error': 'Название должно содержать минимум 2 символа'
+            }, status=400)
 
+        if not category_id:
+            return JsonResponse({
+                'status': False,
+                'error': 'ID категории обязателен'
+            }, status=400)
+
+        # Создаём вкладку
+        tab = ConfigTab.objects.create(
+            category_id=category_id,
+            title=title,
+        )
+
+        return JsonResponse({
+            'status': True,
+            'id': tab.id,
+            'title': tab.title,
+        })
+
+    except Exception as e:
+        return JsonResponse({
+            'status': False,
+            'error': str(e)
+        }, status=500)
+
+
+@require_http_methods(["POST"])
 def create_field(request):
-  title = request.POST.get('name')
-  type = request.POST.get('type')
-  tab_id = request.POST.get('tab_id')
+    """Создание нового поля"""
+    try:
+        # ВАЖНО: используем 'title' как в JS, а не 'name'
+        title = request.POST.get('name', '').strip()
+        field_type = request.POST.get('type', 'text')
+        tab_id = request.POST.get('id')
+
+        # Валидация
+        if not title:
+            return JsonResponse({
+                'status': False,
+                'error': 'Название поля обязательно'
+            }, status=400)
+
+        if not tab_id:
+            return JsonResponse({
+                'status': False,
+                'error': 'ID вкладки обязателен'
+            }, status=400)
+
+        # Проверяем существует ли вкладка
+        try:
+            tab = ConfigTab.objects.get(id=id)
+        except ConfigTab.DoesNotExist:
+            return JsonResponse({
+                'status': False,
+                'error': 'Вкладка не найдена'
+            }, status=404)
+
+        # Создаём поле
+        field = ConfigField.objects.create(
+            tab_id=tab_id,
+            title=title,
+            field_type=field_type
+        )
+
+        return JsonResponse({
+            'status': True,
+            'id': 'field.id',
+            'title': 'field.title',
+            'type': 'field.field_type',
+        })
+
+    except Exception as e:
+        return JsonResponse({
+            'status': False,
+            'error': str(e)
+        }, status=500)
 
 
-#   field = ConfigField.objects.create(
-#     tab_id=tab_id,
-#     title=title,
-#     field_type=type
-#   )
-
-  return JsonResponse({
-    'status': True,
-    'id':1,
-    "title": 'field.title',
-    "type": 'field.field_type',
-  })
-
+@require_http_methods(["POST"])
 def create_options(request):
+    """Создание новой опции для поля"""
+    try:
+        title = request.POST.get('title', '').strip()
+        price = request.POST.get('price', 0)
+        field_id = request.POST.get('id')
 
-  return JsonResponse({
-    'status': True,
-    'id': 22,
-    "title": "Сосна",
-    "price": 20000,
-  })
+        # Валидация
+        if not title:
+            return JsonResponse({
+                'status': False,
+                'error': 'Название опции обязательно'
+            }, status=400)
+
+        if not field_id:
+            return JsonResponse({
+                'status': False,
+                'error': 'ID поля обязателен'
+            }, status=400)
+
+        # Преобразуем цену
+        try:
+            price = int(price) if price else 0
+        except (ValueError, TypeError):
+            price = 0
+
+        # Проверяем существует ли поле
+        try:
+            field = ConfigField.objects.get(id=id)
+        except ConfigField.DoesNotExist:
+            return JsonResponse({
+                'status': False,
+                'error': 'Поле не найдено'
+            }, status=404)
+
+        # Создаём опцию
+        option = ConfigFieldOption.objects.create(
+            field=id,
+            title=title,
+            price=price
+        )
+
+        return JsonResponse({
+            'status': True,
+            'id': option.id,
+            'title': option.title,
+            'price': option.price,
+        })
+
+    except Exception as e:
+        return JsonResponse({
+            'status': False,
+            'error': str(e)
+        }, status=500)
