@@ -1,15 +1,7 @@
 /* Проверка на мобольное устройство */
-export const isMobile = () => {
-  return (
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    ) ||
-    (('ontouchstart' in window || navigator.maxTouchPoints > 0) &&
-      window.innerWidth < 768)
-  );
-};
+const isMobile = window.matchMedia('(pointer: coarse)').matches;
 
-if (isMobile()) {
+if (isMobile) {
   document.documentElement.classList.add('_touch');
 } else {
   document.documentElement.classList.add('_pc');

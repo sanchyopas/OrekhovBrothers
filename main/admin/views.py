@@ -77,12 +77,44 @@ def admin_settings(request):
 """ Настройки главной страницы """
 @user_passes_test(lambda u: u.is_superuser)
 def admin_home_page(request):
-  return generic_singleton_edit(request,
-  HomeTemplateForm,
-  HomeTemplate,
-  "Настройки главной страницы",
-  template_name="common-template/_home-page.html"
-  )
+  try:
+    instance = HomeTemplate.objects.get()
+  except model_class.DoesNotExist:
+    instance = HomeTemplate()
+    instance.save()
+  except Exception as e:
+    messages.error(request, f"Ошибка: {e}")
+    return redirect(request.META.get('HTTP_REFERER'))
+
+  slides = Slider.objects.filter(status='published')
+
+  if request.method == "POST":
+    form = HomeTemplateForm(request.POST, request.FILES, instance=instance)
+
+    if form.is_valid():
+      try:
+        saved_instance = form.save()
+        messages.success(request, "Успешно сохранено!")
+        return redirect(request.META.get('HTTP_REFERER'))
+      except Exception as e:
+        messages.error(request, f"Ошибка сохранения: {e}")
+    else:
+      return render(request, "common-template/_home-page.html", {
+        "form": form,
+        "title": 'Редактирование главной страницы',
+        "settings": instance,
+        "slides": slides,
+      })
+
+  form = HomeTemplateForm(instance=instance)
+
+  context = {
+    "form": form,
+    "title": 'Редактирование главной страницы',
+    "settings": instance,
+    "slides": slides,
+  }
+  return render(request, "common-template/_home-page.html", context)
 
 """ Категории товаров """
 @user_passes_test(lambda u: u.is_superuser)
@@ -210,5 +242,39 @@ def model_char_add(request):
 def model_char_edit(request, pk):
   return generic_edit(request,  pk, Characteristic,  CharacteristicForm, "admin_char_model", "Редактирование характеристик", template_name=None)
 
+def slider_add(request):
+  form = SliderForm()
+  if request.method == 'POST':
+    form = SliderForm(request.POST, request.FILES)
+    if form.is_valid():
+      form.save()
+      messages.success(request, 'Успешно сохранено !')
+      return redirect(request.META.get('HTTP_REFERER'))
+    else:
+      error_list = []
+      for field_name, errors in form.errors.items():
+        # если ошибка не привязана к полю (non_field_errors)
+        if field_name == "__all__":
+          for error in errors:
+            error_list.append(error)
+          continue
 
+        # получаем label поля
+        field_label = form[field_name].label
+
+        for error in errors:
+          error_list.append(f"{field_label}: {error}")
+      messages.error(request, " | ".join(error_list))
+      return render(request, "common-template/template-edit-add-page.html", {"form": form, "title": "Добавление слайдера"})
+  context = {
+    "form": form,
+    "title": 'Добавление слайдера'
+  }
+  return render(request, "common-template/template-edit-add-page.html", context)
+
+def slider_edit(request, pk):
+  pass
+
+def slider_delete(request, pk):
+  pass
 

@@ -24,21 +24,30 @@
   {% endif %}
   <div class="container">
     <div class="hero__inner">
-      <div class="swiper hero__slider" data-delay="5000">
+      {% if slides %}
+      <!--      data-delay="5000"-->
+      <div class="swiper hero__slider">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="@img/banner-image.jpg" alt=""></div>
-          <div class="swiper-slide"><img src="@img/banner-image.jpg" alt=""></div>
-          <div class="swiper-slide"><img src="@img/banner-image.jpg" alt=""></div>
+          {% for slide in slides %}
+          <div class="swiper-slide">
+            {% thumbnail slide.image "1216x150" format="WEBP" crop="center" as im %}
+            <img src="{{ im.url }}" alt="{{ slide.title }}" title="{{ slide.title }}"
+                 width="{{ im.width }}" height="{{ im.width }}"
+            >
+            {% endthumbnail %}
+          </div>
+          {% endfor %}
         </div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination hero__swiper-pagination"></div>
       </div>
+      {% endif %}
       <div class="hero__content">
         {% if settings.meta_h1 %}
         <h1 class="hero__title title">{{ settings.meta_h1 }}</h1>
         {% endif %}
 
         {% if settings.subtitle %}
-        <p class="hero__subtitle">{{ settings.subtitle }}</p>
+        <p class="hero__subtitle">{{ settings.subtitle.plain }}</p>
         {% endif %}
       </div>
     </div>
@@ -46,19 +55,20 @@
     {% include "../includes/_cards.html" with categories=categories %}
 
     <div class="text-columns">
+      {% if settings.left_text %}
       <div class="text-column">
         <p>
-          Сайт TLP70.ru носит исключительно информационный характер и ни при каких условиях не является публичной
-          офертой. Для получения подробной информации, в том числе технического характера, пожалуйста, обращайтесь в
-          офисы продаж.
+          {{ settings.left_text.plain }}
         </p>
       </div>
+      {% endif %}
+      {% if settings.right_text %}
       <div class="text-column">
         <p>
-          Внешний вид строений может отличаться от визуализации, представленной на сайте. Завод-изготовитель вправе
-          вносить в конструкцию усовершенствования, не влияющие на эксплуатационные качества строений.
+          {{ settings.right_text.plain }}
         </p>
       </div>
+      {% endif %}
     </div>
   </div>
 </div>

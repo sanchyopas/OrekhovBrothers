@@ -14,10 +14,11 @@ def index(request):
     settings = HomeTemplate.load()
 
   categories = Category.objects.filter(status='published')
-
+  slides = Slider.objects.filter(status='published')
   context = {
     "settings": settings,
     "categories": categories,
+    "slides": slides
   }
 
   return render(request, 'pages/index.html', context)

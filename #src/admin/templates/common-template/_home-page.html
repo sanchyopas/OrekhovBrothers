@@ -7,6 +7,7 @@
         <div class="page__head-tab">
           <button type="button" data-name="basic" class="page__head-btn _active">Основные</button>
           <button type="button" data-name="seo" class="page__head-btn">Поля SEO</button>
+          <button type="button" data-name="slider" class="page__head-btn">Слайдер</button>
         </div>
         <div class="page__head-right">
           <button type="submit" class="form__btn">
@@ -37,6 +38,25 @@
               {{ form.subtitle }} {{ form.subtitle.errors }}
             </div>
             {% endif %}
+
+            {% if form.left_text %}
+            <div class="form__group">
+              <label for="{{ form.left_text.id_for_label }}" class="form__controls-label">
+                {{ form.left_text.label }} <span>:</span>
+              </label>
+              {{ form.left_text }} {{ form.left_text.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.right_text %}
+            <div class="form__group">
+              <label for="{{ form.right_text.id_for_label }}" class="form__controls-label">
+                {{ form.right_text.label }} <span>:</span>
+              </label>
+              {{ form.right_text }} {{ form.right_text.errors }}
+            </div>
+            {% endif %}
+
           </div>
           <div class="page-content__col">
             {% if form.image %}
@@ -82,6 +102,19 @@
             {% endif %}
 
             <!-- Seo -->
+          </div>
+        </div>
+      </div>
+      <div class="page-content" id="slider">
+        <div class="page-content__row">
+          <div class="page-content__col">
+            <a href="{% url 'slider_add' %}">Добавить</a>
+            {% for slide in slides %}
+            <a href="">
+              {{ slide.title }}
+              <img src="{{ slide.image.url }}" alt="">
+            </a>
+            {% endfor %}
           </div>
         </div>
       </div>

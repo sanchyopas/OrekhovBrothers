@@ -51,26 +51,26 @@ const heroSlider = new Swiper(heroSliderEl, {
   spaceBetween: 20,
   grabCursor: true,
 
-  autoplay: {
-    delay: Number(delay),
-    disableOnInteraction: false,
-  },
+  // autoplay: {
+  //   delay: Number(delay),
+  //   disableOnInteraction: false,
+  // },
 
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
   },
 
-  on: {
-    init(swiper) {
-      const el = swiper.el;
-
-      const onEnter = () => swiper.autoplay.stop();
-      const onLeave = () => swiper.autoplay.start();
-
-      el.addEventListener('mouseenter', onEnter);
-      el.addEventListener('mouseleave', onLeave);
-    },
-  },
+  // on: {
+  //   init(swiper) {
+  //     const el = swiper.el;
+  //
+  //     const onEnter = () => swiper.autoplay.stop();
+  //     const onLeave = () => swiper.autoplay.start();
+  //
+  //     el.addEventListener('mouseenter', onEnter);
+  //     el.addEventListener('mouseleave', onLeave);
+  //   },
+  // },
 
 });

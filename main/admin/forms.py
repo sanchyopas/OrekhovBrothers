@@ -125,3 +125,8 @@ class HomeTemplateForm(AutoStyledModelForm):
   class Meta:
     model = HomeTemplate
     fields = "__all__"
+
+class SliderForm(AutoStyledModelForm):
+  class Meta:
+    model = Slider
+    fields = "__all__"
