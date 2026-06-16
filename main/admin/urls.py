@@ -6,7 +6,25 @@ from . import views
 
 urlpatterns = [
     path('', views.admin, name="admin"),
+
+    path('socials/', views.socials, name='socials'),
+    path('socials/add/', views.socials_add, name='socials_add'),
+    path('socials/<int:pk>/edit/', views.socials_edit, name='socials_edit'),
+    path('socials/<int:pk>/delete/', views.socials_delete, name='socials_delete'),
+
+
+    path('phones/', views.phones, name='phones'),
+    path('phones/add/', views.phones_add, name='phones_add'),
+    path('phones/<int:pk>/edit/', views.phones_edit, name='phones_edit'),
+    path('phones/<int:pk>/delete/', views.phones_delete, name='phones_delete'),
+
+    path('emails/', views.emails, name='emails'),
+    path('emails/add/', views.emails_add, name='emails_add'),
+    path('emails/<int:pk>/edit/', views.emails_edit, name='emails_edit'),
+    path('emails/<int:pk>/delete/', views.emails_delete, name='emails_delete'),
+
     path('home-page/', views.admin_home_page, name='admin_home_page'),
+    path('reviews-page/', views.admin_reviews, name='admin_reviews'),
 
     path('admin-shop/', views.admin_shop, name='admin_shop'),
 

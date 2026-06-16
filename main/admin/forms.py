@@ -110,6 +110,23 @@ class ProductForm(AutoStyledModelForm):
       'category': forms.CheckboxSelectMultiple,
     }
 
+class SocialsForm(AutoStyledModelForm):
+  class Meta:
+    model = Socials
+    fields = "__all__"
+    widgets = {
+      'branch': forms.CheckboxSelectMultiple,
+    }
+
+class ContactPhonesForm(AutoStyledModelForm):
+  class Meta:
+    model = ContactPhones
+    fields = "__all__"
+
+class EmailsForm(AutoStyledModelForm):
+  class Meta:
+    model = Emails
+    fields = "__all__"
 
 class ProductImageForm(AutoStyledModelForm):
   class Meta:
@@ -120,10 +137,14 @@ class ProductImageForm(AutoStyledModelForm):
         'src': CustomImageWidget(),
     }
 
-
 class HomeTemplateForm(AutoStyledModelForm):
   class Meta:
     model = HomeTemplate
+    fields = "__all__"
+
+class ReviewsForm(AutoStyledModelForm):
+  class Meta:
+    model = Reviews
     fields = "__all__"
 
 class SliderForm(AutoStyledModelForm):

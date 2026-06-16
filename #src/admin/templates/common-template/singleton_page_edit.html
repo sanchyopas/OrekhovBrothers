@@ -40,6 +40,15 @@
               {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
             </div>
 
+            {% if form.reviews_code %}
+            <div class="form__group">
+              <label for="{{ form.reviews_code.id_for_label }}" class="form__controls-label">
+                {{ form.reviews_code.label }}:
+              </label>
+              {{ form.reviews_code }} {{ form.reviews_code.errors }}
+            </div>
+            {% endif %}
+
             {% if form.description %}
             <div class="form__group">
               <label for="{{ form.description.id_for_label }}" class="form__controls-label">

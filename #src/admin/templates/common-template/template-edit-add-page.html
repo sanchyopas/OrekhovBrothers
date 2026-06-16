@@ -52,7 +52,8 @@
 
             {% if form.pattern_seo %}
             <div class="form__group">
-              <label for="{{ form.pattern_seo.id_for_label }}" class="form__controls-label">{{ form.pattern_seo.label }}: </label>
+              <label for="{{ form.pattern_seo.id_for_label }}" class="form__controls-label">{{ form.pattern_seo.label
+                }}: </label>
               {{ form.pattern_seo }} {{ form.pattern_seo.errors }}
             </div>
             {% endif %}
@@ -460,9 +461,17 @@
             </div>
             {% endif %}
 
+            {% if form.view %}
+            <div class="form__group">
+              <label for="{{ form.view.id_for_label }}" class="form__controls-label">{{ form.view.label }}:</label>
+              {{ form.view }} {{ form.view.errors }}
+            </div>
+            {% endif %}
+
             {% if form.add_slider %}
             <div class="form__group">
-              <label for="{{ form.add_slider.id_for_label }}" class="form__controls-label">{{ form.add_slider.label }}:</label>
+              <label for="{{ form.add_slider.id_for_label }}" class="form__controls-label">{{ form.add_slider.label
+                }}:</label>
               {{ form.add_slider }} {{ form.add_slider.errors }}
             </div>
             {% endif %}
@@ -521,28 +530,28 @@
         <button type="button" id="add-property" class="form__add-property">Добавить характеристику</button>
       </div>
       <div class="page-content" id="list">
-          <div class="page-content__onecol">
-            <div class="grid-items">
-              {% for item in items %}
-              <div class="grid-item">
-                {% if item.image %}
-                <div class="grid-item__image">
-                  {% thumbnail item.image "250x250" format="WEBP" crop="center" as im %}
-                  <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"/>
-                  {% endthumbnail %}
-                </div>
-                {% endif %}
-                <div class="grid-item__content">
-                  <p class="grid-item__title">
-                    {% if item.title %}{{ item.title }} {% endif %}
-                    {{ item.name }}
-                  </p>
-                  {% include 'common/_edit-block.html' with edit_url=edit_url delete_url=delete_url %}
-                </div>
+        <div class="page-content__onecol">
+          <div class="grid-items">
+            {% for item in items %}
+            <div class="grid-item">
+              {% if item.image %}
+              <div class="grid-item__image">
+                {% thumbnail item.image "250x250" format="WEBP" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"/>
+                {% endthumbnail %}
               </div>
-              {% endfor %}
+              {% endif %}
+              <div class="grid-item__content">
+                <p class="grid-item__title">
+                  {% if item.title %}{{ item.title }} {% endif %}
+                  {{ item.name }}
+                </p>
+                {% include 'common/_edit-block.html' with edit_url=edit_url delete_url=delete_url %}
+              </div>
             </div>
+            {% endfor %}
           </div>
+        </div>
       </div>
       <div class="page-content" id="gallery">
         <div class="page-content__onecol">

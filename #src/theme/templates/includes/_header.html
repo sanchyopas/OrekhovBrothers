@@ -23,9 +23,9 @@
             </ul>
             {% endif %}
           </li>
-          <li class="nav__item"><a href="/reviews.html" class="nav__link btn--text">Отзывы</a></li>
+          <li class="nav__item"><a href="{% url 'reviews' %}" class="nav__link btn--text">Отзывы</a></li>
           <li class="nav__item"><a href="/about.html" class="nav__link btn--text">О компании</a></li>
-          <li class="nav__item"><a href="/contact.html" class="nav__link btn--text">Контакты</a></li>
+          <li class="nav__item"><a href="{% url 'contact' %}" class="nav__link btn--text">Контакты</a></li>
         </ul>
       </nav>
 
@@ -45,9 +45,9 @@
             </ul>
             {% endif %}
             <ul class="mobile-menu__main">
-              <li><a href="/reviews.html">Отзывы</a></li>
+              <li><a href="{% url 'reviews' %}">Отзывы</a></li>
               <li><a href="/about.html">О компании</a></li>
-              <li><a href="/contact.html">Контакты</a></li>
+              <li><a href="{% url 'contact' %}">Контакты</a></li>
             </ul>
           </nav>
         </div>
@@ -63,40 +63,39 @@
       </div>
 
       <div class="header__controls">
+        {% if socials %}
         <ul class="social">
+          {% for social in socials %}
           <li class="social__item">
-            <a href="" target="_blank">
-              <img src="{% static 'theme/img/icons/i-gis.png' %}" alt="">
+            <a href="{{ social.link }}" target="_blank">
+              {% thumbnail social.image "40x40" format="WEBP" crop="center" as im %}
+              <img src="{{ im.url }}"
+                   width="{{ im.width }}"
+                   height="{{ im.height }}"
+                   alt="{{ social.name }}"
+                   title="{{ social.name }}"
+              >
+              {% endthumbnail %}
             </a>
           </li>
-          <li class="social__item">
-            <a href="" target="_blank">
-              <img src="{% static 'theme/img/icons/i-vk.png' %}" alt="">
-            </a>
-          </li>
-          <li class="social__item">
-            <a href="" target="_blank">
-              <img src="{% static 'theme/img/icons/i-max.png' %}" alt="">
-            </a>
-          </li>
+          {% endfor %}
         </ul>
+        {% endif %}
         <a href="tel:+83822503509" type="button" class="header__mobile-phone">
           <img src="{% static 'theme/img/icons/phone.svg' %}" alt="Иконка телефона">
         </a>
+        {% if phones_header %}
         <div class="header__phone">
-          <a href="tel:+83822503509" class="header__phone-link js-copy-clipboard" data-copy="+8 (3822) 503 509">
-            +8 (3822) 503 509
+          {% for phone in phones_header %}
+          <a href="tel:{{ phone.phone }}" class="header__phone-link js-copy-clipboard" data-copy="{{ phone.phone }}">
+            {{ phone.phone }}
             <div class="tooltip">
               <p>Телефон скопирован</p>
             </div>
           </a>
-          <a href="tel:+79138206658" class="header__phone-link js-copy-clipboard" data-copy="+7 (913) 820 66 58">
-            +7 (913) 820 66 58
-            <div class="tooltip ">
-              <p>Телефон скопирован</p>
-            </div>
-          </a>
+          {% endfor %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>

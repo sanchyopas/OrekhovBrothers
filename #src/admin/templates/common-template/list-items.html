@@ -54,6 +54,18 @@
           </div>
           {% endif %}
 
+          {% if item.phone %}
+          <div class="grid-item__title" style="text-wrap: nowrap;">
+            {{ item.phone }}
+          </div>
+          {% endif %}
+
+          {% if item.email %}
+          <div class="grid-item__title" style="text-wrap: nowrap;">
+            {{ item.email }}
+          </div>
+          {% endif %}
+
           {% if item.icon_white %}
           <div class="grid-item__image">
             <img src="{{ item.icon_white.url }}" alt=""/>

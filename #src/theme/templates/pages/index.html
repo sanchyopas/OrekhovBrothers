@@ -54,6 +54,7 @@
 
     {% include "../includes/_cards.html" with categories=categories %}
 
+    {% if settings.left_text or settings.right_text %}
     <div class="text-columns">
       {% if settings.left_text %}
       <div class="text-column">
@@ -70,6 +71,7 @@
       </div>
       {% endif %}
     </div>
+    {% endif %}
   </div>
 </div>
 

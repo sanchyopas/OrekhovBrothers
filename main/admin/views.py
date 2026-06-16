@@ -31,9 +31,7 @@ import urllib.parse
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-#   import_products_from_excel(path_to_excel)
 
-  # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""
   return render(request, "page/index.html")
 
@@ -166,6 +164,17 @@ def admin_shop(request):
   template_name="common-template/singleton_page_edit.html",
   )
 
+""" Настройки страницы отзывов """
+@user_passes_test(lambda u: u.is_superuser)
+def admin_reviews(request):
+  return generic_singleton_edit(
+  request,
+  ReviewsForm,
+  Reviews,
+  "Настройки страницы отзывов",
+  template_name="common-template/singleton_page_edit.html",
+  )
+
 """ Товары """
 @user_passes_test(lambda u: u.is_superuser)
 def admin_product(request):
@@ -277,4 +286,58 @@ def slider_edit(request, pk):
 
 def slider_delete(request, pk):
   pass
+
+""" Социальные сети """
+@user_passes_test(lambda u: u.is_superuser)
+def socials(request):
+    return generic_list(request, Socials, "Соц.сети", "socials_add", "socials_edit", "socials_delete")
+
+@user_passes_test(lambda u: u.is_superuser)
+def socials_add(request):
+    return generic_add(request, SocialsForm, "socials", "Добавление соц.сети",  template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def socials_edit(request, pk):
+  return generic_edit(request, pk, Socials, SocialsForm, "socials", "Редактирование соц.сети",  template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def socials_delete(request, pk):
+    return generic_delete(request, Socials, pk)
+
+
+""" Номера телефонов """
+@user_passes_test(lambda u: u.is_superuser)
+def phones(request):
+    return generic_list(request, ContactPhones, "Телефоны", "phones_add", "phones_edit", "phones_delete")
+
+@user_passes_test(lambda u: u.is_superuser)
+def phones_add(request):
+    return generic_add(request, ContactPhonesForm, "phones", "Добавление телефонов",  template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def phones_edit(request, pk):
+  return generic_edit(request, pk, ContactPhones, ContactPhonesForm, "phones", "Редактирование телефонов",  template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def phones_delete(request, pk):
+    return generic_delete(request, ContactPhones, pk)
+
+""" Emails """
+@user_passes_test(lambda u: u.is_superuser)
+def emails(request):
+    return generic_list(request, Emails, "Emails", "emails_add", "emails_edit", "emails_delete")
+
+@user_passes_test(lambda u: u.is_superuser)
+def emails_add(request):
+    return generic_add(request, EmailsForm, "emails", "Добавление email",  template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def emails_edit(request, pk):
+  return generic_edit(request, pk, Emails, EmailsForm, "emails", "Редактирование email",  template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def emails_delete(request, pk):
+    return generic_delete(request, Emails, pk)
+
+
 

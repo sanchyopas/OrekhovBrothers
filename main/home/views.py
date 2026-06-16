@@ -23,6 +23,24 @@ def index(request):
 
   return render(request, 'pages/index.html', context)
 
+def contact(request):
+
+  context = {
+  }
+
+  return render(request, 'pages/contact.html', context)
+
+def reviews(request):
+  try:
+    settings = Reviews.objects.get()
+  except:
+    settings = Reviews.load()
+
+  context = {
+    "settings":settings
+  }
+
+  return render(request, 'pages/reviews.html', context)
 
 def privacy(request):
   return render(request, "pages/privacy.html")
