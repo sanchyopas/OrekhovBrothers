@@ -62,6 +62,7 @@ class Product(models.Model):
   category = models.ManyToManyField(Category, default="", verbose_name="Категории")
   image = models.ImageField(upload_to="goods/", blank=True, null=True, verbose_name="Изображение товара")
   description = models.TextField(null=True, blank=True,  verbose_name="Описание")
+  equipment = models.TextField(null=True, blank=True,  verbose_name="Комплектация")
   text = models.TextField(null=True, blank=True,  verbose_name="Текст на странице")
   meta_h1 = models.CharField(max_length=250, null=True, blank=True, verbose_name="Заголовок первого уровня")
   meta_title = models.CharField(max_length=250, null=True, blank=True, verbose_name="Мета заголовок")
@@ -109,7 +110,7 @@ class ConfigTab(models.Model):
     ordering = ["sort"]
 
   def __str__(self):
-    return self. name
+    return self.name
 
 class FieldType(models.TextChoices):
   RADIO = "radio", "Radio"

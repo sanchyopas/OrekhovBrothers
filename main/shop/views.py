@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
+from django.utils.html import strip_tags
 import re
 import json
 
@@ -50,9 +51,14 @@ def product(request, parent, slug):
   product = Product.objects.get(slug=slug)
   category = Category.objects.get(slug=parent)
 
+  images = ProductImage.objects.filter(parent=product)
+  config = ConfigTab.objects.filter(category=category)
+
   context = {
     "category": category,
-    "product": product
+    "product": product,
+    "images": images,
+    "config": config
   }
 
   return render(request, "pages/catalog/product.html", context)
@@ -184,7 +190,7 @@ def create_options(request):
 
         # Проверяем существует ли поле
         try:
-            field = ConfigField.objects.get(id=id)
+            field = ConfigField.objects.get(id=field_id)
         except ConfigField.DoesNotExist:
             return JsonResponse({
                 'status': False,
@@ -193,7 +199,7 @@ def create_options(request):
 
         # Создаём опцию
         option = ConfigFieldOption.objects.create(
-            field=id,
+            field=field,
             title=title,
             price=price
         )

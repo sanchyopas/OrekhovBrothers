@@ -48,6 +48,13 @@ class Reviews(SingletonModel):
   meta_keywords = models.CharField(max_length=350, null=True, blank=True, verbose_name="Meta keywords")
   reviews_code = models.TextField(null=True, blank=True, verbose_name="Код отзывов(Iframe/Script)")
 
+class About(SingletonModel):
+  meta_h1 = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок первого уровня")
+  meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
+  meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
+  meta_keywords = models.CharField(max_length=350, null=True, blank=True, verbose_name="Meta keywords")
+  content = QuillField(blank=True, null=True)
+
 
 class Slider(models.Model):
   image = models.FileField(upload_to="home-page/", blank=True, null=True, verbose_name="Изображение")

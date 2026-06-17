@@ -25,6 +25,7 @@ urlpatterns = [
 
     path('home-page/', views.admin_home_page, name='admin_home_page'),
     path('reviews-page/', views.admin_reviews, name='admin_reviews'),
+    path('about-page/', views.admin_about, name='admin_about'),
 
     path('admin-shop/', views.admin_shop, name='admin_shop'),
 

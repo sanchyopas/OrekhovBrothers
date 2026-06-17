@@ -107,6 +107,10 @@ class ProductForm(AutoStyledModelForm):
         attrs={'class': 'django_ckeditor_5'},
         config_name='extends'
       ),
+      'equipment':CKEditor5Widget(
+        attrs={'class': 'django_ckeditor_5'},
+        config_name='extends'
+      ),
       'category': forms.CheckboxSelectMultiple,
     }
 
@@ -146,6 +150,17 @@ class ReviewsForm(AutoStyledModelForm):
   class Meta:
     model = Reviews
     fields = "__all__"
+
+class AboutForm(AutoStyledModelForm):
+  class Meta:
+    model = About
+    fields = "__all__"
+    widget = {
+    'description':CKEditor5Widget(
+        attrs={'class': 'django_ckeditor_5'},
+        config_name='extends'
+      ),
+    }
 
 class SliderForm(AutoStyledModelForm):
   class Meta:

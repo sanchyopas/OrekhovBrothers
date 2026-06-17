@@ -154,7 +154,11 @@
                   <button type="button" class="add-option-btn" data-id="{{ field.id }}" data-popup="add-option">
                     Добавить вариант
                   </button>
-                  <div class="options-container"></div>
+                  <div class="options-container">
+                    {% for option in field.options.all %}
+                    <p>{{ option }}</p>
+                    {% endfor %}
+                  </div>
                 </div>
                 {% endfor %}
               </div>

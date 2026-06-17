@@ -42,6 +42,18 @@ def reviews(request):
 
   return render(request, 'pages/reviews.html', context)
 
+def about(request):
+  try:
+    settings = About.objects.get()
+  except:
+    settings = About.load()
+
+  context = {
+    "settings":settings
+  }
+
+  return render(request, 'pages/about.html', context)
+
 def privacy(request):
   return render(request, "pages/privacy.html")
 

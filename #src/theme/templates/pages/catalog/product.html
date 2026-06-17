@@ -40,70 +40,38 @@
         <div class="gallery">
           <div class="gallery__slider swiper">
             <div class="swiper-wrapper">
+              {% if product.image %}
               <div class="swiper-slide" data-lightbox>
-                <img src="@img/single-image.jpg" alt="">
+                <img src="{{ product.image.url }}" alt="">
               </div>
+              {% endif %}
+              {% for image in images %}
               <div class="swiper-slide" data-lightbox>
-                <img src="@img/banner.jpg" alt="">
+                <img src="{{ image.src.url }}" alt="">
               </div>
-              <div class="swiper-slide" data-lightbox>
-                <img src="@img/single-image.jpg" alt="">
-              </div>
-              <div class="swiper-slide" data-lightbox>
-                <img src="@img/single-image.jpg" alt="">
-              </div>
-              <div class="swiper-slide" data-lightbox>
-                <img src="@img/banner.jpg" alt="">
-              </div>
-              <div class="swiper-slide" data-lightbox>
-                <img src="@img/single-image.jpg" alt="">
-              </div>
-              <div class="swiper-slide" data-lightbox>
-                <img src="@img/single-image.jpg" alt="">
-              </div>
-              <div class="swiper-slide" data-lightbox>
-                <img src="@img/banner.jpg" alt="">
-              </div>
-              <div class="swiper-slide" data-lightbox>
-                <img src="@img/single-image.jpg" alt="">
-              </div>
+              {% endfor %}
             </div>
           </div>
           <div class="gallery__slider-thumb swiper">
             <div class="swiper-wrapper">
+              {% if product.image %}
               <div class="swiper-slide">
-                <img src="@img/single-image.jpg" alt="">
+                <img src="{{ product.image.url }}" alt="">
               </div>
+              {% endif %}
+              {% for image in images %}
               <div class="swiper-slide">
-                <img src="@img/banner.jpg" alt="">
+                <img src="{{ image.src.url }}" alt="">
               </div>
-              <div class="swiper-slide">
-                <img src="@img/single-image.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="@img/single-image.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="@img/banner.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="@img/single-image.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="@img/single-image.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="@img/banner.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="@img/single-image.jpg" alt="">
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
+        {% if product.description or product.equipment %}
         <div class="single__info">
           <div class="tabs tabs--outline" data-tabs>
             <div class="tabs__list" role="tablist">
+              {% if product.description %}
               <button
                   type="button"
                   class="tabs__tab"
@@ -115,7 +83,8 @@
               >
                 Описание
               </button>
-
+              {% endif %}
+              {% if product.equipment %}
               <button
                   type="button"
                   class="tabs__tab"
@@ -127,8 +96,9 @@
               >
                 Комплектация
               </button>
+              {% endif %}
             </div>
-
+            {% if product.description %}
             <div
                 class="tabs__panel"
                 role="tabpanel"
@@ -136,15 +106,11 @@
                 aria-labelledby="tab-3"
             >
               <p>
-                Lorem ipsum dolor sit amet consectetur. Blandit urna massa ut feugiat feugiat eget tellus nunc ac. Id
-                nulla vel ultrices semper sit morbi ipsum neque. At eu egestas leo hendrerit nulla. At blandit morbi
-                tincidunt ac id aliquam. Pharetra elit iaculis lectus ornare mauris dignissim rhoncus diam. Convallis
-                eget sapien ornare tortor egestas sagittis quis. Sit diam felis sit quam sed sit. In congue convallis
-                elementum pellentesque vitae nunc in morbi. Aliquet non consequat donec integer risus erat. Lacinia
-                eget aliquet vivamus sed vitae.
+                {{ product.description|safe }}
               </p>
             </div>
-
+            {% endif %}
+            {% if product.equipment %}
             <div
                 class="tabs__panel"
                 role="tabpanel"
@@ -152,16 +118,12 @@
                 aria-labelledby="tab-4"
                 hidden
             >
-              <p><strong>Комплектация домокомплекта:</strong></p>
-              <ol>
-                <li>Стены</li>
-                <li>Пол</li>
-                <li>Крыша</li>
-              </ol>
+              {{ product.equipment|safe }}
             </div>
-
+            {% endif %}
           </div>
         </div>
+        {% endif %}
       </div>
       <div class="single__parameters">
         {% if product.name %}
@@ -191,33 +153,23 @@
             <p class="features__feature-value">Терраса: нет</p>
           </div>
         </div>
-
+        {% if config %}
         <form action="" class="form">
           <div class="tabs" data-tabs>
             <div class="tabs__list" role="tablist">
+              {% for tab in config %}
               <button
                   type="button"
                   class="tabs__tab"
                   role="tab"
-                  id="tab-1"
-                  aria-selected="true"
-                  aria-controls="panel-1"
-                  tabindex="0"
+                  id="tab-{{ tab.id }}"
+                  aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                  aria-controls="panel-{{ tab.id }}"
+                  tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
               >
-                Домокомплект
+                {{ tab.title }}
               </button>
-
-              <button
-                  type="button"
-                  class="tabs__tab"
-                  role="tab"
-                  id="tab-2"
-                  aria-selected="false"
-                  aria-controls="panel-2"
-                  tabindex="-1"
-              >
-                Стенокомплект
-              </button>
+              {% endfor %}
             </div>
             <div
                 class="tabs__panel"
@@ -279,52 +231,6 @@
                         <div class="form__radio-inner">
                           <span class="custom-radio"></span>
                           <span>100×250</span>
-                        </div>
-                      </label>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
-            </div>
-            <div
-                class="tabs__panel"
-                role="tabpanel"
-                id="panel-2"
-                aria-labelledby="tab-2"
-                hidden
-            >
-              <div class="calc">
-                <div class="calc__row">
-                  <fieldset class="calc__group">
-                    <legend class="calc__title">Материал бруса</legend>
-
-                    <div class="calc__inner">
-                      <label class="form__radio">
-                        <input type="radio" name="material" data-price="300000" value="pine">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>Сосна</span>
-                        </div>
-                      </label>
-                    </div>
-                  </fieldset>
-
-                  <fieldset class="calc__group">
-                    <legend class="calc__title">Сечение бруса</legend>
-
-                    <div class="calc__inner">
-                      <label class="form__radio">
-                        <input type="radio" name="cut" data-price="150" value="100×100">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>100×100</span>
-                        </div>
-                      </label>
-                      <label class="form__radio">
-                        <input type="radio" name="cut" value="100×150" data-price="1200000">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>100×150</span>
                         </div>
                       </label>
                     </div>
@@ -409,7 +315,7 @@
             <a href="" class="btn btn--outline" target="_blank">Связаться в MAX</a>
           </div>
         </form>
-
+        {% endif %}
       </div>
     </div>
 

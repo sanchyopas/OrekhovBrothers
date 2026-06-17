@@ -174,6 +174,15 @@ def admin_reviews(request):
   "Настройки страницы отзывов",
   template_name="common-template/singleton_page_edit.html",
   )
+@user_passes_test(lambda u: u.is_superuser)
+def admin_about(request):
+  return generic_singleton_edit(
+  request,
+  AboutForm,
+  About,
+  "Настройки страницы о компании",
+  template_name="common-template/singleton_page_edit.html",
+  )
 
 """ Товары """
 @user_passes_test(lambda u: u.is_superuser)

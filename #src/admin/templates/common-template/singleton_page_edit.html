@@ -49,6 +49,15 @@
             </div>
             {% endif %}
 
+            {% if form.content %}
+            <div class="form__group">
+              <label for="{{ form.content.id_for_label }}" class="form__controls-label">
+                {{ form.content.label }}:
+              </label>
+              {{ form.content }} {{ form.content.errors }}
+            </div>
+            {% endif %}
+
             {% if form.description %}
             <div class="form__group">
               <label for="{{ form.description.id_for_label }}" class="form__controls-label">
