@@ -1,4 +1,7 @@
-{% extends 'admin_base.html' %}{% load static %}{% load thumbnail %} {% block body %}
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block body %}
 <div class="page">
   <div class="page__inner">
     <div class="page__top">
@@ -130,7 +133,8 @@
       </div>
       <div class="page-content" id="config">
         <div class="page-content__onecol">
-          <button type="button" class="tab-add form__btn" id="add-tab" data-popup="add-config">Добавить конфигурацию
+          <button type="button" class="tab-add form__btn" id="add-tab" data-popup="add-config">
+            Добавить конфигурацию
           </button>
           <div class="tabs-container" id="tabs-container">
             {% if tabs %}

@@ -133,7 +133,7 @@ def create_field(request):
 
         # Проверяем существует ли вкладка
         try:
-            tab = ConfigTab.objects.get(id=id)
+            tab = ConfigTab.objects.get(id=tab_id)
         except ConfigTab.DoesNotExist:
             return JsonResponse({
                 'status': False,
@@ -149,9 +149,9 @@ def create_field(request):
 
         return JsonResponse({
             'status': True,
-            'id': 'field.id',
-            'title': 'field.title',
-            'type': 'field.field_type',
+            'id': field.id,
+            'title': field.title,
+            'type': field.field_type,
         })
 
     except Exception as e:

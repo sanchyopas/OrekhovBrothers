@@ -1,4 +1,4 @@
-import("./modules/dropdownMenu.js");
+import("./modules/sideBarDropDown.js");
 import("./modules/uploadFileInput.js");
 import("./modules/notice.js");
 import ("./modules/mask.js");

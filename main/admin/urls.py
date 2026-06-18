@@ -7,6 +7,8 @@ from . import views
 urlpatterns = [
     path('', views.admin, name="admin"),
 
+    path('templates/', views.templates, name="templates"),
+
     path('socials/', views.socials, name='socials'),
     path('socials/add/', views.socials_add, name='socials_add'),
     path('socials/<int:pk>/edit/', views.socials_edit, name='socials_edit'),

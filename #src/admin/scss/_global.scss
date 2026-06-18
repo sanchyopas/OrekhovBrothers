@@ -7,6 +7,7 @@
 body {
   font-family: $fontFamily;
   background-color: #f2f7fb;
+  font-size: 18px;
 }
 
 a {
@@ -20,6 +21,7 @@ button {
   outline: none;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 ul,
@@ -37,11 +39,6 @@ ol {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.ck-editor-container .ck-content a {
-  text-decoration: underline;
-  color: #0a58ca;
 }
 
 .product-block__paste {
@@ -76,190 +73,9 @@ ol {
 
 }
 
-/* Адаптивные стили для CKEditor 5 */
 
-/* Контейнер редактора */
-.ck-editor {
-  max-width: 100%;
-  width: 100% !important;
-}
 
-/* Сам редактор */
-.ck-editor__editable {
-  min-height: 300px;
-  max-height: 600px;
-  overflow-y: auto;
-  resize: vertical;
-}
 
-/* Панель инструментов */
-.ck-toolbar {
-  flex-wrap: wrap !important;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 4px 4px 0 0;
-}
-
-.ck-toolbar__items {
-  flex-wrap: wrap !important;
-}
-
-/* Кнопки на мобильных */
-@media (max-width: 768px) {
-  .ck-toolbar__items > * {
-    margin: 2px !important;
-  }
-
-  .ck-toolbar__group {
-    margin-bottom: 5px !important;
-  }
-
-  .ck-editor__editable {
-    min-height: 200px;
-    font-size: 14px;
-  }
-
-  /* Скрываем редко используемые кнопки на мобильных */
-  .ck-toolbar__items .ck-button:nth-child(n+8) {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .ck-toolbar {
-    padding: 5px !important;
-  }
-
-  .ck-editor__editable {
-    min-height: 150px;
-    padding: 10px !important;
-  }
-
-  /* Еще более компактная панель на очень маленьких экранах */
-  .ck-toolbar__items .ck-button:nth-child(n+6) {
-    display: none;
-  }
-}
-
-/* Контент внутри редактора */
-.ck-content {
-  line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  padding: 20px;
-  background-color: white;
-  border: 1px solid #dee2e6;
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-}
-
-/* Изображения внутри редактора */
-.ck-content img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Таблицы внутри редактора */
-.ck-content table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.ck-content table td,
-.ck-content table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-/* Блоки кода */
-.ck-content pre {
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-  padding: 10px;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-/* Цитаты */
-.ck-content blockquote {
-  border-left: 4px solid #007bff;
-  margin-left: 0;
-  padding-left: 20px;
-  font-style: italic;
-  color: #6c757d;
-}
-
-.popup-config {
-  display: none;
-  max-width: 500px;
-  width: 500px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 50px;
-  border-radius: 10px;
-  box-shadow: 0 0 4px rgba($color: #000000, $alpha: .1);
-  background: #fff;
-
-  &__form {
-  }
-
-  &__row {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 50px;
-    gap: 16px;
-  }
-
-  &__input {
-    width: 100%;
-    height: 50px;
-    padding: 10px 20px;
-  }
-
-  &__select {
-    width: 100%;
-    height: 50px;
-    background: #ffffff;
-    border: 1px solid #4d4d4d;
-  }
-
-  &__save {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #0a58ca;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-
-    img {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  &__hint {
-    color: #4d4d4d;
-    font-size: 14px;
-  }
-
-  &__close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid red;
-
-  }
-
-}
 
 
 

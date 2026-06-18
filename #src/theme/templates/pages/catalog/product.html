@@ -171,73 +171,44 @@
               </button>
               {% endfor %}
             </div>
+            {% for conf in config %}
             <div
                 class="tabs__panel"
                 role="tabpanel"
-                id="panel-1"
-                aria-labelledby="tab-1"
+                id="panel-{{ conf.id }}"
+                aria-labelledby="tab-{{ conf.id }}"
             >
               <div class="calc">
                 <div class="calc__row">
-                  <fieldset class="calc__group">
-                    <legend class="calc__title">Порода дерева</legend>
-
-                    <div class="calc__inner">
-                      <label class="form__radio">
-                        <input type="radio" name="material" data-price="1000000" value="pine">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>Сосна</span>
+                  {% if conf.fields %}
+                    {% for field in conf.fields.all %}
+                      <fieldset class="calc__group">
+                        <legend class="calc__title">{{ field.title }}</legend>
+                        {% if field.options %}
+                        <div class="calc__inner">
+                          {% for option in field.options.all %}
+                          <label class="form__radio">
+                            <input
+                                type="radio"
+                                name="{{ field.title }}"
+                                data-price="{{ option.price }}"
+                                value="{{ option.title }}"
+                            >
+                            <div class="form__radio-inner">
+                              <span class="custom-radio"></span>
+                              <span>{{ option.title }}</span>
+                            </div>
+                          </label>
+                          {% endfor %}
                         </div>
-                      </label>
-
-                      <label class="form__radio">
-                        <input type="radio" name="material" data-price="3000000" value="cedar">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>Кедр</span>
-                        </div>
-                      </label>
-                    </div>
-                  </fieldset>
-
-                  <fieldset class="calc__group">
-                    <legend class="calc__title">Сечение бруса</legend>
-
-                    <div class="calc__inner">
-                      <label class="form__radio">
-                        <input type="radio" name="cut" data-price="10000" value="100×100">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>100×100</span>
-                        </div>
-                      </label>
-                      <label class="form__radio">
-                        <input type="radio" name="cut" data-price="2000" value="100×150">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>100×150</span>
-                        </div>
-                      </label>
-                      <label class="form__radio">
-                        <input type="radio" name="cut" data-price="30000" value="100×200">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>100×200</span>
-                        </div>
-                      </label>
-                      <label class="form__radio">
-                        <input type="radio" name="cut" data-price="2500000" value="100×250">
-                        <div class="form__radio-inner">
-                          <span class="custom-radio"></span>
-                          <span>100×250</span>
-                        </div>
-                      </label>
-                    </div>
-                  </fieldset>
+                        {% endif %}
+                      </fieldset>
+                    {% endfor %}
+                  {% endif %}
                 </div>
               </div>
             </div>
+            {% endfor %}
           </div>
 
           <div class="options">

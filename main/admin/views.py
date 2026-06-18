@@ -63,6 +63,9 @@ def robots(request):
 
   return render(request, "common-template/robots.html", context)
 
+@user_passes_test(lambda u: u.is_superuser)
+def templates(request):
+  return render(request, 'page/template.html')
 
 # Новые views
 
