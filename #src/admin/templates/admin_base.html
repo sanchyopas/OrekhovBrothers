@@ -14,11 +14,10 @@
     <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>{% endcomment %}
   </head>
   <body>
-    <div class="content">
+    <div class="content" id="common-content">
       {% include 'components/admin-sidebar.html' %}
 
       <div class="content__inner">
-        {% include 'components/admin_header.html' %}
         {% block body %} {% endblock %}
       </div>
       {% include 'notice/notice-success.html' %}

@@ -3,22 +3,24 @@
 {% load thumbnail %}
 {% block body %}
 <div class="page">
-  <div class="page__inner">
-    <div class="page__top">
+  <div class="header">
+    <div class="header__left">
       <h1 class="page__title">{{ title }}</h1>
-      <a href="javascript:history.back()">Назад</a>
     </div>
+    <div class="header__right">
+      <a href="javascript:history.back()" class="btn">Назад</a>
+    </div>
+  </div>
+  <div class="page__content">
     <form action="." method="POST" id="myForm" class="form" enctype="multipart/form-data">
-      <div class="page__head">
-        <div class="page__head-tab">
-          <button type="button" data-name="basic" class="page__head-btn _active">Основные</button>
-          <button type="button" data-name="seo" class="page__head-btn">Поля SEO</button>
-          <button type="button" data-name="config" class="page__head-btn">Конфигурация</button>
-
+      <div class="form__action">
+        <div class="form__action-left">
+          <button type="button" data-name="basic" class="active">Основные</button>
+          <button type="button" data-name="seo" class="">Поля SEO</button>
+          <button type="button" data-name="config" class="">Конфигурация</button>
         </div>
-        <div class="page__head-right">
-          {% if add_url %}<a href="{% url add_url %}" class="form__add-property">Создать</a>{% endif %}
-          <button type="submit" class="form__btn">
+        <div class="form__action-right">
+          <button type="submit" class="btn btn--accent">
             <img src="{% static 'admin/img/save.svg' %}" alt=""/>
             Сохранить
           </button>
@@ -26,12 +28,19 @@
       </div>
       {% csrf_token %}
       {{ form.media }}
-      <div class="page-content _show" id="basic">
-        <div class="page-content__row">
-          <div class="page-content__col">
+      <div class="form__inner show" id="basic">
+        <div class="form__row">
+          <div class="form__col">
             {% if form.name %}
             <div class="form__group">
-              <label for="{{ form.name.id_for_label }}" class="form__controls-label">{{ form.name.label }}: </label>
+              <label
+                  for="{{ form.name.id_for_label }}"
+                  class="form__label">
+                {{ form.name.label }}
+                {% if form.name.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+              </label>
               {{ form.name }} {{ form.name.errors }}
             </div>
             {% endif %}
@@ -46,12 +55,14 @@
             {% endif %}
 
           </div>
-          <div class="page-content__col">
+          <div class="form__col">
             {% if form.slug %}
             <div class="form__group">
-              <label for="{{ form.slug.id_for_label }}" class="form__controls-label">
-                <span>*</span>
-                URL :
+              <label for="{{ form.slug.id_for_label }}" class="form__label">
+                URL{% if form.slug.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+
               </label>
               {{ form.slug }} {{ form.slug.errors }}
             </div>
@@ -59,21 +70,21 @@
 
             {% if form.category %}
             <div class="form__group">
-              <label for="{{ form.category.id_for_label }}" class="form__controls-label">Выбор категории:</label>
+              <label for="{{ form.category.id_for_label }}" class="form__label">Выбор категории:</label>
               {{ form.category }} {{ form.category.errors }}
             </div>
             {% endif %}
 
             {% if form.parent %}
             <div class="form__group">
-              <label for="{{ form.parent.id_for_label }}" class="form__controls-label">Родительская категория:</label>
+              <label for="{{ form.parent.id_for_label }}" class="form__label">Родительская категория:</label>
               {{ form.parent }} {{ form.parent.errors }}
             </div>
             {% endif %}
 
             {% if form.order_by %}
             <div class="form__group">
-              <label for="{{ form.order_by.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.order_by.id_for_label }}" class="form__label">
                 {{ form.order_by.label }}:
               </label>
               {{ form.order_by }} {{ form.order_by.errors }}
@@ -82,7 +93,7 @@
 
             {% if form.image %}
             <div class="form__group form__group-image">
-              <label for="{{ form.image.id_for_label }}" class="form__controls-label">{{ form.image.label }}:</label>
+              <label for="{{ form.image.id_for_label }}" class="form__label">{{ form.image.label }}:</label>
               {{ form.image }} {{ form.image.errors }}
             </div>
             {% endif %}
@@ -96,7 +107,7 @@
 
             {% if form.status %}
             <div class="form__group">
-              <label for="{{ form.status.id_for_label }}" class="form__controls-label">{{ form.status.label }}:</label>
+              <label for="{{ form.status.id_for_label }}" class="form__label">{{ form.status.label }}:</label>
               {{ form.status }} {{ form.status.errors }}
             </div>
             {% endif %}
@@ -104,38 +115,39 @@
           </div>
         </div>
       </div>
-      <div class="page-content" id="seo">
+      <div class="form__inner" id="seo">
         <!-- SEO страницы -->
-        <div class="page-content__row">
-          <div class="page-content__onecol">
+        <div class="form__row">
+          <div class="form__col">
             <div class="form__group">
-              <label for="{{ form.meta_h1.id_for_label }}" class="form__controls-label"> Заголовок h1: </label>
+              <label for="{{ form.meta_h1.id_for_label }}" class="form__label"> Заголовок h1: </label>
               {{ form.meta_h1 }} {{ form.meta_h1.errors }}
             </div>
             <div class="form__group">
-              <label for="{{ form.meta_title.id_for_label }}" class="form__controls-label"> Мета заголовок: </label>
+              <label for="{{ form.meta_title.id_for_label }}" class="form__label"> Мета заголовок: </label>
               {{ form.meta_title }} {{ form.meta_title.errors }}
             </div>
             <div class="form__group">
-              <label for="{{ form.meta_description.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__label">
                 Мета описание:
                 <div class="meta-lenght">0</div>
               </label>
               {{ form.meta_description }} {{ form.meta_description.errors }}
             </div>
             <div class="form__group">
-              <label for="{{ form.meta_description.id_for_label }}" class="form__controls-label"> Мета
+              <label for="{{ form.meta_description.id_for_label }}" class="form__label"> Мета
                 keywords: </label>
               {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
             </div>
           </div>
         </div>
       </div>
-      <div class="page-content" id="config">
-        <div class="page-content__onecol">
-          <button type="button" class="tab-add form__btn" id="add-tab" data-popup="add-config">
+      <div class="form__inner" id="config">
+        <div class="form__col">
+          <button type="button" class="tab-add form__btn btn btn--accent" id="add-tab" data-popup="add-config">
             Добавить конфигурацию
           </button>
+
           <div class="tabs-container" id="tabs-container">
             {% if tabs %}
             {% for tab in tabs %}

@@ -1,19 +1,18 @@
 @import "vars";
-@import "_global";
-@import "sidebar";
-@import "header";
-@import "content";
-@import "page";
+
 @import "form";
 @import "sort";
 @import "pagging";
 @import "page-edit";
-@import "days";
-@import "page-content";
-@import "breadcrumbs";
 @import "table";
 @import "ckeditor";
 @import "_notice";
 
+@import "_global";
 @import "_configure";
 @import "_ck-editor";
+@import "_content";
+@import "_sidebar";
+@import "_header";
+@import "_page";
+@import "_grid-row";

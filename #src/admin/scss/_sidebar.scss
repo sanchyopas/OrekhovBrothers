@@ -3,8 +3,10 @@
   position: relative;
   max-width: 350px;
   width: 100%;
+  margin-left: -350px;
   background: #FFFFFF;
   box-shadow: 0 2px 4px rgba(10, 88, 202, 0.15);
+  transition: margin-left .4s ease;
 
   &__btn-close {
     position: absolute;

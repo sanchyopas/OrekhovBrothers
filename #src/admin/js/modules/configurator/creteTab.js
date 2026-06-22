@@ -1,5 +1,5 @@
 import {submitConfigData} from "./index.js";
-import {tabSkeleton} from "./_htmlSkelet.js";
+import {tabSkeleton} from "./htmlSkelet.js";
 
 const createTabForm = document.getElementById("create-tab-form");
 

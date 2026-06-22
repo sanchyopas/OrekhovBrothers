@@ -1,6 +1,6 @@
-import {fieldOptions} from "./_htmlSkelet.js";
+import {fieldOptions} from "./htmlSkelet.js";
 import {submitConfigData} from "./index.js";
-import {closePopup} from "../_popup.js";
+import {closePopup} from "../popup.js";
 
 let currentID = null;
 let currentPopup = null;

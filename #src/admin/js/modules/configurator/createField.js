@@ -1,6 +1,6 @@
-import {fieldSkeleton} from "./_htmlSkelet.js";
+import {fieldSkeleton} from "./htmlSkelet.js";
 import {submitConfigData} from "./index.js";
-import {closePopup} from "../_popup.js";
+import {closePopup} from "../popup.js";
 
 const createFieldForm = document.getElementById("create-field-form");
 

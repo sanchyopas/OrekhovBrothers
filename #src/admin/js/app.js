@@ -5,25 +5,25 @@ import ("./modules/mask.js");
 import ("./modules/uploadImage.js");
 import ("./modules/slugify.js");
 import ("./modules/configurator/creteTab.js");
-import ("./modules/_popup.js");
+import ("./modules/popup.js");
+import ("./modules/sideBarClose.js");
 
 /**
  * Переключение вкладок на страницах продуктов, категорий
  */
 
-
 const tabButton = document.querySelectorAll('[data-name]');
-const pageEditButton = document.querySelectorAll('.page-content');
+const pageEditButton = document.querySelectorAll('.form__inner');
 
 tabButton?.forEach(btn => {
   btn.addEventListener('click', function (e) {
-    tabButton.forEach(item => item.classList.remove('_active'));
-    pageEditButton.forEach(item => item.classList.remove('_show'));
+    tabButton.forEach(item => item.classList.remove('active'));
+    pageEditButton.forEach(item => item.classList.remove('show'));
 
     let bodyTabBody = document.getElementById(this.dataset.name);
 
-    btn.classList.add('_active');
-    bodyTabBody.classList.add('_show');
+    btn.classList.add('active');
+    bodyTabBody.classList.add('show');
 
     const newUrl = window.location.pathname + '?tab=' + this.dataset.name;
     window.history.pushState({}, '', newUrl);

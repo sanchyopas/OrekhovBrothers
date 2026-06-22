@@ -33,10 +33,15 @@ from .local import INSTALLED_APPS
 from .local import MIDDLEWARE
 from .local import DATABASES
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = [
+CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 STATIC_THEME_PATH = 'theme/img'
 

@@ -16,8 +16,8 @@ class RobotsForm(forms.ModelForm):
 
 class AutoStyledModelForm(forms.ModelForm):
     DEFAULT_INPUT_CLASS = "form__controls"
-    DEFAULT_SELECT_CLASS = "form__controls-select"
-    DEFAULT_TEXTAREA_CLASS = "form__controls-textarea",
+    DEFAULT_SELECT_CLASS = "form__select"
+    DEFAULT_TEXTAREA_CLASS = "form__textarea",
 
     class Meta:
         abstract = True

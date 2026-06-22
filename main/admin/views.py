@@ -31,7 +31,6 @@ import urllib.parse
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-
   """Данная предстовление отобразает главную страницу админ панели"""
   return render(request, "page/index.html")
 
@@ -124,7 +123,7 @@ def admin_category(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_add(request):
-  return generic_add(request, CategoryForm, "admin_category", "Добавление категории",  template_name=None)
+  return generic_add(request, CategoryForm, "admin_category", "Добавление категории",  template_name="category/template-edit.html")
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_edit(request, pk):
