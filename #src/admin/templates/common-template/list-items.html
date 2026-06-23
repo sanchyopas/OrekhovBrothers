@@ -4,11 +4,11 @@
 {% block body %}
 
 <div class="page">
-  <div class="list-header">
-    <div class="list-header__left">
-      <h1 class="page__title">{{ title }}</h1>
+  <div class="header">
+    <div class="header__left">
+      <h1 class="header__title">{{ title }}</h1>
     </div>
-    <div class="list-header-right">
+    <div class="header__right">
       <a href="{% url add_url %}" class="btn">Создать</a>
     </div>
   </div>
@@ -56,9 +56,9 @@
           </a>
         </div>
 
-        <div class="grid-row__action">
+
           {% include 'common/_edit-block.html' with edit_url=edit_url delete_url=delete_url %}
-        </div>
+
       </div>
       {% endfor %}
     </div>

@@ -15,8 +15,8 @@ class ShopSettings(SingletonModel):
 # Категория
 class Category(models.Model):
   STATUS_CHOICES = [
-    ('published', 'Выводить'),
-    ('draft', 'Не выводить'),
+    ('published', 'Опубликовано'),
+    ('draft', 'Не опубликовано'),
     ('hidden', 'Скрыто'),
   ]
 
@@ -35,7 +35,7 @@ class Category(models.Model):
     max_length=20,
     choices=STATUS_CHOICES,
     default='draft',
-    verbose_name="Выводить в каталог ?"
+    verbose_name="Статус"
   )
   
   class Meta:

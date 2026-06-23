@@ -17,7 +17,7 @@
         <div class="form__action-left">
           <button type="button" data-name="basic" class="active">Основные</button>
           <button type="button" data-name="seo" class="">Поля SEO</button>
-          <button type="button" data-name="config" class="">Конфигурация</button>
+          <button type="button" data-name="gallery" class="">Дополнительные фотографии</button>
         </div>
         <div class="form__action-right">
           <button type="submit" class="btn btn--accent">
@@ -92,17 +92,10 @@
             {% endif %}
 
             {% if form.image %}
-            <div class="form__group form__group-image">
+            <div class="form__group form__group--image">
               <label for="{{ form.image.id_for_label }}" class="form__label">{{ form.image.label }}:</label>
               {{ form.image }} {{ form.image.errors }}
             </div>
-            {% endif %}
-
-            {% if form.instance.image %}
-            <a href="{{ form.instance.image.url }}" target="_blank">
-              <img src="{{ form.instance.image.url }}" alt="Миниатюра изображения"
-                   style="max-width: 100px; max-height: 100px"/>
-            </a>
             {% endif %}
 
             {% if form.status %}
@@ -142,105 +135,32 @@
           </div>
         </div>
       </div>
-      <div class="form__inner" id="config">
-        <div class="form__col">
-          <button type="button" class="tab-add form__btn btn btn--accent" id="add-tab" data-popup="add-config">
-            Добавить конфигурацию
-          </button>
-
-          <div class="tabs-container" id="tabs-container">
-            {% if tabs %}
-            {% for tab in tabs %}
-            <div class="config-tab" data-tab-id="{{ tab.id }}">
-              <div class="config-tab__header">
-                <h3>{{ tab.title }}</h3>
-
-                <button type="button" class="add-field-btn add-tab__button" data-id="{{ tab.id }}"
-                        data-popup="add-field">
-                  Добавить поле
-                </button>
-              </div>
-
-              <div class="fields-container">
-                {% for field in tab.fields.all %}
-                <div class="config-field" data-field-id="{{ field.id }}">
-
-                  <div>{{ field.title }}</div>
-
-                  <button type="button" class="add-option-btn" data-id="{{ field.id }}" data-popup="add-option">
-                    Добавить вариант
-                  </button>
-                  <div class="options-container">
-                    {% for option in field.options.all %}
-                    <p>{{ option }}</p>
-                    {% endfor %}
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
+      <div class="form__inner" id="gallery">
+        <div class="form__row">
+          <div class="form__col">
+            <div class="form__header">
+              <div class="product-block__plus btn">Добавить изображение</div>
             </div>
-            {% endfor %}
-            {% endif %}
+            <div class="product-field"></div>
+
+            <div class="product-block__paste">
+              {% for image in images %}
+              <div class="product-block__image">
+                <img src="{{ image.src.url }}" alt="" id="{{image.id}}">
+                {% if product_view %}
+                <a href="{% url 'product_image_delete' image.pk %}" class="product-block__minus">Удалить</a>
+                {% endif %}
+
+                {% if model_view %}
+                <a href="{% url 'model_image_delete' image.pk %}" class="product-block__minus">Удалить</a>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
     </form>
   </div>
 </div>
-
-<div class="popup-config add-config" id="add-config" data-popup="add-config">
-  <button type="button" class="popup-config__close"><span>X</span></button>
-  <form id="create-tab-form" class="popup-config__form">
-    {% csrf_token %}
-    <div class="popup-config__row">
-      <input type="text" name="title" placeholder="Название таба" class="popup-config__input form__input" required>
-      <input type="hidden" class="form__hidden" name="category" value="{{ item.pk }}">
-      <button type="submit" class="popup-config__save" id="create-tab">
-        <img src="{% static 'admin/img/save.svg' %}" alt=""/>
-      </button>
-    </div>
-    <p class="popup-config__hint">Нажмите сохранить чтобы продолжить создание</p>
-  </form>
-</div>
-
-<div class="popup-config add-field" id="add-field" data-popup="add-field">
-  <button type="button" class="popup-config__close"><span>X</span></button>
-  <form id="create-field-form" class="popup-config__form">
-    {% csrf_token %}
-    <div class="popup-config__row">
-      <label>
-        <input type="text" name="name" placeholder="Название поля" class="popup-config__input">
-      </label>
-      <button type="submit" class="popup-config__save" id="create-field">
-        <img src="{% static 'admin/img/save.svg' %}" alt=""/>
-      </button>
-      <label>
-        <span>Тип:</span><br>
-        <select name="type" class="popup-config__select" id="type-field">
-          <option value="radio">Radio</option>
-          <option value="checkbox">Checkbox</option>
-        </select>
-      </label>
-
-    </div>
-  </form>
-</div>
-
-<div class="popup-config add-option" id="add-option" data-popup="add-option">
-  <button type="button" class="popup-config__close"><span>X</span></button>
-  <form id="create-option-form" class="popup-config__form">
-    {% csrf_token %}
-    <label>
-      <input type="text" name="title" placeholder="Название варианта" class="popup-config__input">
-    </label>
-    <label>
-      <input type="number" name="price" placeholder="Цена" class="popup-config__input">
-    </label>
-    <button type="submit" class="popup-config__save" id="create-option">
-      <img src="{% static 'admin/img/save.svg' %}" alt=""/>
-    </button>
-  </form>
-</div>
-
-
 {% endblock %}

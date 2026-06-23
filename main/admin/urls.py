@@ -48,6 +48,7 @@ urlpatterns = [
     path('settings/', views.admin_settings, name='admin_settings'),
     path('robots/', views.robots, name='robots'),
 
+    path('slider/', views.slider, name='slider'),
     path('slider/add/', views.slider_add, name='slider_add'),
     path('slider/<int:pk>/edit/', views.slider_edit, name='slider_edit'),
     path('slider/<int:pk>/delete/', views.slider_delete, name='slider_delete'),

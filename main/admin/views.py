@@ -99,9 +99,9 @@ def admin_home_page(request):
       except Exception as e:
         messages.error(request, f"Ошибка сохранения: {e}")
     else:
-      return render(request, "common-template/_home-page.html", {
+      return render(request, "page/_home-page.html", {
         "form": form,
-        "title": 'Редактирование главной страницы',
+        "title": 'Настройки главной страницы',
         "settings": instance,
         "slides": slides,
       })
@@ -110,20 +110,20 @@ def admin_home_page(request):
 
   context = {
     "form": form,
-    "title": 'Редактирование главной страницы',
+    "title": 'Настройки главной страницы',
     "settings": instance,
     "slides": slides,
   }
-  return render(request, "common-template/_home-page.html", context)
+  return render(request, "page/_home-page.html", context)
 
 """ Категории товаров """
 @user_passes_test(lambda u: u.is_superuser)
 def admin_category(request):
-  return generic_list(request, Category, "Категории", "category_add", "category_edit", "category_delete")
+  return generic_list(request, Category, "Категории проектов", "category_add", "category_edit", "category_delete")
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_add(request):
-  return generic_add(request, CategoryForm, "admin_category", "Добавление категории",  template_name="category/template-edit.html")
+  return generic_add(request, CategoryForm, "admin_category", "Добавление",  template_name="category/template-edit.html")
 
 @user_passes_test(lambda u: u.is_superuser)
 def category_edit(request, pk):
@@ -146,7 +146,7 @@ def category_edit(request, pk):
       "tabs": tabs,
       "form": form,
       "item": item,
-      "title": "Редактирование категории",
+      "title": "Редактирование",
   }
   return render(request, "category/template-edit.html", context)
 
@@ -189,7 +189,7 @@ def admin_about(request):
 """ Товары """
 @user_passes_test(lambda u: u.is_superuser)
 def admin_product(request):
-  return generic_list(request, Product, "Товары", "product_add", "product_edit", "product_delete")
+  return generic_list(request, Product, "Проекты", "product_add", "product_edit", "product_delete")
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_edit(request, pk):
@@ -227,7 +227,7 @@ def product_edit(request, pk):
         for error in errors:
           error_list.append(f"{field_label}: {error}")
       messages.error(request, " | ".join(error_list))
-      return render(request, 'common-template/product-edit-add-page.html', {'form': form_new})
+      return render(request, 'product/template-edit.html', {'form': form_new})
 
   context = {
     "form": form,
@@ -236,7 +236,7 @@ def product_edit(request, pk):
     "product_view": True
   }
 
-  return render(request, "common-template/product-edit-add-page.html", context)
+  return render(request, "product/template-edit.html", context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_add(request):
@@ -261,6 +261,9 @@ def model_char_add(request):
 @user_passes_test(lambda u: u.is_superuser)
 def model_char_edit(request, pk):
   return generic_edit(request,  pk, Characteristic,  CharacteristicForm, "admin_char_model", "Редактирование характеристик", template_name=None)
+
+def slider(request):
+  return generic_list(request, Slider, "Слайдер", "slider_add", "slider_edit", "slider_delete")
 
 def slider_add(request):
   form = SliderForm()
@@ -305,11 +308,11 @@ def socials(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def socials_add(request):
-    return generic_add(request, SocialsForm, "socials", "Добавление соц.сети",  template_name=None)
+    return generic_add(request, SocialsForm, "socials", "Добавление соц.сети",  template_name="socials/template-edit.html")
 
 @user_passes_test(lambda u: u.is_superuser)
 def socials_edit(request, pk):
-  return generic_edit(request, pk, Socials, SocialsForm, "socials", "Редактирование соц.сети",  template_name=None)
+  return generic_edit(request, pk, Socials, SocialsForm, "socials", "Редактирование соц.сети",  template_name="socials/template-edit.html")
 
 @user_passes_test(lambda u: u.is_superuser)
 def socials_delete(request, pk):
@@ -319,28 +322,28 @@ def socials_delete(request, pk):
 """ Номера телефонов """
 @user_passes_test(lambda u: u.is_superuser)
 def phones(request):
-    return generic_list(request, ContactPhones, "Телефоны", "phones_add", "phones_edit", "phones_delete")
+  return generic_list(request, ContactPhones, "Телефоны", "phones_add", "phones_edit", "phones_delete")
 
 @user_passes_test(lambda u: u.is_superuser)
 def phones_add(request):
-    return generic_add(request, ContactPhonesForm, "phones", "Добавление телефонов",  template_name=None)
+  return generic_add(request, ContactPhonesForm, "phones", "Добавление телефонов",  template_name="phones/template-edit.html")
 
 @user_passes_test(lambda u: u.is_superuser)
 def phones_edit(request, pk):
-  return generic_edit(request, pk, ContactPhones, ContactPhonesForm, "phones", "Редактирование телефонов",  template_name=None)
+  return generic_edit(request, pk, ContactPhones, ContactPhonesForm, "phones", "Редактирование телефонов",  template_name="phones/template-edit.html")
 
 @user_passes_test(lambda u: u.is_superuser)
 def phones_delete(request, pk):
-    return generic_delete(request, ContactPhones, pk)
+  return generic_delete(request, ContactPhones, pk)
 
 """ Emails """
 @user_passes_test(lambda u: u.is_superuser)
 def emails(request):
-    return generic_list(request, Emails, "Emails", "emails_add", "emails_edit", "emails_delete")
+  return generic_list(request, Emails, "Emails", "emails_add", "emails_edit", "emails_delete")
 
 @user_passes_test(lambda u: u.is_superuser)
 def emails_add(request):
-    return generic_add(request, EmailsForm, "emails", "Добавление email",  template_name=None)
+  return generic_add(request, EmailsForm, "emails", "Добавление email",  template_name=None)
 
 @user_passes_test(lambda u: u.is_superuser)
 def emails_edit(request, pk):

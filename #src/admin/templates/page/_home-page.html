@@ -1,16 +1,27 @@
 {% extends 'admin_base.html' %}{% load static %}{% load thumbnail %} {% block body %}
 <div class="page">
-  <div class="page__inner">
-    <h1 class="page__title">{{ title }}</h1>
-    <form action="." method="POST" id="myForm" class="form" enctype="multipart/form-data">
-      <div class="page__head">
-        <div class="page__head-tab">
-          <button type="button" data-name="basic" class="page__head-btn _active">Основные</button>
-          <button type="button" data-name="seo" class="page__head-btn">Поля SEO</button>
-          <button type="button" data-name="slider" class="page__head-btn">Слайдер</button>
+  <div class="header">
+    <div class="header__left">
+      <h1 class="header__title">{{ title }}</h1>
+    </div>
+    <div class="header__right">
+
+    </div>
+  </div>
+  <div class="page__content">
+    <form action="."
+          method="POST"
+          id="myForm"
+          class="form"
+          enctype="multipart/form-data"
+    >
+      <div class="form__action">
+        <div class="form__action-left">
+          <button type="button" data-name="basic" class=" _active">Основные</button>
+          <button type="button" data-name="seo">Поля SEO</button>
         </div>
-        <div class="page__head-right">
-          <button type="submit" class="form__btn">
+        <div class="form__action-right">
+          <button type="submit" class="btn btn--accent">
             <img src="{% static 'admin/img/save.svg' %}" alt=""/>
             Сохранить
           </button>
@@ -18,12 +29,12 @@
       </div>
       {% csrf_token %}
       {{ form.media }}
-      <div class="page-content _show" id="basic">
-        <div class="page-content__row">
-          <div class="page-content__col">
+      <div class="form__inner _show" id="basic">
+        <div class="form__row">
+          <div class="form__col">
             {% if form.meta_h1 %}
             <div class="form__group">
-              <label for="{{ form.meta_h1.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.meta_h1.id_for_label }}" class="form__label">
                 {{ form.meta_h1.label }} <span>:</span>
               </label>
               {{ form.meta_h1 }} {{ form.meta_h1.errors }}
@@ -32,7 +43,7 @@
 
             {% if form.subtitle %}
             <div class="form__group">
-              <label for="{{ form.subtitle.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.subtitle.id_for_label }}" class="form__label">
                 {{ form.subtitle.label }} <span>:</span>
               </label>
               {{ form.subtitle }} {{ form.subtitle.errors }}
@@ -41,7 +52,7 @@
 
             {% if form.left_text %}
             <div class="form__group">
-              <label for="{{ form.left_text.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.left_text.id_for_label }}" class="form__label">
                 {{ form.left_text.label }} <span>:</span>
               </label>
               {{ form.left_text }} {{ form.left_text.errors }}
@@ -50,7 +61,7 @@
 
             {% if form.right_text %}
             <div class="form__group">
-              <label for="{{ form.right_text.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.right_text.id_for_label }}" class="form__label">
                 {{ form.right_text.label }} <span>:</span>
               </label>
               {{ form.right_text }} {{ form.right_text.errors }}
@@ -58,10 +69,10 @@
             {% endif %}
 
           </div>
-          <div class="page-content__col">
+          <div class="form__col">
             {% if form.image %}
-            <div class="form__group">
-              <label for="{{ form.image.id_for_label }}" class="form__controls-label">
+            <div class="form__group form__group--image">
+              <label for="{{ form.image.id_for_label }}" class="form__label">
                 {{ form.image.label }} <span>:</span>
               </label>
               {{ form.image }} {{ form.image.errors }}
@@ -70,13 +81,13 @@
           </div>
         </div>
       </div>
-      <div class="page-content" id="seo">
-        <div class="page-content__row">
-          <div class="page-content__col">
+      <div class="form__inner" id="seo">
+        <div class="form__row">
+          <div class="form__col">
             <!-- Seo -->
             {% if form.meta_title %}
             <div class="form__group">
-              <label for="{{ form.meta_title.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.meta_title.id_for_label }}" class="form__label">
                 {{ form.meta_title.label }} <span>:</span>
               </label>
               {{ form.meta_title }} {{ form.meta_title.errors }}
@@ -85,7 +96,7 @@
 
             {% if form.meta_description %}
             <div class="form__group">
-              <label for="{{ form.meta_description.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__label">
                 {{ form.meta_description.label }} <span>:</span>
               </label>
               {{ form.meta_description }} {{ form.meta_description.errors }}
@@ -94,7 +105,7 @@
 
             {% if form.meta_keywords %}
             <div class="form__group">
-              <label for="{{ form.meta_keywords.id_for_label }}" class="form__controls-label">
+              <label for="{{ form.meta_keywords.id_for_label }}" class="form__label">
                 {{ form.meta_keywords.label }} <span>:</span>
               </label>
               {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
@@ -102,19 +113,6 @@
             {% endif %}
 
             <!-- Seo -->
-          </div>
-        </div>
-      </div>
-      <div class="page-content" id="slider">
-        <div class="page-content__row">
-          <div class="page-content__col">
-            <a href="{% url 'slider_add' %}">Добавить</a>
-            {% for slide in slides %}
-            <a href="">
-              {{ slide.title }}
-              <img src="{{ slide.image.url }}" alt="">
-            </a>
-            {% endfor %}
           </div>
         </div>
       </div>

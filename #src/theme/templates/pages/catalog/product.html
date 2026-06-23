@@ -52,6 +52,7 @@
               {% endfor %}
             </div>
           </div>
+          {% if images %}
           <div class="gallery__slider-thumb swiper">
             <div class="swiper-wrapper">
               {% if product.image %}
@@ -66,6 +67,7 @@
               {% endfor %}
             </div>
           </div>
+          {% endif %}
         </div>
         {% if product.description or product.equipment %}
         <div class="single__info">

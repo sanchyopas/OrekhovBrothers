@@ -4,6 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid rgba($color: $mainColor, $alpha: 0.2);
+    padding-bottom: 40px;
+
+
   }
 
   &__action-left {
@@ -14,6 +18,7 @@
       padding: 10px 20px;
       color: $white;
       background-color: rgba($color: $accent, $alpha: 0.8);
+
 
       & + & {
         margin-left: 10px;
@@ -67,6 +72,13 @@
 
   }
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
   &__group {
     display: flex;
     flex-direction: column;
@@ -74,6 +86,12 @@
 
     & + & {
       margin-top: 10px;
+    }
+
+    &--image {
+      padding: 10px;
+      border: 1px solid rgba(38, 53, 61, 0.3);
+      border-radius: 4px;
     }
   }
 
