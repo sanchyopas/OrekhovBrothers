@@ -51,6 +51,12 @@ ol {
     background-color: $danger;
   }
 
+  &--outline {
+    border: 1px solid rgba($color: $mainColor, $alpha: 1);
+    background-color: transparent;
+    color: $mainColor;
+  }
+
 }
 
 .product-block__paste {

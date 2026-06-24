@@ -4,20 +4,14 @@
     <div class="header__left">
       <h1 class="header__title">{{ title }}</h1>
     </div>
-    <div class="header__right">
-    </div>
+    <div class="header__right"></div>
   </div>
   <div class="page__content">
-    <form action="."
-          method="POST"
-          id="myForm"
-          class="form"
-          enctype="multipart/form-data"
-    >
+    <form action="" method="POST" id="myForm" class="form" enctype="multipart/form-data">
       <div class="form__action">
         <div class="form__action-left">
-          <button type="button" data-name="basic" class=" _active">Основные</button>
-          <button type="button" data-name="seo">Поля SEO</button>
+          <button type="button" data-name="basic" class="_active">Основные</button>
+          <button type="button" data-name="seo" class="">Поля SEO</button>
         </div>
         <div class="form__action-right">
           <button type="submit" class="btn btn--accent">
@@ -40,41 +34,12 @@
             </div>
             {% endif %}
 
-            {% if form.subtitle %}
+            {% if form.content %}
             <div class="form__group">
-              <label for="{{ form.subtitle.id_for_label }}" class="form__label">
-                {{ form.subtitle.label }} <span>:</span>
+              <label for="{{ form.content.id_for_label }}" class="form__label">
+                {{ form.content.label }} <span>:</span>
               </label>
-              {{ form.subtitle }} {{ form.subtitle.errors }}
-            </div>
-            {% endif %}
-
-            {% if form.left_text %}
-            <div class="form__group">
-              <label for="{{ form.left_text.id_for_label }}" class="form__label">
-                {{ form.left_text.label }} <span>:</span>
-              </label>
-              {{ form.left_text }} {{ form.left_text.errors }}
-            </div>
-            {% endif %}
-
-            {% if form.right_text %}
-            <div class="form__group">
-              <label for="{{ form.right_text.id_for_label }}" class="form__label">
-                {{ form.right_text.label }} <span>:</span>
-              </label>
-              {{ form.right_text }} {{ form.right_text.errors }}
-            </div>
-            {% endif %}
-
-          </div>
-          <div class="form__col">
-            {% if form.image %}
-            <div class="form__group form__group--image">
-              <label for="{{ form.image.id_for_label }}" class="form__label">
-                {{ form.image.label }} <span>:</span>
-              </label>
-              {{ form.image }} {{ form.image.errors }}
+              {{ form.content }} {{ form.content.errors }}
             </div>
             {% endif %}
           </div>
@@ -110,7 +75,6 @@
               {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
             </div>
             {% endif %}
-
             <!-- Seo -->
           </div>
         </div>

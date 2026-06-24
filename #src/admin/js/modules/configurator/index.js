@@ -1,6 +1,7 @@
 import './creteTab.js';
 import './createField.js';
 import './createOptions.js';
+import './removeItem.js';
 
 export const submitConfigData = async (url, formData) => {
   try {

@@ -174,7 +174,7 @@ def admin_reviews(request):
   ReviewsForm,
   Reviews,
   "Настройки страницы отзывов",
-  template_name="common-template/singleton_page_edit.html",
+  template_name="page/_reviews-page.html",
   )
 @user_passes_test(lambda u: u.is_superuser)
 def admin_about(request):
@@ -183,7 +183,7 @@ def admin_about(request):
   AboutForm,
   About,
   "Настройки страницы о компании",
-  template_name="common-template/singleton_page_edit.html",
+  template_name="page/_about-page.html",
   )
 
 """ Товары """

@@ -216,3 +216,31 @@ def create_options(request):
             'status': False,
             'error': str(e)
         }, status=500)
+
+
+def item_remove(request):
+  try:
+    data = json.loads(request.body)
+
+    item = data.get('item', '')
+    item_id = data.get('id')
+
+    if(item == 'tab'):
+      print('tab')
+
+    if(item == 'field'):
+      print('field')
+
+    if(item == 'option'):
+      print('option')
+      ConfigFieldOption.objects.get(id=item_id).delete()
+
+    return JsonResponse({
+        'status': True,
+    })
+
+  except Exception as e:
+    return JsonResponse({
+      'status': False,
+      'error': str(e)
+    })

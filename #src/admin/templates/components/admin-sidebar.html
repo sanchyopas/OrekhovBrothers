@@ -90,7 +90,7 @@
           <div class="sidebar__icon">
             <i class="fa-solid fa-arrow-up-right-dots"></i>
           </div>
-          <a href="{% url 'admin_home_page' %}" class="sidebar-menu__link">Настройки</a>
+          <a href="{% url 'admin_about' %}" class="sidebar-menu__link">О компании</a>
         </div>
       </div>
       <div class="sidebar-menu__item">
@@ -98,8 +98,24 @@
           <div class="sidebar__icon">
             <i class="fa-solid fa-arrow-up-right-dots"></i>
           </div>
-          <a href="{% url 'slider' %}" class="sidebar-menu__link">Слайдер</a>
+          <a href="{% url 'admin_reviews' %}" class="sidebar-menu__link">Отзывы</a>
         </div>
+      </div>
+    </div>
+    <div class="sidebar-menu__item">
+      <div class="sidebar-menu__item-inner">
+        <div class="sidebar__icon">
+          <i class="fa-solid fa-arrow-up-right-dots"></i>
+        </div>
+        <a href="{% url 'admin_reviews' %}" class="sidebar-menu__link">Общие настройки</a>
+      </div>
+    </div>
+    <div class="sidebar-menu__item">
+      <div class="sidebar-menu__item-inner">
+        <div class="sidebar__icon">
+          <i class="fa-solid fa-arrow-up-right-dots"></i>
+        </div>
+        <a href="{% url 'admin_reviews' %}" class="sidebar-menu__link">Системные настройки</a>
       </div>
     </div>
 

@@ -144,44 +144,81 @@
       </div>
       <div class="form__inner" id="config">
         <div class="form__col">
-          <button type="button" class="tab-add form__btn btn btn--accent" id="add-tab" data-popup="add-config">
-            Добавить конфигурацию
-          </button>
-
-          <div class="tabs-container" id="tabs-container">
-            {% if tabs %}
-            {% for tab in tabs %}
-            <div class="config-tab" data-tab-id="{{ tab.id }}">
-              <div class="config-tab__header">
-                <h3>{{ tab.title }}</h3>
-
-                <button type="button" class="add-field-btn add-tab__button" data-id="{{ tab.id }}"
-                        data-popup="add-field">
-                  Добавить поле
-                </button>
+          <div class="configurator">
+            <div class="configurator__header">
+              <div>
+                <h2 class="configurator__title">Конфигуратор</h2>
+                <p>Управляйте вариантами парод дерева и комплектацией</p>
               </div>
-
-              <div class="fields-container">
-                {% for field in tab.fields.all %}
-                <div class="config-field" data-field-id="{{ field.id }}">
-
-                  <div>{{ field.title }}</div>
-
-                  <button type="button" class="add-option-btn" data-id="{{ field.id }}" data-popup="add-option">
-                    Добавить вариант
-                  </button>
-                  <div class="options-container">
-                    {% for option in field.options.all %}
-                    <p>{{ option }}</p>
-                    {% endfor %}
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
+              <button type="button" class="tab-add btn btn--outline" id="add-tab" data-popup="add-config">
+                Добавить конфигурацию
+              </button>
             </div>
-            {% endfor %}
-            {% endif %}
+            <div class="configurator__body">
+              {% if tabs %}
+              {% for tab in tabs %}
+              <div class="configurator__tab" data-tab-id="{{ tab.id }}">
+                <div class="configurator__tab-header">
+                  <div>
+                    <h3>{{ tab.title }}</h3>
+                  </div>
+                  <div class="configurator__btns">
+                    <button
+                        type="button"
+                        class="btn"
+                        data-id="{{ tab.id }}"
+                        data-popup="add-field"
+                    >
+                      Добавить поле
+                    </button>
+                    <button type="button"><i class="fa-solid fa-pen"></i></button>
+                    <button type="button" class="config-delete" data-item="tab" data-id="{{ tab.id }}">
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                  </div>
+
+                </div>
+
+                <div class="fields-container configurator__fields">
+                  {% for field in tab.fields.all %}
+                  <div class="config-field configurator__field" data-field-id="{{ field.id }}">
+                    <div class="configurator__tab-header">
+
+                      <div>{{ field.title }}</div>
+                      <div class="configurator__btns">
+                        <button type="button" class="btn btn--outline" data-id="{{ field.id }}" data-popup="add-option">
+                          Добавить вариант
+                        </button>
+                        <button type="button"><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="config-delete" data-item="field" data-id="{{ field.id }}">
+                          <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="options-container configurator__options">
+                      {% for option in field.options.all %}
+
+                      <div class="configurator__option" data-option-id="{{ option.id }}">
+                        <p>{{ option }}</p>
+                        <div class="configurator__btns">
+                          <button type="button"><i class="fa-solid fa-pen"></i></button>
+                          <button type="button" class="config-delete" data-item="option" data-id="{{ option.id }}">
+                            <i class="fa-regular fa-trash-can"></i>
+                          </button>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+
+              </div>
+              {% endfor %}
+              {% endif %}
+            </div>
           </div>
+
         </div>
       </div>
     </form>
@@ -241,6 +278,5 @@
     </button>
   </form>
 </div>
-
 
 {% endblock %}
