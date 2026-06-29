@@ -5,6 +5,7 @@ document.addEventListener('click', (e) => {
 
   const popupID = btn.dataset.popup;
   const popup = document.getElementById(popupID);
+  document.documentElement.classList.add('_lock');
 
   if (popupID && popup) {
     popup.style.display = 'block';

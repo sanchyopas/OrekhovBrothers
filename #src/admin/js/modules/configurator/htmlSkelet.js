@@ -1,17 +1,26 @@
 export const tabSkeleton = (dataJson) => {
   return `
-    <div class="config-tab" data-tab-id="${dataJson.id}">
-      <div class="config-tab__header">
-        <h3>${dataJson.title}</h3>
-
-        <button
-          type="button"
-          class="add-field-btn add-tab__button"
-          data-id="${dataJson.id}"
-          data-popup="add-field"
-        >
-          Добавить поле
-        </button>
+    <div class="configurator__tab" data-tab-id="${dataJson.id}">
+      <div class="configurator__tab-header">
+        <div>
+          <h3>${dataJson.title}</h3>
+        </div>
+        <div class="configurator__btns">
+          <button
+            type="button"
+            class="btn"
+            data-id="${dataJson.id}"
+            data-popup="add-field"
+          >
+            Добавить поле
+          </button>
+          <button type="button"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" class="config-delete"
+                  data-item="tab" data-id="${dataJson.id}"
+          >
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
       </div>
 
       <div class="fields-container"></div>
@@ -21,19 +30,26 @@ export const tabSkeleton = (dataJson) => {
 export const fieldSkeleton = (dataJson) => {
   return `
     <div
-      class="config-field"
+      class="config-field configurator__field"
       data-field-id="${dataJson.id}"
     >
-
-      <div>${dataJson.title}</div>
-
-      <button
-        class="add-option-btn"
-        data-id="${dataJson.id}"
-        data-popup="add-option"
-      >
-        Добавить вариант
-      </button>
+      <div class="configurator__tab-header">
+        <div>${dataJson.title}</div>
+        <div class="configurator__btns">
+          <button
+            class="btn btn--outline"
+            data-id="${dataJson.id}"
+            data-popup="add-option"
+          >
+            Добавить вариант
+          </button>
+          <button type="button"><i class="fa-solid fa-pen"></i></button>
+          <button type="button" class="config-delete" data-item="field" data-id="${dataJson.id}">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
+      </div>
+      
       <div class="options-container"></div>
     </div>`
 }
@@ -41,11 +57,16 @@ export const fieldSkeleton = (dataJson) => {
 
 export const fieldOptions = (dataJson) => {
   return `
-    <div class="option-item" data-option-id="${dataJson.id}" >
+    <div class="configurator__option" data-option-id="${dataJson.id}" >
     
-      <span>${dataJson.title}</span>
+      <p>${dataJson.title}</p>
     
-      <span>${dataJson.price}</span>
+      <div class="configurator__btns">
+        <button type="button"><i class="fa-solid fa-pen"></i></button>
+        <button type="button" class="config-delete" data-item="option" data-id="${dataJson.id}">
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </div>
     
     </div>
   `

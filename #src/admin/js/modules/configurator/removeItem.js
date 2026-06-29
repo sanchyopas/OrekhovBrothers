@@ -1,29 +1,7 @@
+import {getCookie} from "./index.js";
+
 const configDeleteBtn = document.querySelectorAll('.config-delete');
-
-// получение csrf из cookie
-function getCookie(name) {
-  let cookieValue = null;
-
-  if (document.cookie && document.cookie !== '') {
-    const cookies = document.cookie.split(';');
-
-    for (let cookie of cookies) {
-      cookie = cookie.trim();
-
-      if (cookie.startsWith(name + '=')) {
-        cookieValue = decodeURIComponent(
-          cookie.substring(name.length + 1)
-        );
-        break;
-      }
-    }
-  }
-
-  return cookieValue;
-}
-
 const csrftoken = getCookie('csrftoken');
-
 configDeleteBtn.forEach((item) => {
   item.addEventListener('click', () => {
     const dataId = item.dataset.id;

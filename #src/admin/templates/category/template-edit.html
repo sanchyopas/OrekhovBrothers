@@ -154,7 +154,7 @@
                 Добавить конфигурацию
               </button>
             </div>
-            <div class="configurator__body">
+            <div class="configurator__body tabs-container">
               {% if tabs %}
               {% for tab in tabs %}
               <div class="configurator__tab" data-tab-id="{{ tab.id }}">
@@ -165,14 +165,16 @@
                   <div class="configurator__btns">
                     <button
                         type="button"
-                        class="btn"
+                        class="btn add-field-btn"
                         data-id="{{ tab.id }}"
                         data-popup="add-field"
                     >
                       Добавить поле
                     </button>
                     <button type="button"><i class="fa-solid fa-pen"></i></button>
-                    <button type="button" class="config-delete" data-item="tab" data-id="{{ tab.id }}">
+                    <button type="button" class="config-delete"
+                            data-item="tab" data-id="{{ tab.id }}"
+                    >
                       <i class="fa-regular fa-trash-can"></i>
                     </button>
                   </div>
@@ -183,10 +185,9 @@
                   {% for field in tab.fields.all %}
                   <div class="config-field configurator__field" data-field-id="{{ field.id }}">
                     <div class="configurator__tab-header">
-
                       <div>{{ field.title }}</div>
                       <div class="configurator__btns">
-                        <button type="button" class="btn btn--outline" data-id="{{ field.id }}" data-popup="add-option">
+                        <button type="button" class="add-option-btn btn btn--outline" data-id="{{ field.id }}" data-popup="add-option">
                           Добавить вариант
                         </button>
                         <button type="button"><i class="fa-solid fa-pen"></i></button>

@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.utils.html import strip_tags
 import re
 import json
+from decimal import Decimal, InvalidOperation
 
 # Импорт моделей из файла models текущего каталога
 from .models import *
@@ -166,36 +167,34 @@ def create_options(request):
     """Создание новой опции для поля"""
     try:
         title = request.POST.get('title', '').strip()
-        price = request.POST.get('price', 0)
+        price_raw = request.POST.get('price', '0').strip() # Забираем как строку
         field_id = request.POST.get('id')
 
-        # Валидация
+        # Валидация входных данных
         if not title:
-            return JsonResponse({
-                'status': False,
-                'error': 'Название опции обязательно'
-            }, status=400)
+            return JsonResponse({'status': False, 'error': 'Название опции обязательно'}, status=400)
 
         if not field_id:
-            return JsonResponse({
-                'status': False,
-                'error': 'ID поля обязателен'
-            }, status=400)
+            return JsonResponse({'status': False, 'error': 'ID поля обязателен'}, status=400)
 
-        # Преобразуем цену
+        # Безопасная валидация ID поля на число
         try:
-            price = int(price) if price else 0
+            field_id = int(field_id)
         except (ValueError, TypeError):
-            price = 0
+            return JsonResponse({'status': False, 'error': 'Некорректный ID поля'}, status=400)
+
+        # Безопасное преобразуем цену в Decimal
+        try:
+            price_raw = price_raw.replace(',', '.') # на случай ввода "10,5"
+            price = Decimal(price_raw) if price_raw else Decimal('0.00')
+        except (InvalidOperation, ValueError, TypeError):
+            price = Decimal('0.00')
 
         # Проверяем существует ли поле
         try:
             field = ConfigField.objects.get(id=field_id)
         except ConfigField.DoesNotExist:
-            return JsonResponse({
-                'status': False,
-                'error': 'Поле не найдено'
-            }, status=404)
+            return JsonResponse({'status': False, 'error': 'Поле не найдено'}, status=404)
 
         # Создаём опцию
         option = ConfigFieldOption.objects.create(
@@ -204,11 +203,12 @@ def create_options(request):
             price=price
         )
 
+        # Возвращаем ответ (приводим price к float или str, чтобы JSON не падал)
         return JsonResponse({
             'status': True,
             'id': option.id,
             'title': option.title,
-            'price': option.price,
+            'price': float(option.price), # ИСПРАВЛЕНО: конвертируем Decimal в float
         })
 
     except Exception as e:
@@ -226,13 +226,12 @@ def item_remove(request):
     item_id = data.get('id')
 
     if(item == 'tab'):
-      print('tab')
+      ConfigTab.objects.get(id=item_id).delete()
 
     if(item == 'field'):
-      print('field')
+      ConfigField.objects.get(id=item_id).delete()
 
     if(item == 'option'):
-      print('option')
       ConfigFieldOption.objects.get(id=item_id).delete()
 
     return JsonResponse({
