@@ -18,6 +18,7 @@ createOptionsForm?.addEventListener("submit", async (e) => {
 
   if (data && data.status) {
     closePopup(currentPopup);
+    document.documentElement.classList.remove('_lock');
     const field = document.querySelector(`[data-field-id="${currentID}"]`);
 
     const optionsContainer = field.querySelector('.options-container');

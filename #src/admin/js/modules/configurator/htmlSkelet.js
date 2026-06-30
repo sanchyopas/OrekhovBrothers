@@ -37,7 +37,7 @@ export const fieldSkeleton = (dataJson) => {
         <div>${dataJson.title}</div>
         <div class="configurator__btns">
           <button
-            class="btn btn--outline"
+            class="btn btn--outline add-option-btn"
             data-id="${dataJson.id}"
             data-popup="add-option"
           >

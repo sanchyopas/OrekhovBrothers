@@ -18,6 +18,7 @@ createFieldForm?.addEventListener("submit", async (e) => {
 
   if (data && data.status) {
     closePopup(currentPopup);
+    document.documentElement.classList.remove('_lock');
     const tab = document.querySelector(`[data-tab-id="${currentID}"]`);
 
     const fieldsContainer = tab.querySelector('.fields-container');
@@ -40,4 +41,9 @@ document.addEventListener('click', (e) => {
       popup.style.display = 'block';
     }
   }
+
+  if (e.target.classList.contains('config-delete')) {
+
+  }
 });
+

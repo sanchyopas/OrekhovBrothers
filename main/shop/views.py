@@ -118,6 +118,7 @@ def create_field(request):
         title = request.POST.get('name', '').strip()
         field_type = request.POST.get('type', 'text')
         tab_id = request.POST.get('id')
+        print(f'-------------------{tab_id}---------------------')
 
         # Валидация
         if not title:

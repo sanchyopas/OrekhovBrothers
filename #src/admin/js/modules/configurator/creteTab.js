@@ -13,6 +13,7 @@ createTabForm?.addEventListener("submit", async (e) => {
 
   if (data && data.status) {
     document.querySelector('.add-config').style.display = 'none';
+    document.documentElement.classList.remove('_lock');
     const tabsContainer = document.querySelector('.tabs-container');
     tabsContainer.insertAdjacentHTML('beforeend', tabSkeleton(data));
     form.reset();
