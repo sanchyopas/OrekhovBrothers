@@ -69,6 +69,10 @@ class Product(models.Model):
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")
   updated_at = models.DateTimeField(auto_now=True)
   order_by = models.CharField(max_length=150, blank=True, null=True, default="0",  db_index=True, verbose_name="Порядок сортировки")
+  area = models.CharField(max_length=250, null=True, blank=True, verbose_name="Площадь")
+  perimetr = models.CharField(max_length=250, null=True, blank=True, verbose_name="Периметр")
+  floors = models.CharField(max_length=250, null=True, blank=True, verbose_name="Этажи")
+  terrace = models.CharField(max_length=250, null=True, blank=True, verbose_name="Терасса")
   status = models.CharField(
     max_length=20,
     choices=STATUS_CHOICES,

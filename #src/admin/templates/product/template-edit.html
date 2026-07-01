@@ -45,6 +45,37 @@
             </div>
             {% endif %}
 
+            <div class="form__grid">
+              {% if form.area %}
+              <div class="form__group">
+                <label
+                    for="{{ form.area.id_for_label }}"
+                    class="form__label">
+                  {{ form.area.label }}
+                  {% if form.area.field.required %}
+                  <span class="form__required">*</span>
+                  {% endif %}:
+                </label>
+                {{ form.area }} {{ form.area.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.perimetr %}
+              <div class="form__group">
+                <label
+                    for="{{ form.perimetr.id_for_label }}"
+                    class="form__label">
+                  {{ form.perimetr.label }}
+                  {% if form.perimetr.field.required %}
+                  <span class="form__required">*</span>
+                  {% endif %}:
+                </label>
+                {{ form.perimetr }} {{ form.perimetr.errors }}
+              </div>
+              {% endif %}
+
+            </div>
+
             {% if form.description %}
             <div class="form__group">
               <label for="{{ form.description.id_for_label }}" class="form__controls-label">

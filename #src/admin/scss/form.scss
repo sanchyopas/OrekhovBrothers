@@ -6,8 +6,6 @@
     justify-content: space-between;
     border-bottom: 1px solid rgba($color: $mainColor, $alpha: 0.2);
     padding-bottom: 40px;
-
-
   }
 
   &__action-left {
@@ -47,6 +45,12 @@
     &.show {
       display: block;
     }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
   }
 
   &__row {

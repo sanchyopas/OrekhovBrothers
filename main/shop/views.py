@@ -53,7 +53,9 @@ def product(request, parent, slug):
   category = Category.objects.get(slug=parent)
 
   images = ProductImage.objects.filter(parent=product)
-  config = ConfigTab.objects.filter(category=category)
+  config = ConfigTab.objects.filter(category=category).prefetch_related(
+      'fields__options'
+  )
 
   context = {
     "category": category,
@@ -244,3 +246,45 @@ def item_remove(request):
       'status': False,
       'error': str(e)
     })
+
+
+@require_http_methods(["POST"])
+def update_config_item(request):
+    try:
+        data = json.loads(request.body)
+
+        item_id = data.get('id')
+        item = data.get('item', '')
+        title = data.get('title', '')
+
+        if not item_id or not title:
+            return JsonResponse({
+                'status': False,
+                'error': 'Missing data'
+            })
+
+        if(item == 'tab'):
+          print('thos==')
+          model = ConfigTab.objects.get(id=item_id)
+          model.title = title
+          model.save()
+
+        if(item == 'field'):
+          model = ConfigField.objects.get(id=item_id)
+          model.title = title
+          model.save()
+
+        if(item == 'option'):
+          model = ConfigFieldOption.objects.get(id=item_id)
+          model.title = title
+          model.save()
+
+        return JsonResponse({
+            'status': True,
+        })
+
+    except Exception as e:
+        return JsonResponse({
+            'status': False,
+            'error': str(e)
+        })

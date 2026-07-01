@@ -134,19 +134,19 @@
         <div class="features features--pb">
           <div class="features__item">
             <div class="features__feature-icon">
-              <img src="@img/icon/area.svg" alt="">
+              <img src="{% static 'theme/img/icons/area.svg' %}" alt="">
             </div>
             <p class="features__feature-value">72 м²</p>
           </div>
           <div class="features__item">
             <div class="features__feature-icon">
-              <img src="@img/icon/perimetr.svg" alt="">
+              <img src="{% static 'theme/img/icons/perimetr.svg' %}" alt="">
             </div>
             <p class="features__feature-value">100×200 мм</p>
           </div>
           <div class="features__item">
             <div class="features__feature-icon">
-              <img src="@img/icon/stairs.svg" alt="">
+              <img src="{% static 'theme/img/icons/stairs.svg' %}" alt="">
             </div>
             <p class="features__feature-value">1 этаж</p>
           </div>
@@ -179,14 +179,15 @@
                 role="tabpanel"
                 id="panel-{{ conf.id }}"
                 aria-labelledby="tab-{{ conf.id }}"
+                {% if not forloop.first %}hidden{% endif %}
             >
               <div class="calc">
                 <div class="calc__row">
                   {% if conf.fields %}
                     {% for field in conf.fields.all %}
+                  {% if field.options.all %}
                       <fieldset class="calc__group">
                         <legend class="calc__title">{{ field.title }}</legend>
-                        {% if field.options %}
                         <div class="calc__inner">
                           {% for option in field.options.all %}
                           <label class="form__radio">
@@ -203,8 +204,8 @@
                           </label>
                           {% endfor %}
                         </div>
-                        {% endif %}
                       </fieldset>
+                  {% endif %}
                     {% endfor %}
                   {% endif %}
                 </div>
@@ -223,7 +224,7 @@
 
                   <div class="form__checkbox-inner">
                     <div class="checkbox-custom">
-                      <img src="@img/icon/checked.svg" alt="">
+                      <img src="{% static 'theme/img/icons/checked.svg' %}" alt="">
                     </div>
                     <span class="form__checkbox-text">Сборка и монтаж домокомплекта</span>
                   </div>

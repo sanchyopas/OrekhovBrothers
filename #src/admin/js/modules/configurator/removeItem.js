@@ -24,12 +24,11 @@ configDeleteBtn.forEach((item) => {
   });
 });
 
-function parseData(data, dataId, dataItem) {
+export function parseData(data, dataId, dataItem) {
   const {status} = data
 
   if (status === true) {
     const element = document.querySelector(`[data-${dataItem}-id="${dataId}"]`);
-    console.log(element)
     element?.remove();
   }
 }

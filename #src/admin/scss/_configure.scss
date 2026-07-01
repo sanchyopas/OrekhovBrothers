@@ -136,4 +136,27 @@
     border-radius: 4px;
   }
 
+  .edit-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .save-edit, .cancel-edit {
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+
+  .save-edit {
+    background: green;
+  }
+
+  .cancel-edit {
+    background: red;
+  }
+
 }

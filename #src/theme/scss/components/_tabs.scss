@@ -53,6 +53,14 @@
     margin: 0 0 16px;
   }
 
+  &__panel {
+    display: none;
+  }
+
+  &__panel:not([hidden]) {
+    display: block;
+  }
+
   &__tab {
     flex: 1;
     padding: 11px;

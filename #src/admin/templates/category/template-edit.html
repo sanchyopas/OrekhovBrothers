@@ -160,7 +160,7 @@
               <div class="configurator__tab" data-tab-id="{{ tab.id }}">
                 <div class="configurator__tab-header">
                   <div>
-                    <h3>{{ tab.title }}</h3>
+                    <h3 data-editable data-value="{{ tab.title }}">{{ tab.title }}</h3>
                   </div>
                   <div class="configurator__btns">
                     <button
@@ -171,7 +171,14 @@
                     >
                       Добавить поле
                     </button>
-                    <button type="button"><i class="fa-solid fa-pen"></i></button>
+                    <button
+                        type="button"
+                        class="config-edit"
+                        data-item="tab"
+                        data-id="{{ tab.id }}"
+                    >
+                      <i class="fa-solid fa-pen"></i>
+                    </button>
                     <button type="button" class="config-delete"
                             data-item="tab" data-id="{{ tab.id }}"
                     >
@@ -185,12 +192,17 @@
                   {% for field in tab.fields.all %}
                   <div class="config-field configurator__field" data-field-id="{{ field.id }}">
                     <div class="configurator__tab-header">
-                      <div>{{ field.title }}</div>
+                      <div data-editable data-value="{{ field.title }}">{{ field.title }}</div>
                       <div class="configurator__btns">
                         <button type="button" class="add-option-btn btn btn--outline" data-id="{{ field.id }}" data-popup="add-option">
                           Добавить вариант
                         </button>
-                        <button type="button"><i class="fa-solid fa-pen"></i></button>
+                        <button
+                            type="button"
+                            class="config-edit"
+                            data-item="field"
+                            data-id="{{ field.id }}"
+                        ><i class="fa-solid fa-pen"></i></button>
                         <button type="button" class="config-delete" data-item="field" data-id="{{ field.id }}">
                           <i class="fa-regular fa-trash-can"></i>
                         </button>
@@ -200,9 +212,14 @@
                       {% for option in field.options.all %}
 
                       <div class="configurator__option" data-option-id="{{ option.id }}">
-                        <p>{{ option }}</p>
+                        <p data-editable data-value="{{ option }}">{{ option }}</p>
                         <div class="configurator__btns">
-                          <button type="button"><i class="fa-solid fa-pen"></i></button>
+                          <button
+                              type="button"
+                              class="config-edit"
+                              data-item="option"
+                              data-id="{{ option.id }}"
+                          ><i class="fa-solid fa-pen"></i></button>
                           <button type="button" class="config-delete" data-item="option" data-id="{{ option.id }}">
                             <i class="fa-regular fa-trash-can"></i>
                           </button>
