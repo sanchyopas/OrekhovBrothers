@@ -56,6 +56,12 @@ class Product(models.Model):
     ('draft', 'Черновик'),
     ('hidden', 'Скрыто'),
   ]
+
+  STATUS_CHOICES_TERRACE = [
+      ('published', 'Есть'),
+      ('hidden', 'Нет'),
+    ]
+
   name = models.CharField(max_length=150, db_index=True, verbose_name="Наименование")
   slug = models.SlugField(max_length=255, unique=True, default="", verbose_name="URL")
   category = models.ManyToManyField(Category, default="", verbose_name="Категории")
@@ -72,7 +78,8 @@ class Product(models.Model):
   area = models.CharField(max_length=250, null=True, blank=True, verbose_name="Площадь")
   perimetr = models.CharField(max_length=250, null=True, blank=True, verbose_name="Периметр")
   floors = models.CharField(max_length=250, null=True, blank=True, verbose_name="Этажи")
-  terrace = models.CharField(max_length=250, null=True, blank=True, verbose_name="Терасса")
+  terrace = models.CharField(max_length=250, choices=STATUS_CHOICES_TERRACE, default='hidden',verbose_name="Терасса")
+
   status = models.CharField(
     max_length=20,
     choices=STATUS_CHOICES,
@@ -149,18 +156,39 @@ class ConfigFieldOption(models.Model):
   def __str__(self):
     return self.title
 
-class ProductField(models.Model):
-  """
-    Настройки поля для конкретного товара.
-    Позволяет выключить поле у конкретного дома.
-  """
 
-  product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="field_settings")
-  field = models.ForeignKey(ConfigField, on_delete=models.CASCADE)
-  enabled = models.BooleanField(default=True)
+class ProductOption(models.Model):
+  product = models.ForeignKey(
+    Product,
+    on_delete=models.CASCADE,
+    related_name='options'
+  )
+
+  name = models.CharField(
+    max_length=255,
+    verbose_name='Название'
+  )
+
+  price = models.DecimalField(
+    max_digits=10,
+    decimal_places=2,
+    default=0,
+    verbose_name='Цена'
+  )
+
+  is_from = models.BooleanField(
+    default=False,
+    verbose_name='От цены'
+  )
+
+  enabled = models.BooleanField(
+    default=True,
+    verbose_name='Активно'
+  )
 
   class Meta:
-    unique_together = ("product", "field")
+    verbose_name = "Опция товара"
+    verbose_name_plural = "Опции товара"
 
 class ProductImage(models.Model):
   parent = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images", verbose_name="Привязка к продукту")

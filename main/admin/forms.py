@@ -3,6 +3,7 @@ from home.models import *
 from shop.models import *
 from .widgets import CustomImageWidget
 from django_ckeditor_5.widgets import CKEditor5Widget
+from django.forms import inlineformset_factory
 
 INPUT_CLASS = "form__controls"
 
@@ -166,3 +167,17 @@ class SliderForm(AutoStyledModelForm):
   class Meta:
     model = Slider
     fields = "__all__"
+
+class ProductOptionForm(forms.ModelForm):
+  class Meta:
+    model = ProductOption
+    fields = ['name', 'price', 'is_from', 'enabled']
+
+
+ProductOptionFormSet = inlineformset_factory(
+    Product,
+    ProductOption,
+    form=ProductOptionForm,
+    extra=1,
+    can_delete=True
+)

@@ -9,6 +9,7 @@ from home.models import *
 from main.settings import BASE_DIR
 from shop.models import *
 from .utils.views import *
+from django.forms import inlineformset_factory
 
 #Нужные импорты
 from slugify import slugify
@@ -191,52 +192,54 @@ def admin_about(request):
 def admin_product(request):
   return generic_list(request, Product, "Проекты", "product_add", "product_edit", "product_delete")
 
+from .forms import ProductOptionFormSet
+
 @user_passes_test(lambda u: u.is_superuser)
 def product_edit(request, pk):
-  """
-    View, которая получает данные из формы редактирования товара
-    и изменяет данные внесенные данные товара в базе данных
-  """
+
   product = Product.objects.get(id=pk)
   images = ProductImage.objects.filter(parent_id=pk)
-  form = ProductForm(instance=product)
-  form_new = ProductForm(request.POST, request.FILES, instance=product)
+
+  form = ProductForm(
+      request.POST or None,
+      request.FILES or None,
+      instance=product
+  )
+
+  option_formset = ProductOptionFormSet(
+      request.POST or None,
+      instance=product,
+      prefix='options'
+  )
 
   if request.method == 'POST':
-    if form_new.is_valid():
-      form_new.save()
-      product = Product.objects.get(id=pk)
-      images = request.FILES.getlist('src')
+      if form.is_valid() and option_formset.is_valid():
 
-      for image in images:
-        img = ProductImage(parent=product, src=image)
-        img.save()
+          product = form.save()
 
-      messages.success(request, "Успешно сохранено !")
-      return redirect(request.META.get('HTTP_REFERER'))
-    else:
-      error_list = []
+          option_formset.instance = product
+          option_formset.save()
 
-      for field_name, errors in form.errors.items():
-        if field_name == "__all__":
-          for error in errors:
-            error_list.append(error)
-          continue
-        field_label = form[field_name].label
+          for image in request.FILES.getlist('src'):
+              ProductImage.objects.create(
+                  parent=product,
+                  src=image
+              )
 
-        for error in errors:
-          error_list.append(f"{field_label}: {error}")
-      messages.error(request, " | ".join(error_list))
-      return render(request, 'product/template-edit.html', {'form': form_new})
+          return redirect(
+              request.META.get('HTTP_REFERER')
+          )
 
-  context = {
-    "form": form,
-    "title": "Страница редактирования",
-    "images": images,
-    "product_view": True
-  }
-
-  return render(request, "product/template-edit.html", context)
+  return render(
+      request,
+      'product/template-edit.html',
+      {
+          'form': form,
+          'option_formset': option_formset,
+          'images': images,
+          'product_view': True,
+      }
+  )
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_add(request):

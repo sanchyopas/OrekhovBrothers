@@ -132,28 +132,36 @@
         <h1 class="single__title">{{ product.name }}</h1>
         {% endif %}
         <div class="features features--pb">
+          {% if product.area %}
           <div class="features__item">
             <div class="features__feature-icon">
               <img src="{% static 'theme/img/icons/area.svg' %}" alt="">
             </div>
-            <p class="features__feature-value">72 м²</p>
+            <p class="features__feature-value">{{ product.area }} м²</p>
           </div>
+          {% endif %}
+          {% if product.perimetr %}
           <div class="features__item">
             <div class="features__feature-icon">
               <img src="{% static 'theme/img/icons/perimetr.svg' %}" alt="">
             </div>
-            <p class="features__feature-value">100×200 мм</p>
+            <p class="features__feature-value">{{ product.perimetr }}</p>
           </div>
+          {% endif %}
+          {% if product.floors %}
           <div class="features__item">
             <div class="features__feature-icon">
               <img src="{% static 'theme/img/icons/stairs.svg' %}" alt="">
             </div>
-            <p class="features__feature-value">1 этаж</p>
+            <p class="features__feature-value">{{ product.floors }}</p>
           </div>
+          {% endif %}
+          {% if product.terrace %}
           <div class="features__item">
             <div class="features__feature-icon"></div>
-            <p class="features__feature-value">Терраса: нет</p>
+            <p class="features__feature-value">Терраса: {{ product.get_terrace_display }}</p>
           </div>
+          {% endif %}
         </div>
         {% if config %}
         <form action="" class="form">
@@ -214,72 +222,33 @@
             {% endfor %}
           </div>
 
+          {% if product.options.all  %}
           <div class="options">
             <fieldset class="options__group">
               <legend class="options__title">Дополнительные опции</legend>
 
               <div class="options__inner">
+                {% for option in product.options.all %}
                 <label class="form__checkbox">
-                  <input type="checkbox" data-price="2000" value="Сборка и монтаж домокомплекта +5 000 ₽">
+                  <input type="checkbox" data-price="{{ option.price|floatformat:0 }}" value="{{ option.name }}">
 
                   <div class="form__checkbox-inner">
                     <div class="checkbox-custom">
                       <img src="{% static 'theme/img/icons/checked.svg' %}" alt="">
                     </div>
-                    <span class="form__checkbox-text">Сборка и монтаж домокомплекта</span>
+                    <span class="form__checkbox-text">{{ option.name }}</span>
                   </div>
-                  <span class="form__checkbox-price">+5 000 ₽</span>
+                  <span class="form__checkbox-price">+{{ option.price|floatformat:0 }} ₽</span>
                 </label>
-                <label class="form__checkbox">
-                  <input type="checkbox" data-price="5000" value="Доставка от +5 000 ₽">
-
-                  <div class="form__checkbox-inner">
-                    <div class="checkbox-custom">
-                      <img src="@img/icon/checked.svg" alt="">
-                    </div>
-                    <span class="form__checkbox-text">Доставка</span>
-                  </div>
-                  <span class="form__checkbox-price">от +5 000 ₽</span>
-                </label>
-                <label class="form__checkbox">
-                  <input type="checkbox" data-price="700" value="Ступени деревянные +14 000 ₽">
-
-                  <div class="form__checkbox-inner">
-                    <div class="checkbox-custom">
-                      <img src="@img/icon/checked.svg" alt="">
-                    </div>
-                    <span class="form__checkbox-text">Ступени деревянные</span>
-                  </div>
-                  <span class="form__checkbox-price">+14 000 ₽</span>
-                </label>
-                <label class="form__checkbox">
-                  <input type="checkbox" data-price="770" value="Ступени деревянные +14 000 ₽">
-
-                  <div class="form__checkbox-inner">
-                    <div class="checkbox-custom">
-                      <img src="@img/icon/checked.svg" alt="">
-                    </div>
-                    <span class="form__checkbox-text">Ступени деревянные</span>
-                  </div>
-                  <span class="form__checkbox-price">+14 000 ₽</span>
-                </label>
-                <label class="form__checkbox">
-                  <input type="checkbox" data-price="100" value="Ступени деревянные +14 000 ₽">
-
-                  <div class="form__checkbox-inner">
-                    <div class="checkbox-custom">
-                      <img src="@img/icon/checked.svg" alt="">
-                    </div>
-                    <span class="form__checkbox-text">Ступени деревянные</span>
-                  </div>
-                  <span class="form__checkbox-price">+14 000 ₽</span>
-                </label>
+                {% endfor %}
               </div>
 
             </fieldset>
+            {% if product.options.count > 3 %}
             <button type="button" class="btn btn--text" id="show-more-options">Показать все</button>
+            {% endif %}
           </div>
-
+          {% endif %}
           <div class="single__result">
             <p>Расчетная стоимость</p>
             <p class="single__price" id="single-price">11 925 000 ₽</p>

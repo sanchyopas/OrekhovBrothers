@@ -147,6 +147,39 @@ charAddBtn?.addEventListener("click", (e) => {
   }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+
+  const addBtn = document.getElementById('add-option');
+  const container = document.getElementById('option-container');
+
+  const totalForms = document.querySelector(
+    '#id_options-TOTAL_FORMS'
+  );
+
+  addBtn.addEventListener('click', () => {
+
+    let count = parseInt(totalForms.value);
+
+    let template = document
+      .getElementById('empty-form')
+      .innerHTML;
+
+    template = template.replace(
+      /__prefix__/g,
+      count
+    );
+
+    container.insertAdjacentHTML(
+      'beforeend',
+      template
+    );
+
+    totalForms.value = count + 1;
+
+  });
+
+});
+
 
 
 
