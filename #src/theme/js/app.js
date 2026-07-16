@@ -1,9 +1,9 @@
 import * as functions from './modules/baseFunctions.js';
 import './modules/tabs.js';
-import './modules/sliders.js';
 import './modules/calculator.js';
 import './modules/popup.js';
 import './modules/select.js';
+import './modules/sliders.js';
 
 functions.isWebp();
 

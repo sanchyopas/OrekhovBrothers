@@ -83,6 +83,10 @@
     }
   }
 
+  .swiper-button-disabled {
+    pointer-events: auto !important;
+  }
+
   .swiper-button-next,
   .swiper-button-prev {
     top: 45%;

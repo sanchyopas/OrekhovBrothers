@@ -5333,7 +5333,7 @@ __metadata:
     normalize.css: "npm:^8.0.1"
     sass: "npm:^1.55.0"
     sass-loader: "npm:^16.0.3"
-    swiper: "npm:^11.1.15"
+    swiper: "npm:^12.1.2"
     webp-converter: "npm:2.2.3"
     webpack: "npm:^5.74.0"
     webpack-stream: "npm:^7.0.0"
@@ -9735,10 +9735,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swiper@npm:^11.1.15":
-  version: 11.1.15
-  resolution: "swiper@npm:11.1.15"
-  checksum: 10c0/3faabc5b33c0663513e8e41c4ef7920d4c9a1ca6b988848f2e51e1db0d01471a1bae22fce3177b9d3ab2c128fc6df23074415ae7957bd0f8542fd7387fa5263d
+"swiper@npm:^12.1.2":
+  version: 12.2.0
+  resolution: "swiper@npm:12.2.0"
+  checksum: 10c0/459c9621e170130c0a6874b05e24fefd0411529600a17b2d8afc4987dc2e803ab18d42983081b723423819d464568fdb541b6c3f517e558c60888c644dc4ead1
   languageName: node
   linkType: hard
 

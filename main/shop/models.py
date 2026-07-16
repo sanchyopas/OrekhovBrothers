@@ -60,6 +60,7 @@ class Product(models.Model):
   STATUS_CHOICES_TERRACE = [
       ('published', 'Есть'),
       ('hidden', 'Нет'),
+      ('draft', 'Не отображать'),
     ]
 
   name = models.CharField(max_length=150, db_index=True, verbose_name="Наименование")
@@ -78,7 +79,7 @@ class Product(models.Model):
   area = models.CharField(max_length=250, null=True, blank=True, verbose_name="Площадь")
   perimetr = models.CharField(max_length=250, null=True, blank=True, verbose_name="Периметр")
   floors = models.CharField(max_length=250, null=True, blank=True, verbose_name="Этажи")
-  terrace = models.CharField(max_length=250, choices=STATUS_CHOICES_TERRACE, default='hidden',verbose_name="Терасса")
+  terrace = models.CharField(max_length=250, choices=STATUS_CHOICES_TERRACE, default='draft',verbose_name="Терасса")
 
   status = models.CharField(
     max_length=20,

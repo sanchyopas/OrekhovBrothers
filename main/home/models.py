@@ -21,8 +21,6 @@ class BaseSettings(SingletonModel):
   logo_dark = models.ImageField(upload_to="base-settings/", blank=True, null=True, verbose_name="Логотип Footer")
   logo_width = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Ширина логотипа")
   logo_height = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Высота логотипа")
-  phone = models.CharField(max_length=50, blank=True, null=True, db_index=True, verbose_name="Основной телефона")
-  additional_phone = models.CharField(max_length=50, blank=True, null=True, db_index=True, verbose_name="Дополнительный телефона")
   email = models.EmailField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Email")
   address = models.CharField(max_length=250, blank=True, null=True, verbose_name="Адрес")
   favicon = models.FileField(upload_to='base-settings/', blank=True, null=True, verbose_name="ФавИконка")

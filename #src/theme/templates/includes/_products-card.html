@@ -24,28 +24,39 @@
     </div>
 
     <div class="features">
+      {% if product.area %}
       <div class="features__item">
         <div class="features__feature-icon">
-          <img src="@img/icon/area.svg" alt="">
+          <img src="{% static 'theme/img/icons/area.svg' %}" alt="">
         </div>
-        <p class="features__feature-value">72 м²</p>
+        <p class="features__feature-value">{{ product.area }} м²</p>
       </div>
+      {% endif %}
+
+      {% if product.perimetr %}
       <div class="features__item">
         <div class="features__feature-icon">
-          <img src="@img/icon/perimetr.svg" alt="">
+          <img src="{% static 'theme/img/icons/perimetr.svg' %}" alt="">
         </div>
-        <p class="features__feature-value">100×200 мм</p>
+        <p class="features__feature-value">{{ product.perimetr }}</p>
       </div>
+      {% endif %}
+
+      {% if product.floors %}
       <div class="features__item">
         <div class="features__feature-icon">
-          <img src="@img/icon/stairs.svg" alt="">
+          <img src="{% static 'theme/img/icons/stairs.svg' %}" alt="">
         </div>
-        <p class="features__feature-value">1 этаж</p>
+        <p class="features__feature-value">{{ product.floors }}</p>
       </div>
+      {% endif %}
+
+      {% if product.terrace == 'published' %}
       <div class="features__item">
         <div class="features__feature-icon"></div>
-        <p class="features__feature-value">Терраса: нет</p>
+        <p class="features__feature-value">Терраса: {{ product.get_terrace_display }}</p>
       </div>
+      {% endif %}
     </div>
   </div>
 </article>

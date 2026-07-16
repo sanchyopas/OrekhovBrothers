@@ -66,6 +66,7 @@
         {% if socials %}
         <ul class="social">
           {% for social in socials %}
+          {% if social.link %}
           <li class="social__item">
             <a href="{{ social.link }}" target="_blank">
               {% thumbnail social.image "40x40" format="WEBP" crop="center" as im %}
@@ -78,6 +79,7 @@
               {% endthumbnail %}
             </a>
           </li>
+          {% endif %}
           {% endfor %}
         </ul>
         {% endif %}

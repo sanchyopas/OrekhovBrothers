@@ -156,7 +156,7 @@
             <p class="features__feature-value">{{ product.floors }}</p>
           </div>
           {% endif %}
-          {% if product.terrace %}
+          {% if product.terrace == 'published' %}
           <div class="features__item">
             <div class="features__feature-icon"></div>
             <p class="features__feature-value">Терраса: {{ product.get_terrace_display }}</p>
@@ -193,27 +193,28 @@
                 <div class="calc__row">
                   {% if conf.fields %}
                     {% for field in conf.fields.all %}
-                  {% if field.options.all %}
-                      <fieldset class="calc__group">
-                        <legend class="calc__title">{{ field.title }}</legend>
-                        <div class="calc__inner">
-                          {% for option in field.options.all %}
-                          <label class="form__radio">
-                            <input
-                                type="radio"
-                                name="{{ field.title }}"
-                                data-price="{{ option.price }}"
-                                value="{{ option.title }}"
-                            >
-                            <div class="form__radio-inner">
-                              <span class="custom-radio"></span>
-                              <span>{{ option.title }}</span>
-                            </div>
-                          </label>
-                          {% endfor %}
-                        </div>
-                      </fieldset>
-                  {% endif %}
+                    {% if field.options.all %}
+                        <fieldset class="calc__group">
+                          <legend class="calc__title">{{ field.title }}</legend>
+                          <div class="calc__inner">
+                            {% for option in field.options.all %}
+                            <label class="form__radio">
+                              <input
+                                  type="radio"
+                                  name="{{ field.title }}"
+                                  data-price="{{ option.price }}"
+                                  value="{{ option.title }}"
+                                  {% if forloop.first %}checked{% endif %}
+                              >
+                              <div class="form__radio-inner">
+                                <span class="custom-radio"></span>
+                                <span>{{ option.title }}</span>
+                              </div>
+                            </label>
+                            {% endfor %}
+                          </div>
+                        </fieldset>
+                    {% endif %}
                     {% endfor %}
                   {% endif %}
                 </div>

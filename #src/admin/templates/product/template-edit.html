@@ -15,7 +15,7 @@
     <form action="." method="POST" id="myForm" class="form" enctype="multipart/form-data">
       <div class="form__action">
         <div class="form__action-left">
-          <button type="button" data-name="basic" class="active">Основные</button>
+          <button type="button" data-name="basic" class="_active">Основные</button>
           <button type="button" data-name="seo" class="">Поля SEO</button>
           <button type="button" data-name="gallery" class="">Дополнительные фотографии</button>
           <button type="button" data-name="property" class="">Дополнительные опции</button>
@@ -29,7 +29,7 @@
       </div>
       {% csrf_token %}
       {{ form.media }}
-      <div class="form__inner show" id="basic">
+      <div class="form__inner _show" id="basic">
         <div class="form__row">
           <div class="form__col">
             {% if form.name %}
