@@ -243,7 +243,7 @@ def product_edit(request, pk):
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_add(request):
-  return generic_add(request, ProductForm, "admin_shop", "Добавление Товара",  template_name="common-template/product-edit-add-page.html")
+  return generic_add(request, ProductForm, "admin_shop", "Добавление Товара",  template_name="product/template-edit.html")
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_delete(request,pk):
