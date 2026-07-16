@@ -1,9 +1,9 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'avroraweb_tompc',
-        'USER': 'avroraweb_tompc',
-        'PASSWORD': 'qxHk1&Pnnw6b',
+        'NAME': 'sanchyopas_oreh',
+        'USER': 'sanchyopas_oreh',
+        'PASSWORD': 'Ba1QJpGn&ZUr',
         'HOST': 'localhost',
     }
 }
@@ -71,7 +71,7 @@ LOGGING = {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'file',
-            'filename': '/home/a/avroraweb/tompc-tech/public_html/debug.log'
+            'filename': 'home/s/sanchyopas/orehovbrothers.sanchyopas.beget.tech/public_html/debug.log'
         }
     },
     'loggers': {
