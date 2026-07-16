@@ -80,7 +80,7 @@ def admin_settings(request):
 def admin_home_page(request):
   try:
     instance = HomeTemplate.objects.get()
-  except model_class.DoesNotExist:
+  except:
     instance = HomeTemplate()
     instance.save()
   except Exception as e:
