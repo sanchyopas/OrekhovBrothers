@@ -80,10 +80,9 @@ def admin_settings(request):
 def admin_home_page(request):
   try:
     instance = HomeTemplate.objects.get()
-  except:
+  except Exception as e:
     instance = HomeTemplate()
     instance.save()
-  except Exception as e:
     messages.error(request, f"Ошибка: {e}")
     return redirect(request.META.get('HTTP_REFERER'))
 
