@@ -1,0 +1,105 @@
+{% load static %}{% load thumbnail %}
+<div class="header">
+  <div class="container">
+    <div class="header__inner">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <div class="nav__item-inner">
+              <a href="{% url 'category' %}" class="nav__link btn--text">Каталог</a>
+              <button type="button" class="nav__arrow">
+                <img src="{% static 'theme/img/icons/arrow-down-green.svg' %}" alt="">
+              </button>
+            </div>
+            {% if global_categories %}
+            <ul class="submenu">
+              {% for category in global_categories %}
+              <li class="submenu__item">
+                <a href="{{ category.get_absolute_url }}" class="submenu__link">
+                  {{ category.name }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          <li class="nav__item"><a href="{% url 'reviews' %}" class="nav__link btn--text">Отзывы</a></li>
+          <li class="nav__item"><a href="{% url 'about' %}" class="nav__link btn--text">О компании</a></li>
+          <li class="nav__item"><a href="{% url 'contact' %}" class="nav__link btn--text">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__group">
+        <div class="header__burger">
+          <button type="button" class="header__burger-btn" onclick="this.focus()">
+            <img src="{% static 'theme/img/icons/menu.svg' %}" alt="">
+          </button>
+          <nav class="mobile-menu" id="mobile-menu">
+            {% if global_categories %}
+            <ul class="mobile-menu__catalog">
+              {% for category in global_categories %}
+              <li>
+                <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            <ul class="mobile-menu__main">
+              <li><a href="{% url 'reviews' %}">Отзывы</a></li>
+              <li><a href="{% url 'about' %}">О компании</a></li>
+              <li><a href="{% url 'contact' %}">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
+        {% if base_settings.logo %}
+        <a href="/" class="header__logo logo">
+          <img src="{{ base_settings.logo.url }}"
+               width="{% if base_settings.logo_width %} {{ base_settings.logo_width }}{% endif %}"
+               height="{% if base_settings.logo_height %} {{ base_settings.logo_height }}{% endif %}"
+               alt="Логотип Братья Ореховы"
+               title="Логотип Братья Ореховы">
+        </a>
+        {% endif %}
+      </div>
+
+      <div class="header__controls">
+        {% if socials %}
+        <ul class="social">
+          {% for social in socials %}
+          {% if social.link %}
+          <li class="social__item">
+            <a href="{{ social.link }}" target="_blank">
+              {% thumbnail social.image "40x40" format="WEBP" crop="center" as im %}
+              <img src="{{ im.url }}"
+                   width="{{ im.width }}"
+                   height="{{ im.height }}"
+                   alt="{{ social.name }}"
+                   title="{{ social.name }}"
+              >
+              {% endthumbnail %}
+            </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <a href="tel:+83822503509" type="button" class="header__mobile-phone">
+          <img src="{% static 'theme/img/icons/phone.svg' %}" alt="Иконка телефона">
+        </a>
+        {% if phones_header %}
+        <div class="header__phone">
+          {% for phone in phones_header %}
+          <a href="tel:{{ phone.phone }}" class="header__phone-link js-copy-clipboard" data-copy="{{ phone.phone }}">
+            {{ phone.phone }}
+            <div class="tooltip">
+              <p>Телефон скопирован</p>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+

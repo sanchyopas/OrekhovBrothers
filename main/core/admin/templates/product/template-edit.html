@@ -1,0 +1,302 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block body %}
+<div class="page">
+  <div class="header">
+    <div class="header__left">
+      <h1 class="header__title">{{ title }}</h1>
+    </div>
+    <div class="header__right">
+      <a href="javascript:history.back()" class="btn">Назад</a>
+    </div>
+  </div>
+  <div class="page__content">
+    <form action="." method="POST" id="myForm" class="form" enctype="multipart/form-data">
+      <div class="form__action">
+        <div class="form__action-left">
+          <button type="button" data-name="basic" class="_active">Основные</button>
+          <button type="button" data-name="seo" class="">Поля SEO</button>
+          <button type="button" data-name="gallery" class="">Дополнительные фотографии</button>
+          <button type="button" data-name="property" class="">Дополнительные опции</button>
+        </div>
+        <div class="form__action-right">
+          <button type="submit" class="btn btn--accent">
+            <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+            Сохранить
+          </button>
+        </div>
+      </div>
+      {% csrf_token %}
+      {{ form.media }}
+      <div class="form__inner _show" id="basic">
+        <div class="form__row">
+          <div class="form__col">
+            {% if form.name %}
+            <div class="form__group">
+              <label
+                  for="{{ form.name.id_for_label }}"
+                  class="form__label">
+                {{ form.name.label }}
+                {% if form.name.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+              </label>
+              {{ form.name }} {{ form.name.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.area %}
+            <div class="form__group">
+              <label
+                  for="{{ form.area.id_for_label }}"
+                  class="form__label">
+                {{ form.area.label }}
+                {% if form.area.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+              </label>
+              {{ form.area }} {{ form.area.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.perimetr %}
+            <div class="form__group">
+              <label
+                  for="{{ form.perimetr.id_for_label }}"
+                  class="form__label">
+                {{ form.perimetr.label }}
+                {% if form.perimetr.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+              </label>
+              {{ form.perimetr }} {{ form.perimetr.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.floors %}
+            <div class="form__group">
+              <label
+                  for="{{ form.floors.id_for_label }}"
+                  class="form__label">
+                {{ form.floors.label }}
+                {% if form.floors.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+              </label>
+              {{ form.floors }} {{ form.floors.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.terrace %}
+            <div class="form__group">
+              <label
+                  for="{{ form.floors.id_for_label }}"
+                  class="form__label">
+                {{ form.terrace.label }}
+                {% if form.terrace.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+              </label>
+              {{ form.terrace }} {{ form.terrace.errors }}
+            </div>
+            {% endif %}
+
+
+
+            {% if form.description %}
+            <div class="form__group">
+              <label for="{{ form.description.id_for_label }}" class="form__controls-label">
+                {{ form.description.label }}:
+              </label>
+              {{ form.description }} {{ form.description.errors }}
+            </div>
+            {% endif %}
+
+
+          </div>
+          <div class="form__col">
+            {% if form.slug %}
+            <div class="form__group">
+              <label for="{{ form.slug.id_for_label }}" class="form__label">
+                URL{% if form.slug.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+
+              </label>
+              {{ form.slug }} {{ form.slug.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.category %}
+            <div class="form__group">
+              <label for="{{ form.category.id_for_label }}" class="form__label">Выбор категории:</label>
+              {{ form.category }} {{ form.category.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.parent %}
+            <div class="form__group">
+              <label for="{{ form.parent.id_for_label }}" class="form__label">Родительская категория:</label>
+              {{ form.parent }} {{ form.parent.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.order_by %}
+            <div class="form__group">
+              <label for="{{ form.order_by.id_for_label }}" class="form__label">
+                {{ form.order_by.label }}:
+              </label>
+              {{ form.order_by }} {{ form.order_by.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.image %}
+            <div class="form__group form__group--image">
+              <label for="{{ form.image.id_for_label }}" class="form__label">{{ form.image.label }}:</label>
+              {{ form.image }} {{ form.image.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.status %}
+            <div class="form__group">
+              <label for="{{ form.status.id_for_label }}" class="form__label">{{ form.status.label }}:</label>
+              {{ form.status }} {{ form.status.errors }}
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+      <div class="form__inner" id="seo">
+        <!-- SEO страницы -->
+        <div class="form__row">
+          <div class="form__col">
+            <div class="form__group">
+              <label for="{{ form.meta_h1.id_for_label }}" class="form__label"> Заголовок h1: </label>
+              {{ form.meta_h1 }} {{ form.meta_h1.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_title.id_for_label }}" class="form__label"> Мета заголовок: </label>
+              {{ form.meta_title }} {{ form.meta_title.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__label">
+                Мета описание:
+                <div class="meta-lenght">0</div>
+              </label>
+              {{ form.meta_description }} {{ form.meta_description.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__label"> Мета
+                keywords: </label>
+              {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form__inner" id="gallery">
+        <div class="form__row">
+          <div class="form__col">
+            <div class="form__header">
+              <div class="product-block__plus btn">Добавить изображение</div>
+            </div>
+            <div class="product-field"></div>
+
+            <div class="product-block__paste">
+              {% for image in images %}
+              <div class="product-block__image">
+                <img src="{{ image.src.url }}" alt="" id="{{image.id}}">
+                {% if product_view %}
+                <a href="{% url 'product_image_delete' image.pk %}" class="product-block__minus">Удалить</a>
+                {% endif %}
+
+                {% if model_view %}
+                <a href="{% url 'model_image_delete' image.pk %}" class="product-block__minus">Удалить</a>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form__inner" id="property">
+        <div class="form__row">
+          <div class="form__col">
+            <h3>Дополнительные опции</h3>
+
+            {{ option_formset.management_form }}
+
+            <div id="option-container">
+
+              {% for item in option_formset %}
+              <div class="option-item">
+
+                {{ item.id }}
+
+                <div class="form__group">
+                  <label>Название</label>
+                  {{ item.name }}
+                </div>
+
+                <div class="form__group">
+                  <label>Цена</label>
+                  {{ item.price }}
+                </div>
+
+                <div class="form__group">
+                  <label>От цены</label>
+                  {{ item.is_from }}
+                </div>
+
+                <div class="form__group">
+                  <label>Активно</label>
+                  {{ item.enabled }}
+                </div>
+
+                <div class="form__group">
+                  {{ item.DELETE }}
+                  <label>Удалить</label>
+                </div>
+
+              </div>
+              {% endfor %}
+            </div>
+
+            <button type="button"
+                    id="add-option"
+                    class="btn">
+              Добавить опцию
+            </button>
+
+
+            <div id="empty-form" style="display:none;">
+              <div class="option-item">
+
+                {{ option_formset.empty_form.id }}
+
+                <div class="form__group">
+                  {{ option_formset.empty_form.name }}
+                </div>
+
+                <div class="form__group">
+                  {{ option_formset.empty_form.price }}
+                </div>
+
+                <div class="form__group">
+                  {{ option_formset.empty_form.is_from }}
+                </div>
+
+                <div class="form__group">
+                  {{ option_formset.empty_form.enabled }}
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

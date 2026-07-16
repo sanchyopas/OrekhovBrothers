@@ -1,0 +1,169 @@
+{% extends 'admin_base.html' %}{% load static %}{% load thumbnail %} {% block body %}
+<div class="page">
+  <div class="page__content">
+    <form action="." method="POST" id="myForm" class="form" enctype="multipart/form-data">
+      <div class="header">
+        <div class="header__left">
+          <h1 class="header__title">{{ title }}</h1>
+        </div>
+        <div class="header__right">
+          <button type="submit" class="btn btn--accent">
+            <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+            Сохранить
+          </button>
+        </div>
+      </div>
+      {% csrf_token %}
+      {{ form.media }}
+      <div class="form__inner _show" id="basic">
+        <div class="form__row">
+          <div class="form__col">
+            {% if form.meta_h1 %}
+            <div class="form__group">
+              <label for="{{ form.meta_h1.id_for_label }}" class="form__label">
+                {{ form.meta_h1.label }} <span>:</span>
+              </label>
+              {{ form.meta_h1 }} {{ form.meta_h1.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.subtitle %}
+            <div class="form__group">
+              <label for="{{ form.subtitle.id_for_label }}" class="form__label">
+                {{ form.subtitle.label }} <span>:</span>
+              </label>
+              {{ form.subtitle }} {{ form.subtitle.errors }}
+            </div>
+            {% endif %}
+
+            <!-- Seo -->
+            {% if form.meta_title %}
+            <div class="form__group">
+              <label for="{{ form.meta_title.id_for_label }}" class="form__label">
+                {{ form.meta_title.label }} <span>:</span>
+              </label>
+              {{ form.meta_title }} {{ form.meta_title.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.meta_description %}
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__label">
+                {{ form.meta_description.label }} <span>:</span>
+              </label>
+              {{ form.meta_description }} {{ form.meta_description.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.meta_keywords %}
+            <div class="form__group">
+              <label for="{{ form.meta_keywords.id_for_label }}" class="form__label">
+                {{ form.meta_keywords.label }} <span>:</span>
+              </label>
+              {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
+            </div>
+            {% endif %}
+
+            <!-- Seo -->
+
+            {% if form.address %}
+            <div class="form__group">
+              <label for="{{ form.address.id_for_label }}" class="form__label">
+                Адрес <span>:</span>
+              </label>
+              {{ form.address }} {{ form.address.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.phone %}
+            <div class="form__group">
+              <label for="{{ form.phone.id_for_label }}" class="form__label">
+                {{ form.phone.label }}:
+              </label>
+              {{ form.phone }} {{ form.phone.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.additional_phone %}
+            <div class="form__group">
+              <label for="{{ form.additional_phone.id_for_label }}" class="form__label">
+                {{ form.additional_phone.label }}:
+              </label>
+              {{ form.additional_phone }} {{ form.additional_phone.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.inn %}
+            <div class="form__group">
+              <label for="{{ form.inn.id_for_label }}" class="form__label">
+                {{ form.inn.label }}:
+              </label>
+              {{ form.inn }} {{ form.inn.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.copyright %}
+            <div class="form__group">
+              <label for="{{ form.copyright.id_for_label }}" class="form__label">
+                {{ form.copyright.label }}:
+              </label>
+              {{ form.copyright }} {{ form.copyright.errors }}
+            </div>
+            {% endif %}
+
+
+            {% if form.map %}
+            <div class="form__group">
+              <label for="{{ form.map.id_for_label }}" class="form__label">
+                {{ form.map.label }}
+              </label>
+              {{ form.map }} {{ form.map.errors }}
+            </div>
+            {% endif %}
+
+          </div>
+          <div class="form__col">
+            {% if form.logo %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.logo.id_for_label }}" class="form__label">{{ form.logo.label }}:</label>
+              {{ form.logo }} {{ form.logo.errors }}
+            </div>
+            {% endif %}
+
+            <div class="" style="display: flex; align-items: center; gap: 10px;">
+              {% if form.logo_width %}
+              <div class="form__group form__group-image">
+                <label for="{{ form.logo_width.id_for_label }}" class="form__label">
+                  {{ form.logo_width.label }}:
+                </label>
+                {{ form.logo_width }} {{ form.logo_width.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.logo_height %}
+              <div class="form__group form__group-image" style="margin-top: 0;">
+                <label for="{{ form.logo_height.id_for_label }}" class="form__label">
+                  {{ form.logo_height.label }}:
+                </label>
+                {{ form.logo_height }} {{ form.logo_height.errors }}
+              </div>
+              {% endif %}
+            </div>
+
+            {% if form.favicon %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.favicon.id_for_label }}" class="form__label">
+                {{ form.favicon.label}}:
+              </label>
+              {{ form.favicon }} {{ form.favicon.errors }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+Контакты | Братья Ореховы
+{% endblock %}
+{% block description %}
+Страница контактов сайта | Братья Ореховы
+{% endblock %}
+
+{% block content %}
+<div class="contact">
+  <div class="container">
+    <div class="contact__inner">
+      <nav class="breadcrumbs">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item">
+            <a href="/" class="breadcrumbs__link">Главная страница</a>
+          </li>
+
+          <li class="breadcrumbs__item">
+            <span class="breadcrumbs__current">Контакты</span>
+          </li>
+        </ol>
+
+        <a href="javascript:history.back()" class="breadcrumbs__back">
+          Вернуться
+        </a>
+      </nav>
+
+      <div class="contact__row row">
+        {% if base_settings.map %}
+        <div class="contact__map">
+          {{ base_settings.map|safe }}
+        </div>
+        {% endif %}
+        <div class="contact__info">
+          <h1 class="contact__title title--md">Контакты</h1>
+          {% if phones %}
+          <div class="contact__list">
+            <div class="contact__list-inner">
+              <div class="contact__list-icon">
+                <img src="{% static 'theme/img/icons/phone.svg' %}" alt="">
+              </div>
+              <div class="contact__list-info">
+                <p>Контактные теллефоны</p>
+                <ul>
+                  {% for phone in phones %}
+                  <li>
+                    <a href="tel:{{ phone.phone }}" class="js-copy-clipboard" data-copy="{{ phone.phone }}">
+                      {{ phone.phone }}
+                      <div class="tooltip">
+                        <p>Телефон скопирован</p>
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if emails %}
+          <div class="contact__list">
+            <div class="contact__list-inner">
+              <div class="contact__list-icon">
+                <img src="{% static 'theme/img/icons/mail.svg' %}" alt="">
+              </div>
+              <div class="contact__list-info">
+                <p>Почта</p>
+                <ul>
+                  {% for email in emails %}
+                  <li>
+                    <a href="mailto:{{ email.email }}" class="js-copy-clipboard" data-copy="{{ email.email }}">
+                      {{ email.email }}
+                      <div class="tooltip">
+                        <p>Почта скопирована</p>
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if base_settings.address %}
+          <div class="contact__list">
+            <div class="contact__list-inner">
+              <div class="contact__list-icon">
+                <img src="{% static 'theme/img/icons/location-pin.svg' %}" alt="">
+              </div>
+              <div class="contact__list-info">
+                <p>Адрес</p>
+                <ul>
+                  <li>{{ base_settings.address }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

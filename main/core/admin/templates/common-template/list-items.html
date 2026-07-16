@@ -1,0 +1,70 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block body %}
+
+<div class="page">
+  <div class="header">
+    <div class="header__left">
+      <h1 class="header__title">{{ title }}</h1>
+    </div>
+    <div class="header__right">
+      <a href="{% url add_url %}" class="btn">Создать</a>
+    </div>
+  </div>
+
+  <div class="page__content _show" id="list">
+    {% if items %}
+    <div class="grid-row">
+      {% for item in items %}
+      <div class="grid-row__item">
+        <div class="grid-row__left">
+          {% if item.image %}
+          <a href="{% url edit_url item.pk %}" class="grid-row__image">
+            {% thumbnail item.image "50x50" format="WEBP" crop="center" as im %}
+            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="">
+            {% endthumbnail %}
+          </a>
+          {% endif %}
+
+          {% if item.phone %}
+          <a href="{% url edit_url item.pk %}" class="grid-row__title">
+            {{ item.phone }}
+          </a>
+          {% endif %}
+
+          {% if item.email %}
+          <a href="{% url edit_url item.pk %}" class="grid-row__title">
+            {{ item.email }}
+          </a>
+          {% endif %}
+
+          {% if item.icon_white %}
+          <a href="{% url edit_url item.pk %}" class="grid-row__image">
+            <img src="{{ item.icon_white.url }}" alt=""/>
+          </a>
+          {% endif %}
+
+          {% if item.icon_dark %}
+          <a href="{% url edit_url item.pk %}" class="grid-row__image">
+            <img src="{{ item.icon_dark.url }}" alt=""/>
+          </a>
+          {% endif %}
+          <a href="{% url edit_url item.pk %}" class="grid-row__title">
+            {% if item.title %}{{ item.title }} {% endif %}
+            {% if item.name %}{{ item.name }} {% endif %}
+          </a>
+        </div>
+
+
+          {% include 'common/_edit-block.html' with edit_url=edit_url delete_url=delete_url %}
+
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,268 @@
+{% extends "base.html" %} {% load static %} {% load thumbnail %}
+
+{% block title %}
+{% if product.meta_h1 %}{{ product.meta_h1 }}{% else %}{{ product.name }}{% endif %}
+{% endblock %}
+
+{% block description %}
+{% if product.meta_description %}{{ product.meta_description}}{% endif %}
+{% endblock %}
+
+{% block keywords %}
+{% if product.meta_keywords %}{{ product.meta_keywords}}{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="single">
+  <div class="container">
+    <nav class="breadcrumbs">
+      <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item">
+          <a href="/" class="breadcrumbs__link">Главная страница</a>
+        </li>
+
+        <li class="breadcrumbs__item">
+          <a href="{{ category.get_absolute_url }}" class="breadcrumbs__link">{{ category.name }}</a>
+        </li>
+
+        <li class="breadcrumbs__item">
+          <span class="breadcrumbs__current">{{ product.name }}</span>
+        </li>
+      </ol>
+
+      <a href="javascript:history.back()" class="breadcrumbs__back">
+        Вернуться
+      </a>
+    </nav>
+
+    <div class="single__row row">
+      <div class="single__images">
+        <div class="gallery">
+          <div class="gallery__slider swiper">
+            <div class="swiper-wrapper">
+              {% if product.image %}
+              <div class="swiper-slide" data-lightbox>
+                <img src="{{ product.image.url }}" alt="">
+              </div>
+              {% endif %}
+              {% for image in images %}
+              <div class="swiper-slide" data-lightbox>
+                <img src="{{ image.src.url }}" alt="">
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% if images %}
+          <div class="gallery__slider-thumb swiper">
+            <div class="swiper-wrapper">
+              {% if product.image %}
+              <div class="swiper-slide">
+                <img src="{{ product.image.url }}" alt="">
+              </div>
+              {% endif %}
+              {% for image in images %}
+              <div class="swiper-slide">
+                <img src="{{ image.src.url }}" alt="">
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {% if product.description or product.equipment %}
+        <div class="single__info">
+          <div class="tabs tabs--outline" data-tabs>
+            <div class="tabs__list" role="tablist">
+              {% if product.description %}
+              <button
+                  type="button"
+                  class="tabs__tab"
+                  role="tab"
+                  id="tab-3"
+                  aria-selected="true"
+                  aria-controls="panel-3"
+                  tabindex="0"
+              >
+                Описание
+              </button>
+              {% endif %}
+              {% if product.equipment %}
+              <button
+                  type="button"
+                  class="tabs__tab"
+                  role="tab"
+                  id="tab-4"
+                  aria-selected="false"
+                  aria-controls="panel-4"
+                  tabindex="-1"
+              >
+                Комплектация
+              </button>
+              {% endif %}
+            </div>
+            {% if product.description %}
+            <div
+                class="tabs__panel"
+                role="tabpanel"
+                id="panel-3"
+                aria-labelledby="tab-3"
+            >
+              <p>
+                {{ product.description|safe }}
+              </p>
+            </div>
+            {% endif %}
+            {% if product.equipment %}
+            <div
+                class="tabs__panel"
+                role="tabpanel"
+                id="panel-4"
+                aria-labelledby="tab-4"
+                hidden
+            >
+              {{ product.equipment|safe }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="single__parameters">
+        {% if product.name %}
+        <h1 class="single__title">{{ product.name }}</h1>
+        {% endif %}
+        <div class="features features--pb">
+          {% if product.area %}
+          <div class="features__item">
+            <div class="features__feature-icon">
+              <img src="{% static 'theme/img/icons/area.svg' %}" alt="">
+            </div>
+            <p class="features__feature-value">{{ product.area }} м²</p>
+          </div>
+          {% endif %}
+          {% if product.perimetr %}
+          <div class="features__item">
+            <div class="features__feature-icon">
+              <img src="{% static 'theme/img/icons/perimetr.svg' %}" alt="">
+            </div>
+            <p class="features__feature-value">{{ product.perimetr }}</p>
+          </div>
+          {% endif %}
+          {% if product.floors %}
+          <div class="features__item">
+            <div class="features__feature-icon">
+              <img src="{% static 'theme/img/icons/stairs.svg' %}" alt="">
+            </div>
+            <p class="features__feature-value">{{ product.floors }}</p>
+          </div>
+          {% endif %}
+          {% if product.terrace == 'published' %}
+          <div class="features__item">
+            <div class="features__feature-icon"></div>
+            <p class="features__feature-value">Терраса: {{ product.get_terrace_display }}</p>
+          </div>
+          {% endif %}
+        </div>
+        {% if config %}
+        <form action="" class="form">
+          <div class="tabs" data-tabs>
+            <div class="tabs__list" role="tablist">
+              {% for tab in config %}
+              <button
+                  type="button"
+                  class="tabs__tab"
+                  role="tab"
+                  id="tab-{{ tab.id }}"
+                  aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                  aria-controls="panel-{{ tab.id }}"
+                  tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+              >
+                {{ tab.title }}
+              </button>
+              {% endfor %}
+            </div>
+            {% for conf in config %}
+            <div
+                class="tabs__panel"
+                role="tabpanel"
+                id="panel-{{ conf.id }}"
+                aria-labelledby="tab-{{ conf.id }}"
+                {% if not forloop.first %}hidden{% endif %}
+            >
+              <div class="calc">
+                <div class="calc__row">
+                  {% if conf.fields %}
+                    {% for field in conf.fields.all %}
+                    {% if field.options.all %}
+                        <fieldset class="calc__group">
+                          <legend class="calc__title">{{ field.title }}</legend>
+                          <div class="calc__inner">
+                            {% for option in field.options.all %}
+                            <label class="form__radio">
+                              <input
+                                  type="radio"
+                                  name="{{ field.title }}"
+                                  data-price="{{ option.price }}"
+                                  value="{{ option.title }}"
+                                  {% if forloop.first %}checked{% endif %}
+                              >
+                              <div class="form__radio-inner">
+                                <span class="custom-radio"></span>
+                                <span>{{ option.title }}</span>
+                              </div>
+                            </label>
+                            {% endfor %}
+                          </div>
+                        </fieldset>
+                    {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          {% if product.options.all  %}
+          <div class="options">
+            <fieldset class="options__group">
+              <legend class="options__title">Дополнительные опции</legend>
+
+              <div class="options__inner">
+                {% for option in product.options.all %}
+                <label class="form__checkbox">
+                  <input type="checkbox" data-price="{{ option.price|floatformat:0 }}" value="{{ option.name }}">
+
+                  <div class="form__checkbox-inner">
+                    <div class="checkbox-custom">
+                      <img src="{% static 'theme/img/icons/checked.svg' %}" alt="">
+                    </div>
+                    <span class="form__checkbox-text">{{ option.name }}</span>
+                  </div>
+                  <span class="form__checkbox-price">+{{ option.price|floatformat:0 }} ₽</span>
+                </label>
+                {% endfor %}
+              </div>
+
+            </fieldset>
+            {% if product.options.count > 3 %}
+            <button type="button" class="btn btn--text" id="show-more-options">Показать все</button>
+            {% endif %}
+          </div>
+          {% endif %}
+          <div class="single__result">
+            <p>Расчетная стоимость</p>
+            <p class="single__price" id="single-price">11 925 000 ₽</p>
+          </div>
+          <div class="single__buttons">
+            <button class="btn btn--primary">Позвонить</button>
+            <a href="" class="btn btn--outline" target="_blank">Связаться в MAX</a>
+          </div>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

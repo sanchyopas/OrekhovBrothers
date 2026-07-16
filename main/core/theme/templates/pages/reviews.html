@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+Отзывы | Братья Ореховы
+{% endblock %}
+{% block description %}
+Страница отзывов | Братья Ореховы
+{% endblock %}
+
+{% block content %}
+<div class="reviews">
+  <div class="container">
+    <nav class="breadcrumbs">
+      <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item">
+          <a href="/" class="breadcrumbs__link">Главная страница</a>
+        </li>
+
+        <li class="breadcrumbs__item">
+          <span class="breadcrumbs__current">Отзывы</span>
+        </li>
+      </ol>
+
+      <a href="javascript:history.back()" class="breadcrumbs__back">
+        Вернуться
+      </a>
+    </nav>
+    {% if settings %}
+    <div class="reviews__content">
+      {{ settings.reviews_code|safe }}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

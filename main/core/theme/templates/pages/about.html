@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+О компании | Братья Ореховы
+{% endblock %}
+{% block description %}
+Страница о компании | Братья Ореховы
+{% endblock %}
+
+{% block content %}
+<div class="about">
+  <div class="container--small">
+    <nav class="breadcrumbs">
+      <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item">
+          <a href="/" class="breadcrumbs__link">Главная страница</a>
+        </li>
+
+        <li class="breadcrumbs__item">
+          <span class="breadcrumbs__current">О нас</span>
+        </li>
+      </ol>
+
+      <a href="javascript:history.back()" class="breadcrumbs__back">
+        Вернуться
+      </a>
+    </nav>
+    <div class="about__inner">
+      {% if settings.content %}
+      <div class="about__content">
+        {{ settings.content.html|safe }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

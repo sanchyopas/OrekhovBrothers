@@ -1,0 +1,300 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block body %}
+<div class="page">
+  <div class="header">
+    <div class="header__left">
+      <h1 class="header__title">{{ title }}</h1>
+    </div>
+    <div class="header__right">
+      <a href="javascript:history.back()" class="btn">Назад</a>
+    </div>
+  </div>
+  <div class="page__content">
+    <form action="." method="POST" id="myForm" class="form" enctype="multipart/form-data">
+      <div class="form__action">
+        <div class="form__action-left">
+          <button type="button" data-name="basic" class="active">Основные</button>
+          <button type="button" data-name="seo" class="">Поля SEO</button>
+          <button type="button" data-name="config" class="">Конфигурация</button>
+        </div>
+        <div class="form__action-right">
+          <button type="submit" class="btn btn--accent">
+            <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+            Сохранить
+          </button>
+        </div>
+      </div>
+      {% csrf_token %}
+      {{ form.media }}
+      <div class="form__inner _show" id="basic">
+        <div class="form__row">
+          <div class="form__col">
+            {% if form.name %}
+            <div class="form__group">
+              <label
+                  for="{{ form.name.id_for_label }}"
+                  class="form__label">
+                {{ form.name.label }}
+                {% if form.name.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+              </label>
+              {{ form.name }} {{ form.name.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.description %}
+            <div class="form__group">
+              <label for="{{ form.description.id_for_label }}" class="form__controls-label">
+                {{ form.description.label }}:
+              </label>
+              {{ form.description }} {{ form.description.errors }}
+            </div>
+            {% endif %}
+
+          </div>
+          <div class="form__col">
+            {% if form.slug %}
+            <div class="form__group">
+              <label for="{{ form.slug.id_for_label }}" class="form__label">
+                URL{% if form.slug.field.required %}
+                <span class="form__required">*</span>
+                {% endif %}:
+
+              </label>
+              {{ form.slug }} {{ form.slug.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.category %}
+            <div class="form__group">
+              <label for="{{ form.category.id_for_label }}" class="form__label">Выбор категории:</label>
+              {{ form.category }} {{ form.category.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.parent %}
+            <div class="form__group">
+              <label for="{{ form.parent.id_for_label }}" class="form__label">Родительская категория:</label>
+              {{ form.parent }} {{ form.parent.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.order_by %}
+            <div class="form__group">
+              <label for="{{ form.order_by.id_for_label }}" class="form__label">
+                {{ form.order_by.label }}:
+              </label>
+              {{ form.order_by }} {{ form.order_by.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.image %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.image.id_for_label }}" class="form__label">{{ form.image.label }}:</label>
+              {{ form.image }} {{ form.image.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.instance.image %}
+            <a href="{{ form.instance.image.url }}" target="_blank">
+              <img src="{{ form.instance.image.url }}" alt="Миниатюра изображения"
+                   style="max-width: 100px; max-height: 100px"/>
+            </a>
+            {% endif %}
+
+            {% if form.status %}
+            <div class="form__group">
+              <label for="{{ form.status.id_for_label }}" class="form__label">{{ form.status.label }}:</label>
+              {{ form.status }} {{ form.status.errors }}
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+      <div class="form__inner" id="seo">
+        <!-- SEO страницы -->
+        <div class="form__row">
+          <div class="form__col">
+            <div class="form__group">
+              <label for="{{ form.meta_h1.id_for_label }}" class="form__label"> Заголовок h1: </label>
+              {{ form.meta_h1 }} {{ form.meta_h1.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_title.id_for_label }}" class="form__label"> Мета заголовок: </label>
+              {{ form.meta_title }} {{ form.meta_title.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__label">
+                Мета описание:
+                <div class="meta-lenght">0</div>
+              </label>
+              {{ form.meta_description }} {{ form.meta_description.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__label"> Мета
+                keywords: </label>
+              {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form__inner" id="config">
+        <div class="form__col">
+          <div class="configurator">
+            <div class="configurator__header">
+              <div>
+                <h2 class="configurator__title">Конфигуратор</h2>
+                <p>Управляйте вариантами парод дерева и комплектацией</p>
+              </div>
+              <button type="button" class="tab-add btn btn--outline" id="add-tab" data-popup="add-config">
+                Добавить конфигурацию
+              </button>
+            </div>
+            <div class="configurator__body tabs-container">
+              {% if tabs %}
+              {% for tab in tabs %}
+              <div class="configurator__tab" data-tab-id="{{ tab.id }}">
+                <div class="configurator__tab-header">
+                  <div>
+                    <h3 data-editable data-value="{{ tab.title }}">{{ tab.title }}</h3>
+                  </div>
+                  <div class="configurator__btns">
+                    <button
+                        type="button"
+                        class="btn add-field-btn"
+                        data-id="{{ tab.id }}"
+                        data-popup="add-field"
+                    >
+                      Добавить поле
+                    </button>
+                    <button
+                        type="button"
+                        class="config-edit"
+                        data-item="tab"
+                        data-id="{{ tab.id }}"
+                    >
+                      <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button type="button" class="config-delete"
+                            data-item="tab" data-id="{{ tab.id }}"
+                    >
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                  </div>
+
+                </div>
+
+                <div class="fields-container configurator__fields">
+                  {% for field in tab.fields.all %}
+                  <div class="config-field configurator__field" data-field-id="{{ field.id }}">
+                    <div class="configurator__tab-header">
+                      <div data-editable data-value="{{ field.title }}">{{ field.title }}</div>
+                      <div class="configurator__btns">
+                        <button type="button" class="add-option-btn btn btn--outline" data-id="{{ field.id }}" data-popup="add-option">
+                          Добавить вариант
+                        </button>
+                        <button
+                            type="button"
+                            class="config-edit"
+                            data-item="field"
+                            data-id="{{ field.id }}"
+                        ><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="config-delete" data-item="field" data-id="{{ field.id }}">
+                          <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="options-container configurator__options">
+                      {% for option in field.options.all %}
+
+                      <div class="configurator__option" data-option-id="{{ option.id }}">
+                        <p data-editable data-value="{{ option }}">{{ option }}</p>
+                        <div class="configurator__btns">
+                          <button
+                              type="button"
+                              class="config-edit"
+                              data-item="option"
+                              data-id="{{ option.id }}"
+                          ><i class="fa-solid fa-pen"></i></button>
+                          <button type="button" class="config-delete" data-item="option" data-id="{{ option.id }}">
+                            <i class="fa-regular fa-trash-can"></i>
+                          </button>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+
+              </div>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="popup-config add-config" id="add-config" data-popup="add-config">
+  <button type="button" class="popup-config__close"><span>X</span></button>
+  <form id="create-tab-form" class="popup-config__form">
+    {% csrf_token %}
+    <div class="popup-config__row">
+      <input type="text" name="title" placeholder="Название таба" class="popup-config__input form__input" required>
+      <input type="hidden" class="form__hidden" name="category" value="{{ item.pk }}">
+      <button type="submit" class="popup-config__save" id="create-tab">
+        <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+      </button>
+    </div>
+    <p class="popup-config__hint">Нажмите сохранить чтобы продолжить создание</p>
+  </form>
+</div>
+
+<div class="popup-config add-field" id="add-field" data-popup="add-field">
+  <button type="button" class="popup-config__close"><span>X</span></button>
+  <form id="create-field-form" class="popup-config__form">
+    {% csrf_token %}
+    <div class="popup-config__row">
+      <label>
+        <input type="text" name="name" placeholder="Название поля" class="popup-config__input">
+      </label>
+      <button type="submit" class="popup-config__save" id="create-field">
+        <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+      </button>
+      <label>
+        <span>Тип:</span><br>
+        <select name="type" class="popup-config__select" id="type-field">
+          <option value="radio">Radio</option>
+          <option value="checkbox">Checkbox</option>
+        </select>
+      </label>
+
+    </div>
+  </form>
+</div>
+
+<div class="popup-config add-option" id="add-option" data-popup="add-option">
+  <button type="button" class="popup-config__close"><span>X</span></button>
+  <form id="create-option-form" class="popup-config__form">
+    {% csrf_token %}
+    <label>
+      <input type="text" name="title" placeholder="Название варианта" class="popup-config__input">
+    </label>
+    <label>
+      <input type="number" name="price" placeholder="Цена" class="popup-config__input">
+    </label>
+    <button type="submit" class="popup-config__save" id="create-option">
+      <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+    </button>
+  </form>
+</div>
+
+{% endblock %}

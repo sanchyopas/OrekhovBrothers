@@ -1,0 +1,62 @@
+{% load static %}
+{% load thumbnail %}
+<article class="product-card">
+  <a href="{{ product.get_absolute_url }}" class="product-card__image">
+    {% thumbnail product.image "292x249" format="WEBP" crop="center" as im %}
+    <img src="{{ im.url }}"
+         width="{{ im.width }}"
+         height="{{ im.height }}"
+         alt="{{ category.name }}"
+         title="{{ category.name }}"
+    >
+    {% endthumbnail %}
+  </a>
+
+  <div class="product-card__body">
+    <div class="product-card__body-inner">
+      <a href="{{ product.get_absolute_url }}" class="product-card__title">{{ product.name }}</a>
+
+      {% if product.description %}
+      <p class="product-card__description">
+        {{ product.clean_description | striptags | truncatechars:63 }}
+      </p>
+      {% endif %}
+    </div>
+
+    <div class="features">
+      {% if product.area %}
+      <div class="features__item">
+        <div class="features__feature-icon">
+          <img src="{% static 'theme/img/icons/area.svg' %}" alt="">
+        </div>
+        <p class="features__feature-value">{{ product.area }} м²</p>
+      </div>
+      {% endif %}
+
+      {% if product.perimetr %}
+      <div class="features__item">
+        <div class="features__feature-icon">
+          <img src="{% static 'theme/img/icons/perimetr.svg' %}" alt="">
+        </div>
+        <p class="features__feature-value">{{ product.perimetr }}</p>
+      </div>
+      {% endif %}
+
+      {% if product.floors %}
+      <div class="features__item">
+        <div class="features__feature-icon">
+          <img src="{% static 'theme/img/icons/stairs.svg' %}" alt="">
+        </div>
+        <p class="features__feature-value">{{ product.floors }}</p>
+      </div>
+      {% endif %}
+
+      {% if product.terrace == 'published' %}
+      <div class="features__item">
+        <div class="features__feature-icon"></div>
+        <p class="features__feature-value">Терраса: {{ product.get_terrace_display }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</article>

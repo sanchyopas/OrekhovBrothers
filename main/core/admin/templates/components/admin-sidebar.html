@@ -1,0 +1,124 @@
+{% load static %}
+
+<div class="sidebar">
+  <button type="button" class="sidebar__btn-close" id="sidebar-btn-close">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <div class="sidebar__top">
+    <a href="/admin" class="sidebar__logo" title="Панель управления">
+      <img src="{% static 'admin/img/admin-logo.svg' %}"
+           alt="svg logo" title="svg logo">
+      Панель управления
+    </a>
+  </div>
+
+  <div class="sidebar-menu">
+    <div class="sidebar-menu__item">
+      <div class="sidebar-menu__item-inner">
+        <div class="sidebar__icon">
+          <i class="fa-solid fa-arrow-up-right-dots"></i>
+        </div>
+        <a href="" class="sidebar-menu__link active">Статистика</a>
+      </div>
+    </div>
+    <div class="sidebar-menu__item">
+      <div class="sidebar-menu__item-inner">
+        <div class="sidebar__icon">
+          <i class="fa-solid fa-arrow-up-right-dots"></i>
+        </div>
+        <a href="{% url 'admin_category' %}" class="sidebar-menu__link">Категории проектов</a>
+      </div>
+    </div>
+    <div class="sidebar-menu__item">
+      <div class="sidebar-menu__item-inner">
+        <div class="sidebar__icon">
+          <i class="fa-solid fa-arrow-up-right-dots"></i>
+        </div>
+        <a href="{% url 'admin_product' %}" class="sidebar-menu__link">Проекты</a>
+      </div>
+    </div>
+    <div class="sidebar-menu__group">
+      <p>Главная страница</p>
+      <div class="sidebar-menu__item">
+        <div class="sidebar-menu__item-inner">
+          <div class="sidebar__icon">
+            <i class="fa-solid fa-arrow-up-right-dots"></i>
+          </div>
+          <a href="{% url 'admin_home_page' %}" class="sidebar-menu__link">Настройки</a>
+        </div>
+      </div>
+      <div class="sidebar-menu__item">
+        <div class="sidebar-menu__item-inner">
+          <div class="sidebar__icon">
+            <i class="fa-solid fa-arrow-up-right-dots"></i>
+          </div>
+          <a href="{% url 'slider' %}" class="sidebar-menu__link">Слайдер</a>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-menu__group">
+      <p>Контактные данные</p>
+      <div class="sidebar-menu__item">
+        <div class="sidebar-menu__item-inner">
+          <div class="sidebar__icon">
+            <i class="fa-solid fa-arrow-up-right-dots"></i>
+          </div>
+          <a href="{% url 'socials' %}" class="sidebar-menu__link">Соц.сети</a>
+        </div>
+      </div>
+      <div class="sidebar-menu__item">
+        <div class="sidebar-menu__item-inner">
+          <div class="sidebar__icon">
+            <i class="fa-solid fa-arrow-up-right-dots"></i>
+          </div>
+          <a href="{% url 'phones' %}" class="sidebar-menu__link">Телефоны</a>
+        </div>
+      </div>
+      <div class="sidebar-menu__item">
+        <div class="sidebar-menu__item-inner">
+          <div class="sidebar__icon">
+            <i class="fa-solid fa-arrow-up-right-dots"></i>
+          </div>
+          <a href="{% url 'emails' %}" class="sidebar-menu__link">Emails</a>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-menu__group">
+      <p>Остальные страницы</p>
+      <div class="sidebar-menu__item">
+        <div class="sidebar-menu__item-inner">
+          <div class="sidebar__icon">
+            <i class="fa-solid fa-arrow-up-right-dots"></i>
+          </div>
+          <a href="{% url 'admin_about' %}" class="sidebar-menu__link">О компании</a>
+        </div>
+      </div>
+      <div class="sidebar-menu__item">
+        <div class="sidebar-menu__item-inner">
+          <div class="sidebar__icon">
+            <i class="fa-solid fa-arrow-up-right-dots"></i>
+          </div>
+          <a href="{% url 'admin_reviews' %}" class="sidebar-menu__link">Отзывы</a>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-menu__item">
+      <div class="sidebar-menu__item-inner">
+        <div class="sidebar__icon">
+          <i class="fa-solid fa-arrow-up-right-dots"></i>
+        </div>
+        <a href="{% url 'admin_settings' %}" class="sidebar-menu__link">Общие настройки</a>
+      </div>
+    </div>
+    <div class="sidebar-menu__item">
+      <div class="sidebar-menu__item-inner">
+        <div class="sidebar__icon">
+          <i class="fa-solid fa-arrow-up-right-dots"></i>
+        </div>
+        <a href="{% url 'robots' %}" class="sidebar-menu__link">Системные настройки</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>

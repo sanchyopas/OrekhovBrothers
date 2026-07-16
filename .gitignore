@@ -29,7 +29,6 @@ Thumbs.db
 # NodeJS / Фронтенд
 node_modules/
 dist/
-**/core/
 package-lock.json
 .yarn/cache
 .yarn/install-state.gz
