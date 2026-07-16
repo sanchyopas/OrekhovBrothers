@@ -71,7 +71,7 @@ LOGGING = {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'file',
-            'filename': 'home/s/sanchyopas/orehovbrothers.sanchyopas.beget.tech/public_html/debug.log'
+            'filename': '/home/s/sanchyopas/orehovbrothers.sanchyopas.beget.tech/public_html/debug.log'
         }
     },
     'loggers': {
