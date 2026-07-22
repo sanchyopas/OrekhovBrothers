@@ -3,7 +3,7 @@ import {Pagination, Thumbs} from "swiper/modules";
 
 export function initSliders(root = document) {
   const gallery = root.querySelectorAll('.gallery');
-  const popup = document.querySelector('.popup');
+  const popup = document.querySelector('.popup-gallery');
 
   gallery.forEach((el) => {
     const sliderGallery = el.querySelector('.gallery__slider');

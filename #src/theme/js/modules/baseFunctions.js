@@ -25,3 +25,18 @@ export function isWebp() {
     document.documentElement.classList.add(className);
   });
 }
+
+// Блокировка скролла
+export const bodyLock = (e) => {
+  document.body.classList.add('_lock');
+  let widthScrollBar = window.innerWidth - document.documentElement.clientWidth;
+  // document.querySelector('.header').style.marginRight = widthScrollBar + 'px';
+  // document.documentElement.style.marginRight = widthScrollBar + 'px';
+};
+
+// Удаление блокировки скролла
+export const bodyUnLock = (e) => {
+  // document.documentElement.style.marginRight = '0px';
+  // document.querySelector('.header').style.marginRight = '0px';
+  document.body.classList.remove('_lock');
+};

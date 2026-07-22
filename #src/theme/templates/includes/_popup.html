@@ -1,14 +1,42 @@
-<div class="popup">
-  <button type="button" class="popup__close">
+<div class="popup-gallery">
+  <button type="button" class="popup-gallery__close" data-close>
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12.75 0.75L0.75 12.75M0.75 0.75L12.75 12.75" stroke="#686868" stroke-width="1.5"
             stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 
-  <div class="popup__content" id="gallery-popup">
+  <div class="popup-gallery__content" id="popup-gallery">
 
   </div>
   <button type="button" class="swiper-button-next popup-slider-next-btn"></button>
   <button type="button" class="swiper-button-prev popup-slider-prev-btn"></button>
+</div>
+
+<div id="callback" class="popup">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <button data-close type="button" class="popup__close close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.75 0.75L0.75 12.75M0.75 0.75L12.75 12.75" stroke="#686868" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="popup__top">
+        <p class="single__title">Оставьте заявку</p>
+      </div>
+      <div class="popup__inner">
+        <form action="" class="popup__form form" method="POST" id="callback-form">
+          <input type="text" name="name" class="form__input" placeholder="Ваше имя" required >
+          <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input>
+<!--          <div class="form__row">-->
+<!--            <input type="checkbox" name="agreement" class="form" id="agreement">-->
+<!--            <label for="agreement" class="form__row-label">Я согласен(а) с <a href="" target="_blank">политиккой-->
+<!--              конфиденциальности</a></label>-->
+<!--          </div>-->
+          <button type="submit" class="btn btn--primary">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

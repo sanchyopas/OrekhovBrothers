@@ -232,7 +232,7 @@ AUTH_USER_MODEL = "users.User"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.beget.com'
-EMAIL_HOST_USER = 'info@xn----7sbah6bllcobpj.xn--p1ai' 
+EMAIL_HOST_USER = 'info@xn----7sbah6bllcobpj.xn--p1ai'
 EMAIL_HOST_PASSWORD = 'Ie51587v' 
 EMAIL_FROM = 'info@xn----7sbah6bllcobpj.xn--p1ai' 
 EMAIL_PORT = 465 

@@ -52,6 +52,13 @@
   &__buttons {
     display: grid;
     gap: 8px;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 8px;
+    }
   }
 
 

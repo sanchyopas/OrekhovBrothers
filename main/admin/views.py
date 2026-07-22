@@ -298,7 +298,7 @@ def slider_add(request):
   return render(request, "common-template/template-edit-add-page.html", context)
 
 def slider_edit(request, pk):
-  pass
+  return generic_edit(request, pk, Slider, SliderForm, "slider", "Редактирование слайда",  template_name="common-template/template-edit-add-page.html")
 
 def slider_delete(request, pk):
   pass

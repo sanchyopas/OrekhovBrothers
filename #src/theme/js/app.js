@@ -1,6 +1,7 @@
 import * as functions from './modules/baseFunctions.js';
 import './modules/tabs.js';
 import './modules/calculator.js';
+// import './modules/popup-gallery.js';
 import './modules/popup.js';
 import './modules/select.js';
 import './modules/sliders.js';
