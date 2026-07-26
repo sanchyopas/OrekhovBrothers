@@ -201,7 +201,8 @@
                             <label class="form__radio">
                               <input
                                   type="radio"
-                                  name="{{ field.title }}"
+                                  name="field_{{ field.id }}"
+                                  data-field-title="{{ field.title }}"
                                   data-price="{{ option.price }}"
                                   value="{{ option.title }}"
                                   {% if forloop.first %}checked{% endif %}

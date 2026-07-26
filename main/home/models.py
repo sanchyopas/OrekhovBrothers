@@ -31,13 +31,13 @@ class BaseSettings(SingletonModel):
 
 class HomeTemplate(SingletonModel):
   meta_h1 = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок первого уровня")
-  subtitle = QuillField()
+  subtitle = QuillField(blank=True, null=True, verbose_name="Подзаголовок")
   image = models.FileField(upload_to="home-page/", blank=True, null=True, verbose_name="Подложка")
   meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.CharField(max_length=350, null=True, blank=True, verbose_name="Meta keywords")
-  left_text = QuillField(blank=True, null=True)
-  right_text = QuillField(blank=True, null=True)
+  left_text = QuillField(blank=True, null=True, verbose_name="Нижний текст левая колонка")
+  right_text = QuillField(blank=True, null=True, verbose_name="Нижний текст правая колонка")
 
 class Reviews(SingletonModel):
   meta_h1 = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок первого уровня")
@@ -51,7 +51,7 @@ class About(SingletonModel):
   meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.CharField(max_length=350, null=True, blank=True, verbose_name="Meta keywords")
-  content = QuillField(blank=True, null=True)
+  content = QuillField(blank=True, null=True, verbose_name="Контент страницы",)
 
 
 class Slider(models.Model):

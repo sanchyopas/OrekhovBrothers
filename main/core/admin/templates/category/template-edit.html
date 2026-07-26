@@ -130,7 +130,6 @@
             <div class="form__group">
               <label for="{{ form.meta_description.id_for_label }}" class="form__label">
                 Мета описание:
-                <div class="meta-lenght">0</div>
               </label>
               {{ form.meta_description }} {{ form.meta_description.errors }}
             </div>
@@ -150,7 +149,7 @@
                 <h2 class="configurator__title">Конфигуратор</h2>
                 <p>Управляйте вариантами парод дерева и комплектацией</p>
               </div>
-              <button type="button" class="tab-add btn btn--outline" id="add-tab" data-popupGallery="add-config">
+              <button type="button" class="tab-add btn btn--outline" id="add-tab" data-popup="add-config">
                 Добавить конфигурацию
               </button>
             </div>
@@ -167,7 +166,7 @@
                         type="button"
                         class="btn add-field-btn"
                         data-id="{{ tab.id }}"
-                        data-popupGallery="add-field"
+                        data-popup="add-field"
                     >
                       Добавить поле
                     </button>
@@ -194,7 +193,8 @@
                     <div class="configurator__tab-header">
                       <div data-editable data-value="{{ field.title }}">{{ field.title }}</div>
                       <div class="configurator__btns">
-                        <button type="button" class="add-option-btn btn btn--outline" data-id="{{ field.id }}" data-popupGallery="add-option">
+                        <button type="button" class="add-option-btn btn btn--outline" data-id="{{ field.id }}"
+                                data-popup="add-option">
                           Добавить вариант
                         </button>
                         <button
@@ -243,57 +243,83 @@
   </div>
 </div>
 
-<div class="popupGallery-config add-config" id="add-config" data-popupGallery="add-config">
-  <button type="button" class="popupGallery-config__close"><span>X</span></button>
-  <form id="create-tab-form" class="popupGallery-config__form">
+<div class="popup-config add-config" id="add-config">
+  <button type="button" class="popup-config__close" data-popup-close>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path
+          d="M12.75 0.75L0.75 12.75M0.75 0.75L12.75 12.75"
+          stroke="#686868"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+  <form id="create-tab-form" class="popup-config__form">
     {% csrf_token %}
-    <div class="popupGallery-config__row">
-      <input type="text" name="title" placeholder="Название таба" class="popupGallery-config__input form__input" required>
+    <div class="popup-config__row">
+      <input type="text" name="title" placeholder="Название таба" class="popup-config__input form__input" required>
       <input type="hidden" class="form__hidden" name="category" value="{{ item.pk }}">
-      <button type="submit" class="popupGallery-config__save" id="create-tab">
+      <button type="submit" class="popup-config__save" id="create-tab">
         <img src="{% static 'admin/img/save.svg' %}" alt=""/>
       </button>
     </div>
-    <p class="popupGallery-config__hint">Нажмите сохранить чтобы продолжить создание</p>
+    <p class="popup-config__hint">Нажмите сохранить чтобы продолжить создание</p>
   </form>
 </div>
 
-<div class="popupGallery-config add-field" id="add-field" data-popupGallery="add-field">
-  <button type="button" class="popupGallery-config__close"><span>X</span></button>
-  <form id="create-field-form" class="popupGallery-config__form">
+<div class="popup-config add-field" id="add-field">
+  <button type="button" class="popup-config__close" data-popup-close>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path
+          d="M12.75 0.75L0.75 12.75M0.75 0.75L12.75 12.75"
+          stroke="#686868"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+  <form id="create-field-form" class="popup-config__form">
     {% csrf_token %}
-    <div class="popupGallery-config__row">
+    <div class="popup-config__row">
       <label>
-        <input type="text" name="name" placeholder="Название поля" class="popupGallery-config__input">
+        <input type="text" name="name" placeholder="Название поля" class="popup-config__input">
       </label>
-      <button type="submit" class="popupGallery-config__save" id="create-field">
+      <button type="submit" class="popup-config__save" id="create-field">
         <img src="{% static 'admin/img/save.svg' %}" alt=""/>
       </button>
-      <label>
-        <span>Тип:</span><br>
-        <select name="type" class="popupGallery-config__select" id="type-field">
-          <option value="radio">Radio</option>
-          <option value="checkbox">Checkbox</option>
-        </select>
-      </label>
 
     </div>
   </form>
 </div>
 
-<div class="popupGallery-config add-option" id="add-option" data-popupGallery="add-option">
-  <button type="button" class="popupGallery-config__close"><span>X</span></button>
-  <form id="create-option-form" class="popupGallery-config__form">
+<div class="popup-config add-option" id="add-option">
+  <button type="button" class="popup-config__close" data-popup-close>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path
+          d="M12.75 0.75L0.75 12.75M0.75 0.75L12.75 12.75"
+          stroke="#686868"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+  <form id="create-option-form" class="popup-config__form">
     {% csrf_token %}
+    <div class="popup-config__row" style="margin-bottom: 20px;">
+      <label>
+        <input type="text" name="title" placeholder="Название варианта" class="popup-config__input">
+      </label>
+      <button type="submit" class="popup-config__save" id="create-option">
+        <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+      </button>
+    </div>
     <label>
-      <input type="text" name="title" placeholder="Название варианта" class="popupGallery-config__input">
+      <input type="number" name="price" placeholder="Цена" class="popup-config__input">
     </label>
-    <label>
-      <input type="number" name="price" placeholder="Цена" class="popupGallery-config__input">
-    </label>
-    <button type="submit" class="popupGallery-config__save" id="create-option">
-      <img src="{% static 'admin/img/save.svg' %}" alt=""/>
-    </button>
+
   </form>
 </div>
 
