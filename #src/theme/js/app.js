@@ -3,6 +3,10 @@ import './modules/tabs.js';
 import './modules/calculator.js';
 // import './modules/popup-gallery.js';
 import './modules/popup.js';
+import './modules/normalizedFormatPhoneLink.js';
+import './modules/mask.js';
+import './modules/form.js';
+import './modules/notice.js';
 import './modules/select.js';
 import './modules/sliders.js';
 

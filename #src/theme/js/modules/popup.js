@@ -1,5 +1,5 @@
-import {initSliders} from './sliders.js';
-import {bodyLock, bodyUnLock} from "./baseFunctions.js";
+import { initSliders } from './sliders.js';
+import { bodyLock, bodyUnLock } from './baseFunctions.js';
 
 const popupGallery = document.querySelector('.popup-gallery');
 const popupGalleryContainer = document.getElementById('popup-gallery');
@@ -7,17 +7,15 @@ const popupGalleryContainer = document.getElementById('popup-gallery');
 let activePopup = null;
 
 /**
- * Открывает обычный popup по его DOM-элементу.
+ * Открывает popup.
  */
 function showPopup(popup) {
-
   if (!popup) {
     return;
   }
 
-  // Закрываем ранее открытый popup
   if (activePopup && activePopup !== popup) {
-    hidePopup(activePopup);
+    hidePopup(activePopup, false);
   }
 
   activePopup = popup;
@@ -34,9 +32,12 @@ function showPopup(popup) {
 }
 
 /**
- * Закрывает конкретный popup.
+ * Закрывает popup.
+ *
+ * @param {Element} popup
+ * @param {boolean} unlockBody
  */
-function hidePopup(popup) {
+function hidePopup(popup, unlockBody = true) {
   if (!popup) {
     return;
   }
@@ -53,11 +54,23 @@ function hidePopup(popup) {
     activePopup = null;
   }
 
-  bodyUnLock();
+  if (unlockBody) {
+    bodyUnLock();
+  }
+}
+
+export function closePopupById(popupId) {
+  const popup = document.getElementById(popupId);
+
+  if (!popup) {
+    return;
+  }
+
+  hidePopup(popup);
 }
 
 /**
- * Закрывает текущий открытый popup.
+ * Закрывает активный popup.
  */
 function closeActivePopup() {
   if (!activePopup) {
@@ -91,6 +104,7 @@ function collectProductData(trigger) {
   const productElement = trigger.closest('.single');
 
   if (!productElement) {
+    console.warn('Родительский элемент .single не найден');
     return null;
   }
 
@@ -98,15 +112,17 @@ function collectProductData(trigger) {
     '.gallery__slider .swiper-slide:first-child img'
   );
 
-  const productName = productElement
-    .querySelector('.single__parameters > .single__title')
-    ?.textContent
-    ?.trim() ?? '';
+  const productName =
+    productElement
+      .querySelector('.single__parameters > .single__title')
+      ?.textContent
+      ?.trim() ?? '';
 
-  const totalPrice = productElement
-    .querySelector('#single-price')
-    ?.textContent
-    ?.trim() ?? '';
+  const totalPrice =
+    productElement
+      .querySelector('#single-price')
+      ?.textContent
+      ?.trim() ?? '';
 
   const configuration = Array.from(
     productElement.querySelectorAll(
@@ -151,7 +167,7 @@ function collectProductData(trigger) {
 }
 
 /**
- * Создаёт одну строку с параметром.
+ * Создаёт строку параметра внутри popup.
  */
 function createParameterElement(label, value) {
   const element = document.createElement('div');
@@ -171,7 +187,7 @@ function createParameterElement(label, value) {
 }
 
 /**
- * Заполняет popup данными выбранного товара.
+ * Заполняет popup заявки данными товара.
  */
 function fillCallbackPopup(trigger, popup) {
   const productData = collectProductData(trigger);
@@ -181,15 +197,23 @@ function fillCallbackPopup(trigger, popup) {
     return;
   }
 
-  const imageElement = popup.querySelector('[data-callback-image]');
+  const imageElement = popup.querySelector(
+    '[data-callback-image]'
+  );
+
   const imageWrapper = imageElement?.closest('.popup__image');
+
   const parametersElement = popup.querySelector(
     '[data-callback-parameters]'
   );
+
   const hiddenInput = popup.querySelector(
     '[data-callback-product-data]'
   );
 
+  /*
+   * Изображение товара.
+   */
   if (imageElement && imageWrapper) {
     if (productData.product.image) {
       imageElement.src = productData.product.image;
@@ -202,19 +226,27 @@ function fillCallbackPopup(trigger, popup) {
     }
   }
 
+  /*
+   * Параметры товара.
+   */
   if (parametersElement) {
     const fragment = document.createDocumentFragment();
 
-    fragment.append(
-      createParameterElement(
-        'Проект',
-        productData.product.name
-      )
-    );
+    if (productData.product.name) {
+      fragment.append(
+        createParameterElement(
+          'Проект',
+          productData.product.name
+        )
+      );
+    }
 
     productData.configuration.forEach((item) => {
       fragment.append(
-        createParameterElement(item.field, item.value)
+        createParameterElement(
+          item.field || 'Параметр',
+          item.value
+        )
       );
     });
 
@@ -231,26 +263,32 @@ function fillCallbackPopup(trigger, popup) {
       );
     }
 
-    fragment.append(
-      createParameterElement(
-        'Расчётная стоимость',
-        productData.product.totalPrice
-      )
-    );
+    if (productData.product.totalPrice) {
+      fragment.append(
+        createParameterElement(
+          'Расчётная стоимость',
+          productData.product.totalPrice
+        )
+      );
+    }
 
     parametersElement.replaceChildren(fragment);
   }
 
+  /*
+   * JSON для отправки на Django.
+   */
   if (hiddenInput) {
     hiddenInput.value = JSON.stringify(productData);
+  } else {
+    console.warn(
+      'Поле [data-callback-product-data] не найдено'
+    );
   }
 }
 
 /**
  * Открывает обычный popup через data-popup.
- *
- * Пример:
- * <button data-popup="order-popup" data-name="Товар">Открыть</button>
  */
 function openDefaultPopup(trigger) {
   const popupId = trigger.dataset.popup;
@@ -270,7 +308,9 @@ function openDefaultPopup(trigger) {
     fillCallbackPopup(trigger, currentPopup);
   }
 
-  const hiddenField = currentPopup.querySelector('#order-product');
+  const hiddenField = currentPopup.querySelector(
+    '#order-product'
+  );
 
   if (hiddenField && trigger.dataset.name) {
     hiddenField.value = trigger.dataset.name;
@@ -291,7 +331,9 @@ function openGalleryPopup(trigger) {
   const gallery = trigger.closest('.gallery');
 
   if (!gallery) {
-    console.warn('Элемент с data-lightbox должен находиться внутри .gallery');
+    console.warn(
+      'Элемент с data-lightbox должен находиться внутри .gallery'
+    );
     return;
   }
 
@@ -313,15 +355,14 @@ function openGalleryPopup(trigger) {
 
 /**
  * Уничтожает экземпляры Swiper внутри popup-галереи.
- *
- * Swiper сохраняет экземпляр в DOM-элементе как element.swiper.
  */
 function destroyGallerySliders() {
   if (!popupGalleryContainer) {
     return;
   }
 
-  const swiperElements = popupGalleryContainer.querySelectorAll('.swiper');
+  const swiperElements =
+    popupGalleryContainer.querySelectorAll('.swiper');
 
   swiperElements.forEach((swiperElement) => {
     swiperElement.swiper?.destroy(true, true);
@@ -329,10 +370,26 @@ function destroyGallerySliders() {
 }
 
 /**
+ * Проверяет, был ли клик вне содержимого popup.
+ */
+function isClickOutsidePopupContent(target) {
+  if (!activePopup || !activePopup.contains(target)) {
+    return false;
+  }
+
+  const popupContent = activePopup.querySelector(
+    '.popup__content, .popup-gallery__content'
+  );
+
+  if (!popupContent) {
+    return target === activePopup;
+  }
+
+  return !popupContent.contains(target);
+}
+
+/**
  * Единый обработчик кликов.
- *
- * Event delegation позволяет обрабатывать также динамически
- * добавленные элементы.
  */
 document.addEventListener('click', (event) => {
   const target = event.target;
@@ -342,15 +399,37 @@ document.addEventListener('click', (event) => {
   }
 
   /*
-  /*
    * Открытие галереи.
-   * Проверяем раньше data-popup, чтобы логика не конфликтовала.
    */
   const lightboxTrigger = target.closest('[data-lightbox]');
 
   if (lightboxTrigger) {
     event.preventDefault();
     openGalleryPopup(lightboxTrigger);
+    return;
+  }
+
+  /*
+   * Закрытие popup.
+   *
+   * Проверяем перед открытием, чтобы кнопка закрытия
+   * случайно не воспринималась как data-popup.
+   */
+  const closeButton = target.closest('[data-close]');
+
+  if (closeButton) {
+    event.preventDefault();
+
+    const popup = closeButton.closest(
+      '.popup, .popup-gallery'
+    );
+
+    if (popup) {
+      hidePopup(popup);
+    } else {
+      closeActivePopup();
+    }
+
     return;
   }
 
@@ -366,34 +445,9 @@ document.addEventListener('click', (event) => {
   }
 
   /*
-   * Закрытие по кнопке data-close.
+   * Закрытие по клику вне содержимого popup.
    */
-  const closeButton = target.closest('[data-close]');
-
-  if (closeButton) {
-    event.preventDefault();
-
-    const popup = closeButton.closest('.popup, .popup-gallery');
-
-    if (popup) {
-      hidePopup(popup);
-    } else {
-      closeActivePopup();
-    }
-
-    return;
-  }
-
-  /*
-   * Закрытие по клику непосредственно на подложку.
-   *
-   * Внутри .popup__content и .popup-gallery__content
-   * popup закрываться не будет.
-   */
-  if (
-    activePopup &&
-    event.target === activePopup
-  ) {
+  if (isClickOutsidePopupContent(target)) {
     closeActivePopup();
   }
 });
@@ -402,9 +456,10 @@ document.addEventListener('click', (event) => {
  * Закрытие по Escape.
  */
 document.addEventListener('keydown', (event) => {
-  if (event.key !== 'Escape') {
+  if (event.key !== 'Escape' || !activePopup) {
     return;
   }
 
+  event.preventDefault();
   closeActivePopup();
 });

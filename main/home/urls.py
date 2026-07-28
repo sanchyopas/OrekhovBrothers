@@ -9,5 +9,6 @@ urlpatterns = [
     path('reviews/', views.reviews, name="reviews"),
     path('about/', views.about, name="about"),
     path('robots.txt', views.robots_txt),
+    path('callback/', views.callback, name="callback"),
     path('', views.index, name="home"),
 ]

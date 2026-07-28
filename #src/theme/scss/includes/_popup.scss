@@ -29,9 +29,8 @@ body._lock {
   visibility: hidden;
   pointer-events: none;
 
-  transition:
-          opacity $popup-transition,
-          visibility $popup-transition;
+  transition: opacity $popup-transition,
+  visibility $popup-transition;
 }
 
 /* Обычный popup */
@@ -107,10 +106,9 @@ body._lock {
   visibility: hidden;
   transform: scale(0.9);
 
-  transition:
-          opacity 0.3s ease,
-          visibility 0.3s ease,
-          transform 0.3s ease;
+  transition: opacity 0.3s ease,
+  visibility 0.3s ease,
+  transform 0.3s ease;
 }
 
 .popup__inner {
@@ -204,9 +202,8 @@ body._lock {
   opacity: 0;
   transform: translateY(-50px);
 
-  transition:
-          opacity 0.5s ease,
-          transform 0.5s ease;
+  transition: opacity 0.5s ease,
+  transform 0.5s ease;
 }
 
 .popup-gallery {
@@ -426,9 +423,11 @@ body._lock {
 .popup__parametr-item {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
 .popup__parametr-label {

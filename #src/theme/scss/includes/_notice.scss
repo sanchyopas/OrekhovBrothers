@@ -1,0 +1,40 @@
+.notice {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10000;
+
+  max-width: 400px;
+  padding: 16px 20px;
+
+  color: #ffffff;
+  border-radius: 8px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.2s ease,
+  visibility 0.2s ease,
+  transform 0.2s ease;
+
+  cursor: pointer;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &--success {
+    background-color: #16803c;
+  }
+
+  &--error {
+    background-color: #c62828;
+  }
+}
+
+button._loading {
+  opacity: 0.6;
+  pointer-events: none;
+}

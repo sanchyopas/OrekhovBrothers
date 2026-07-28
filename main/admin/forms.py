@@ -55,20 +55,49 @@ def __init__(self, *args, **kwargs):
 """
 
 class GlobalSettingsForm(AutoStyledModelForm):
-  class Meta:
-    model = BaseSettings
-    fields = "__all__"
+    smtp_password = forms.CharField(
+        required=False,
+        label="SMTP-пароль",
+        widget=forms.PasswordInput(
+            attrs={
+                "autocomplete": "new-password",
+                "placeholder": "Оставьте пустым, чтобы не менять",
+            },
+            render_value=False,
+        ),
+        help_text=(
+            "Для Mail.ru используется пароль "
+            "внешнего приложения"
+        ),
+    )
 
-    widgets = {
-      'description':CKEditor5Widget(
-          attrs={'class': 'django_ckeditor_5'},
-          config_name='extends'
-      ),
-      'time_work':CKEditor5Widget(
-          attrs={'class': 'django_ckeditor_5'},
-          config_name='extends'
-      )
-    }
+    class Meta:
+        model = BaseSettings
+        fields = "__all__"
+
+        widgets = {
+            "description": CKEditor5Widget(
+                attrs={"class": "django_ckeditor_5"},
+                config_name="extends",
+            ),
+            "time_work": CKEditor5Widget(
+                attrs={"class": "django_ckeditor_5"},
+                config_name="extends",
+            ),
+        }
+
+    def clean_smtp_password(self):
+        new_password = self.cleaned_data.get(
+            "smtp_password",
+        )
+
+        if new_password:
+            return new_password
+
+        if self.instance and self.instance.pk:
+            return self.instance.smtp_password
+
+        return ""
 
 class ShopSettingsForm(AutoStyledModelForm):
   class Meta:

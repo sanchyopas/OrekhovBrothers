@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.urls import reverse
-
+import logging
+logger = logging.getLogger(__name__)
 
 def generic_list(request, model, title, add_url, edit_url, delete_url, parent=False):
     items = model.objects.all()
@@ -87,49 +88,80 @@ def generic_delete(request, model, pk):
     return redirect(request.META.get('HTTP_REFERER'))
 
 
-def generic_singleton_edit(
-    request,
-    form_class,
-    model_class,
-    title,
-    template_name=None,
-  ):
-    print(template_name)
-    """Универсальное редактирование Singleton модели"""
-    if not template_name:
-        template_name = "common-template/_singleton-page.html"
+def generic_singleton_edit(request, form_class, model_class, title, template_name=None):
+     """Универсальное редактирование Singleton-модели."""
 
-    # Получаем или создаем единственный экземпляр
-    try:
-        instance = model_class.objects.get()
-    except model_class.DoesNotExist:
-        instance = model_class()
-        instance.save()
-    except Exception as e:
-        messages.error(request, f"Ошибка: {e}")
-        return redirect(request.META.get('HTTP_REFERER'))
+     template_name = (
+         template_name
+         or "common-template/_singleton-page.html"
+     )
 
-    if request.method == "POST":
-        form = form_class(request.POST, request.FILES, instance=instance)
+     try:
+         instance, _ = model_class.objects.get_or_create()
+     except Exception:
+         logger.exception(
+             "Ошибка получения Singleton-модели %s",
+             model_class.__name__,
+         )
 
-        if form.is_valid():
-            try:
-                saved_instance = form.save()
-                messages.success(request, "Успешно сохранено!")
-                return redirect(request.META.get('HTTP_REFERER'))
-            except Exception as e:
-                messages.error(request, f"Ошибка сохранения: {e}")
-        else:
-            return render(request, template_name, {
-                "form": form,
-                "title": title,
-                "settings": instance,
-            })
+         messages.error(
+             request,
+             "Не удалось загрузить настройки.",
+         )
 
-    form = form_class(instance=instance)
-    context = {
-        "form": form,
-        "title": title,
-        "settings": instance,
-    }
-    return render(request, template_name, context)
+         return redirect(request.path)
+
+     if request.method == "POST":
+         form = form_class(
+             request.POST,
+             request.FILES,
+             instance=instance,
+         )
+
+         if form.is_valid():
+             try:
+                 form.save()
+
+                 messages.success(
+                     request,
+                     "Успешно сохранено!",
+                 )
+
+                 return redirect(request.path)
+
+             except Exception:
+                 logger.exception(
+                     "Ошибка сохранения модели %s",
+                     model_class.__name__,
+                 )
+
+                 messages.error(
+                     request,
+                     "Произошла ошибка при сохранении.",
+                 )
+         else:
+             logger.warning(
+                 "Форма %s не прошла валидацию: %s",
+                 form_class.__name__,
+                 form.errors.as_json(),
+             )
+
+             messages.error(
+                 request,
+                 "Проверьте правильность заполнения полей.",
+             )
+
+     else:
+         form = form_class(instance=instance)
+
+     context = {
+         "form": form,
+         "title": title,
+         "settings": instance,
+     }
+
+     return render(
+         request,
+         template_name,
+         context,
+     )

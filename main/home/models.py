@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from admin.singleton_model import SingletonModel
 from django_quill.fields import QuillField
+from django.core.exceptions import ValidationError
 
 class StatusChoices(models.TextChoices):
   PUBLISHED = "published", "Опубликовано"
@@ -27,6 +28,114 @@ class BaseSettings(SingletonModel):
   inn = models.CharField(max_length=50, blank=True, null=True, verbose_name="ИНН")
   copyright = models.CharField(max_length=250, blank=True, null=True, verbose_name="Копирайт")
   map = models.TextField(null=True, blank=True, verbose_name="Код карты")
+  smtp_enabled = models.CharField(
+      max_length=3,
+      choices=ViewsChoices.choices,
+      default=ViewsChoices.NO,
+      verbose_name="Использовать SMTP из админки",
+  )
+  smtp_host = models.CharField(
+      max_length=255,
+      default="smtp.mail.ru",
+      blank=True,
+      verbose_name="SMTP-сервер",
+  )
+  smtp_port = models.PositiveIntegerField(
+      default=465,
+      verbose_name="SMTP-порт",
+  )
+  smtp_username = models.EmailField(
+      max_length=255,
+      blank=True,
+      verbose_name="SMTP-логин",
+      help_text="Полный адрес почтового ящика",
+  )
+  smtp_password = models.CharField(
+      max_length=255,
+      blank=True,
+      verbose_name="SMTP-пароль",
+      help_text="Для Mail.ru используется пароль внешнего приложения",
+  )
+  smtp_use_ssl = models.CharField(
+      max_length=3,
+      choices=ViewsChoices.choices,
+      default=ViewsChoices.YES,
+      verbose_name="Использовать SSL",
+  )
+  smtp_use_tls = models.CharField(
+      max_length=3,
+      choices=ViewsChoices.choices,
+      default=ViewsChoices.NO,
+      verbose_name="Использовать TLS",
+  )
+  smtp_timeout = models.PositiveIntegerField(
+      default=20,
+      verbose_name="Таймаут подключения",
+  )
+  smtp_from_name = models.CharField(
+      max_length=255,
+      blank=True,
+      default="Заявки с сайта",
+      verbose_name="Имя отправителя",
+  )
+  smtp_from_email = models.EmailField(
+      max_length=255,
+      blank=True,
+      verbose_name="Email отправителя",
+      help_text="Если пусто, будет использован SMTP-логин",
+  )
+  smtp_recipients = models.CharField(
+      max_length=255,
+      blank=True,
+
+      verbose_name="Получатели заявок",
+      help_text="Несколько адресов можно указать через запятую или точку с запятой",
+  )
+
+  def clean(self):
+    super().clean()
+
+    smtp_enabled = (
+        self.smtp_enabled == ViewsChoices.YES
+    )
+    use_ssl = (
+        self.smtp_use_ssl == ViewsChoices.YES
+    )
+    use_tls = (
+        self.smtp_use_tls == ViewsChoices.YES
+    )
+
+    if use_ssl and use_tls:
+      raise ValidationError({
+        "smtp_use_tls": (
+          "SSL и TLS нельзя включать одновременно."
+        ),
+      })
+
+    if not smtp_enabled:
+        return
+
+    errors = {}
+
+    required_fields = {
+        "smtp_host": self.smtp_host,
+        "smtp_port": self.smtp_port,
+        "smtp_username": self.smtp_username,
+        "smtp_password": self.smtp_password,
+        "smtp_recipients": self.smtp_recipients,
+    }
+
+    for field_name, value in required_fields.items():
+        if not value:
+            errors[field_name] = (
+                "Поле обязательно при включённом SMTP."
+            )
+
+    if errors:
+        raise ValidationError(errors)
+
+  def __str__(self):
+    return "Основные настройки"
 
 
 class HomeTemplate(SingletonModel):

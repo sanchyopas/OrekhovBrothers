@@ -2076,9 +2076,12 @@ body._lock {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 16px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
 .popup__parametr-label {
@@ -2097,6 +2100,49 @@ body._lock {
   background-color: #82c7d4;
   border: none;
   color: #ffffff;
+}
+
+.notice {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10000;
+  max-width: 400px;
+  padding: 16px 20px;
+  color: #ffffff;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+          transform: translateY(20px);
+  -webkit-transition: opacity 0.2s ease, visibility 0.2s ease, -webkit-transform 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease, -webkit-transform 0.2s ease;
+  -o-transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, -webkit-transform 0.2s ease;
+  cursor: pointer;
+}
+
+.notice.active {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.notice--success {
+  background-color: #16803c;
+}
+
+.notice--error {
+  background-color: #c62828;
+}
+
+button._loading {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .catalog {

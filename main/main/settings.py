@@ -231,13 +231,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.beget.com'
-EMAIL_HOST_USER = 'info@xn----7sbah6bllcobpj.xn--p1ai'
-EMAIL_HOST_PASSWORD = 'Ie51587v' 
-EMAIL_FROM = 'info@xn----7sbah6bllcobpj.xn--p1ai' 
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_HOST_USER = 'saniagolovanev@mail.ru'
+EMAIL_HOST_PASSWORD = 'CE3NSa2IvNZNGAISJRXb'
+DEFAULT_FROM_EMAIL = ("Заявки с сайта <saniagolovanev@mail.ru>")
+
+# Почта, на которую будут приходить заявки
+EMAIL_RECIPIENT = "saniagolovanev@gmail.com"
 EMAIL_PORT = 465 
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
+EMAIL_TIMEOUT = 20
 
 RECAPTCHA_PUBLIC_KEY = '6LfYJQUqAAAAANqyj-hN9bAMzxy5TNZy8CMYd73W'
 RECAPTCHA_PRIVATE_KEY = '6LfYJQUqAAAAAKCcl1__tYxIgAK7KbPkNMarYp5V'

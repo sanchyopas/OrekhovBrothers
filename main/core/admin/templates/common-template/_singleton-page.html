@@ -121,6 +121,105 @@
             </div>
             {% endif %}
 
+            {% if form.smtp_enabled %}
+            <div class="form__group">
+              <label for="{{ form.smtp_enabled.id_for_label }}" class="form__label">
+                {{ form.smtp_enabled.label }} <span>:</span>
+              </label>
+              {{ form.smtp_enabled }} {{ form.smtp_enabled.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_host %}
+            <div class="form__group">
+              <label for="{{ form.smtp_host.id_for_label }}" class="form__label">
+                {{ form.smtp_host.label }} <span>:</span>
+              </label>
+              {{ form.smtp_host }} {{ form.smtp_host.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_port %}
+            <div class="form__group">
+              <label for="{{ form.smtp_port.id_for_label }}" class="form__label">
+                {{ form.smtp_port.label }} <span>:</span>
+              </label>
+              {{ form.smtp_port }} {{ form.smtp_port.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_username %}
+            <div class="form__group">
+              <label for="{{ form.smtp_username.id_for_label }}" class="form__label">
+                {{ form.smtp_username.label }} <span>:</span>
+              </label>
+              {{ form.smtp_username }} {{ form.smtp_username.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_password %}
+            <div class="form__group">
+              <label for="{{ form.smtp_password.id_for_label }}" class="form__label">
+                {{ form.smtp_password.label }} <span>:</span>
+              </label>
+              {{ form.smtp_password }} {{ form.smtp_password.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_use_ssl %}
+            <div class="form__group">
+              <label for="{{ form.smtp_use_ssl.id_for_label }}" class="form__label">
+                {{ form.smtp_use_ssl.label }} <span>:</span>
+              </label>
+              {{ form.smtp_use_ssl }} {{ form.smtp_use_ssl.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_use_tls %}
+            <div class="form__group">
+              <label for="{{ form.smtp_use_tls.id_for_label }}" class="form__label">
+                {{ form.smtp_use_tls.label }} <span>:</span>
+              </label>
+              {{ form.smtp_use_tls }} {{ form.smtp_use_tls.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_timeout %}
+            <div class="form__group">
+              <label for="{{ form.smtp_timeout.id_for_label }}" class="form__label">
+                {{ form.smtp_timeout.label }} <span>:</span>
+              </label>
+              {{ form.smtp_timeout }} {{ form.smtp_timeout.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_from_name %}
+            <div class="form__group">
+              <label for="{{ form.smtp_from_name.id_for_label }}" class="form__label">
+                {{ form.smtp_from_name.label }} <span>:</span>
+              </label>
+              {{ form.smtp_from_name }} {{ form.smtp_from_name.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_from_email %}
+            <div class="form__group">
+              <label for="{{ form.smtp_from_email.id_for_label }}" class="form__label">
+                {{ form.smtp_from_email.label }} <span>:</span>
+              </label>
+              {{ form.smtp_from_email }} {{ form.smtp_from_email.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.smtp_recipients %}
+            <div class="form__group">
+              <label for="{{ form.smtp_recipients.id_for_label }}" class="form__label">
+                {{ form.smtp_recipients.label }} <span>:</span>
+              </label>
+              {{ form.smtp_recipients }} {{ form.smtp_recipients.errors }}
+            </div>
+            {% endif %}
+
           </div>
           <div class="form__col">
             {% if form.logo %}
