@@ -301,7 +301,7 @@ def slider_edit(request, pk):
   return generic_edit(request, pk, Slider, SliderForm, "slider", "Редактирование слайда",  template_name="common-template/template-edit-add-page.html")
 
 def slider_delete(request, pk):
-  pass
+  return generic_delete(request, Slider, pk)
 
 """ Социальные сети """
 @user_passes_test(lambda u: u.is_superuser)
