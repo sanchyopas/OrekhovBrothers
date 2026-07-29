@@ -274,7 +274,7 @@ def slider_add(request):
     if form.is_valid():
       form.save()
       messages.success(request, 'Успешно сохранено !')
-      return redirect(request.META.get('HTTP_REFERER'))
+      return redirect('slider')
     else:
       error_list = []
       for field_name, errors in form.errors.items():

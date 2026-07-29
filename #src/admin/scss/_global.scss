@@ -109,6 +109,21 @@ html {
 
 }
 
+.form__clear {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  input[type='checkbox'] {
+    width: auto;
+    margin: 0;
+  }
+
+  label {
+    width: auto;
+    margin: 0;
+  }
+}
 
 
 

@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '#id_options-TOTAL_FORMS'
   );
 
-  addBtn.addEventListener('click', () => {
+  addBtn?.addEventListener('click', () => {
 
     let count = parseInt(totalForms.value);
 
@@ -178,6 +178,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
+});
+
+const clearCheckboxes = document.querySelectorAll(
+  '.form__group--image input[type="checkbox"]',
+);
+
+
+clearCheckboxes.forEach((checkbox) => {
+  const label = document.querySelector(`label[for="${CSS.escape(checkbox.id)}"]`);
+
+  if (!label || checkbox.parentElement !== label.parentElement) {
+    return;
+  }
+
+  const parent = checkbox.parentElement;
+  const br = label.nextElementSibling;
+
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('form__clear');
+
+  parent.insertBefore(wrapper, checkbox);
+  wrapper.append(checkbox, label);
+
+  if (br?.tagName === 'BR') {
+    br.remove();
+  }
 });
 
 

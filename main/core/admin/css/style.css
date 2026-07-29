@@ -514,6 +514,26 @@ html._lock body::after {
   background: rgba(38, 53, 61, 0.7);
 }
 
+.form__clear {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+}
+
+.form__clear input[type=checkbox] {
+  width: auto;
+  margin: 0;
+}
+
+.form__clear label {
+  width: auto;
+  margin: 0;
+}
+
 .popup-config {
   display: none;
   max-width: 500px;
